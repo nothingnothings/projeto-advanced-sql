@@ -1,0 +1,22 @@
+
+
+
+VEREMOS 1 VARIATION DO SELECT STATEMENT...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+É O SELECT DISTINCT,
+
+
+EM VEZ DE SÓ SELECT...

@@ -1,0 +1,277 @@
+
+
+
+
+
+
+O PROFESSOR COMECA ASSIM:
+
+
+
+
+
+
+
+
+
+
+
+SELECT 
+    first_name,
+    last_name,
+    email
+FROM customer 
+ORDER BY last_name DESC, first_name DESC 
+
+
+
+
+--------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OK... ISSO ESTÁ CERTO...
+
+
+
+
+
+
+
+
+
+
+
+MAS O PROFESSOR QUER NOS MOSTRAR TAMBÉM UMA TRICK...
+
+
+
+
+
+
+
+
+
+
+
+
+
+TRICK ----_> EM VEZ DE USARMOS 
+
+
+AS COLUMN NAMES PARA 
+FAZER ORDER,
+
+
+PODEMOS USAR _ _ O NÚMERO 
+
+DAS COLUMNS...
+
+
+
+
+
+
+
+
+
+
+
+--> OU SEJA,
+
+
+PODEMOS ESCREVER ASSIM:
+
+
+
+
+
+
+
+
+
+SELECT 
+    first_name,
+    last_name,
+    email 
+FROM customer 
+ORDER BY 2 DESC, 1 DESC;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> OK... ISSO É TIPO A MESMA COISA QUE 
+
+
+"$1" e "$2"...
+
+
+
+
+
+
+
+
+
+--> PODEMOS FAZER ISSO,
+
+
+
+MAS NAO É UMA BEST 
+
+PRACTICE...
+
+
+
+
+
+
+
+
+
+
+
+
+--> A BEST PRACTICE É REALMENTE USAR 
+
+O COLUMN NAME, COMO TEXT,
+
+PQ ISSO AJUDA COM A READABILITY...
+
+
+
+
+
+
+
+
+
+
+--> OS NUMBERS SÓ DEIXAM 
+
+ESCREVER RÁPIDO,
+
+MAS 
+
+NAO É MT LEGÍVEL...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CERTO...
+
+
+
+
+
+
+
+
+
+MAS AINDA TEMOS DUPLICATE VALUES...
+
+
+
+
+
+
+
+
+
+
+
+--> E HÁ UMA MANEIRA DE NOS LIVRARMOS 
+
+DESSAS DUPLICATES...
+
+
+
+
+
+
+
+
+
+
+
+
+--> É POR MEIO DA KEYWORD DE "DISTINCT",
+
+
+
+QUE VEREMOS NA PRÓXIMA AULA...
+
+
+
+
+É UMA __ VARIATION__ DO SELECT STATEMENT...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PARA ISSO, DEVEMOS USAR 
+
+"SELECT DISTINCT" 
+
+
+
+
+
+EM VEZ DE 
+
+
+"SELECT"...
+
+
+
+
+
+
+
