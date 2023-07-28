@@ -1,0 +1,326 @@
+
+
+
+
+
+
+OK... HOJE, VEREMOS 
+
+
+
+O GROUPING DE DATA....
+
+
+
+
+
+
+
+
+
+--> É 1 DAS COISAS MAIS IMPORTANTES QUE PODEMOS 
+
+APRENDER,
+
+SE QUEREMOS APRENDER A LIDAR COM O SQL...
+
+
+
+
+
+
+
+
+
+
+
+NESSA LICAO, APRENDEREMOS 
+
+
+
+'''QUANTOS PAYMENTS TIVEMOS PARA CADA 1 DAQUELES AMOUNTS (
+    0.99, 1.99, 2, etc
+)''''
+
+
+
+
+
+
+
+
+
+
+
+--> PARA ISSO,
+
+PROVAVELMENTE ESCREVEREMOS ASSIM:
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT COUNT(*), amount FROM payment
+GROUP BY amount;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CERTO... É ISSO MESMO...
+
+
+
+
+FICOU TIPO ASSIM:
+
+
+
+
+
+
+
+640	1.99
+8	3.98
+670	7.99
+1299	5.99
+104	10.99
+3542	2.99
+1	8.97
+485	8.99
+1109	3.99
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+GROUP BY 
+
+AGREGA NOSSOS VALUES...
+
+
+
+ELE AGREGA TODOS OS ROWS QUE 
+
+TINHAM O VALUE DE 1.99, POR EXEMPLO,
+
+EM 1 ROW SÓ,
+
+
+e aí colocou o count como o value
+
+
+dessa primeira column...
+
+
+
+
+
+
+-------------------------------------------
+
+
+
+
+
+
+
+
+
+
+TAMBÉM ''QUAL É O VALOR 
+TOTAL _ DE CADA 1 DESSES INDIVIDUAL AMOUNTS'',
+
+
+OU ''QUAL CUSTOMER GASTOU MAIS DINHEIRO ALUGANDO 
+OS FILMS''..
+
+
+
+
+
+
+
+
+-> ACHO QUE PARA ISSO, POSSO RODAR ASSIM:
+
+
+
+
+
+
+
+
+
+
+
+'QUAL É O VALOR 
+TOTAL _ DE CADA 1 DESSES INDIVIDUAL AMOUNTS'',
+
+
+
+
+
+
+
+
+SELECT COUNT(*), 
+amount,
+SUM(amount) as total_value
+FROM payment
+GROUP BY amount;
+
+
+
+
+
+
+
+REALMENTE, ESSA EXPRESSAO ESTÁ CORRETA..
+
+
+
+
+
+
+
+A OUTRA PERGUNTA:
+
+
+
+
+
+
+
+
+
+
+
+
+
+O OU ''QUAL CUSTOMER GASTOU MAIS DINHEIRO ALUGANDO 
+OS FILMS''..
+
+
+
+
+
+
+SELECT COUNT(*) as number_of_rentals,
+CUSTOMER_ID
+FROM RENTAL
+GROUP BY CUSTOMER_ID
+ORDER BY number_of_rentals DESC;
+
+
+
+
+
+
+
+OK, MAS ISSO SÓ NOS DÁ 
+
+A QUANTIDADE DE RENTALS, E NAO 
+
+O QUANTO CADA CUSTOMER GASTOU...
+
+
+
+
+
+
+
+
+
+pARA VER O QUANTO CADA CUSTOMER GASTOU,
+
+PODEMOS USAR A TABLE DE "payment"
+
+DIRETAMENTE, TIPO ASSIM:
+
+
+
+
+
+
+SELECT 
+SUM(amount) as total_paid,
+COUNT(*) as number_of_rentals,
+CUSTOMER_ID
+FROM PAYMENT 
+GROUP BY CUSTOMER_ID
+ORDER BY total_paid DESC;
+
+
+
+
+
+
+
+
+
+
+OK... FUNCIONOU.
+
+
+
+
+
+
+
+
+
+
+
+
+--> VEREMOS COMO AGGREGATE DATA,
+
+
+
+COM SUM() AVG() E OUTRAS AGGREGATE FUNCTIONS...
+
+
+
+
+
+
+
+
+
+
+MAIS TARDE, VEREMOS COMO PODEMOS GROUP DATA...
+
+
+
+
+
+
+

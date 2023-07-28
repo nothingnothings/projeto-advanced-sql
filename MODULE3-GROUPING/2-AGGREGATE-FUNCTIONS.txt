@@ -1,0 +1,741 @@
+
+
+
+
+
+
+
+
+
+
+
+É BEM COMUM, EM NOSSAS DATABASES,
+
+PRECISARMOS 
+
+USAR CÁLCULOS...
+
+
+
+
+
+
+
+
+
+
+
+--> 1 MANEIRA BEM COMUM DE FAZER ISSO É COM 
+
+__aGGREGATE FUNCTIONS...
+
+
+
+
+
+
+
+
+
+
+
+
+--> DIGAMOS QUE 
+
+
+TEMOS A COLUMN DE "AMOUNT"... -
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DIGAMOS QUE QUEREMOS SOMAR TODOS OS VALUES 
+
+DESSA COLUMN,
+
+COM 1 STAMENET...
+
+
+
+
+
+
+
+
+--> PARA ISSO, PODEMOS USAR A AGGREGATE FUNCTION DE 
+
+"SUM()"...
+
+
+
+
+---------------------
+
+
+
+
+
+
+
+
+AGGREGATION FUNCTIONS...
+
+
+
+
+
+
+
+
+
+AGGREGATE VALUES IN MULTIPLE ROWS TO __ ONE VALUE__...
+
+
+
+
+
+
+
+
+
+
+
+
+QUER DIZER QUE TEMOS MÚLTIPLOS VALUES NO INÍCIO,
+
+E AÍ CONVERTEMOS TODOS ESSES VALUES EM 1 
+
+
+ÚNICO VALUE..
+
+
+
+
+
+
+
+
+
+
+--> PODEMOS TAMBÉM RODAR "AVG()"
+
+PARA FICAR COM O AVERAGE DE 
+
+VALUES DE ALGUMA COLUMN....
+
+
+
+
+
+
+
+
+
+
+
+
+--> AS AGGREGATION FUNCTIONS MAIS COMUNS SAO:
+
+
+
+
+
+1) SUM() 
+
+
+2) AVG() 
+
+
+3) MIN()
+
+4) MAX()
+
+
+5) COUNT()
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+COBREM 99% DOS USE-CASES..
+
+
+
+
+
+
+
+
+
+
+SE CONHECEMOS ESSAS FUNCTIONS, ESTAMOS GOOD...
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> DIGAMOS QUE QUEREMOS SOMAR 
+
+TODOS OS AMOUNTS NA TABLE DE PAYMENT..
+
+
+
+
+
+
+ex:
+
+
+
+
+
+
+
+
+
+SELECT SUM(amount) FROM PAYMENT;
+
+
+
+
+
+
+
+
+
+
+
+
+OK... ISSO VAI REALMENTE NOS DAR A SUM DE TODOS OS VALUES 
+
+
+DESSA COLUMN....
+
+
+
+
+
+
+
+
+
+
+
+--> TAMBÉM PODEMOS USAR A FUNCTION DE COUNT,
+ASSIM:
+
+
+
+
+
+
+
+
+
+SELECT 
+COUNT(*)
+FROM PAYMENT;
+
+
+
+
+
+
+
+
+
+
+
+
+--> O PROFESSOR DESTACA 
+
+QUE, ACTUALLY,
+
+A 
+
+
+__ AGGREGATE FUNCTION DE "COUNT()"
+
+
+
+
+É _ a ÚNICA FUNCTION EM QUE 
+
+
+PODEMOS 
+
+ESPECIFICAR 
+
+"*"
+
+
+
+,
+
+ESSE WILD CARD,
+
+
+EM VEZ DE 1 COLUMN NAME...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> nesse caso,
+
+
+
+CONTAMOS TODAS AS ROWS NA TABLE....
+
+
+
+
+
+
+
+
+
+MAS PARA TODAS AS OUTRAS AGGREGATE FUNCTIONS,
+
+PRECISAMOS USAR 1 COLUMN NAME...
+
+
+
+(como SUM(amount) ).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OK... 
+
+
+
+
+
+MAS AQUI TEMOS 1 COISA QUE __ NAO PODEMOS FAZER,
+
+
+QUANDO USAMOS AGGREGATION...
+
+
+
+
+
+E O QUE É ISSO?
+
+
+
+
+
+
+É USAR 
+
+
+OUTRA COLUMN,
+
+QUE NAO 
+
+
+É DO TIPO "AGGREGATE",
+
+JUNTO COM 
+
+ESSA AGGREGATE FUNCTION...
+
+
+
+TIPO ASSIM:
+
+
+
+
+
+
+
+
+
+
+
+SELECT 
+SUM(amount),
+PAYMENT_ID 
+FROM PAYMENT;
+
+
+
+(
+    ISSO NAO FUNCIONARÁ,
+
+    JUSTAMENTE PQ 
+    ESTAMOS MISTURANDO 
+
+    COLUMNS/MULTI-VALUES 
+
+    COM 
+
+    1 NEGÓCIO QUE VAI RETORNAR 1 VALUE APENAS (aggreg function)..
+)
+
+
+
+
+
+
+
+
+
+------> ISSO LOGICAMENTE FAZ SENTIDO;
+
+
+SÓ PODEMOS RETORNAR 1 ÚNICO VALUE,
+
+
+
+SE VAMOS USAR 1 AGGREGATION FUNCTION...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> A ÚNICA EXCECAO POSSÍVEL 
+
+É 
+SE 
+
+
+
+ESTAMOS "GROUPING" NOSSA DATA... (com "group by")...
+
+
+
+
+VEREMOS O GROUPING NA PRÓXIMA AULA..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> OK, MAS USAR 
+
+MÚLTIPLAS AGGREG FUNCTIONS EM 1 MESMA 
+
+QUERY É POSSÍVEL,
+
+DESDE QUE NAO 
+
+UTILIZEMOS OUTRAS COLUMNS (pq elas forcariam o return 
+de múltiplas columns, o que é impossível com o uso 
+puro de aggregate functions, sem group by)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FICA TIPO ASSIM:
+
+
+
+
+
+
+
+
+
+
+
+MULTIPLE AGGREGATIONS IN A SINGLE STATEMENT IS 
+POSSIBLE!
+
+
+
+
+
+
+
+
+SELECT 
+SUM(amount),
+COUNT(*),
+AVG(Amount)
+FROM payment;
+
+
+
+
+
+
+
+
+
+
+
+AGORA VAMOS NO PGADMIN,
+
+VER ALGUNS EXAMPLES...
+
+
+
+--------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+O PROFESSOR RODA 
+
+
+SELECT 
+SUM(amount)
+FROM payment;
+
+
+
+
+
+
+-------------------------------
+
+
+
+
+
+
+
+
+AGORA PODEMOS COLOCAR O AVG():
+
+
+
+
+
+SELECT 
+SUM(amount),
+AVG(amount)
+FROM payment;
+
+
+
+
+
+
+
+
+
+
+--> OK... O AVG FICOU IMENSO... 
+
+
+
+
+
+
+-> PODEMOS REDUZIR O NÚMERO DE CASAS DECIMAIS QUE 
+
+OBTIVEMOS 
+
+COM ESSE "AVG(amount)",
+
+
+BASTA 
+
+USAR A FUNCTION DE "ROUND()",
+
+tipo assim:
+
+
+
+
+
+
+
+SELECT 
+SUM(amount),
+ROUND(AVG(amount))
+FROM payment;
+
+
+
+
+
+
+
+
+
+
+
+OK, MAS ESSA FUNCTION EXPECTS
+ 
+
+
+ UM SEGUNDO PARAMETER,
+
+ QUE É 
+
+
+ ''QUANTAS CASAS DECIMAIS O NÚMERO FINAL DEVERÁ TER''...
+
+
+
+
+
+
+
+
+
+ no caso, colocamos 3 casas...
+
+
+
+
+SELECT 
+SUM(amount),
+ROUND(AVG(amount), 3) AS the_average
+FROM payment;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+COM ISSO, FICAMOS COM 
+
+
+
+1 RESULTADO DE 4,201;
+
+
+
+
+
+
+
+
+
+
+
+CERTO...
+
+
+
+
+
+SE TENTAMOS MISTURAR O USO DE AGGREGATE FUNCTONS 
+
+COM 
+
+COLUMNS NORMAIS,
+
+FICAMOS 
+
+
+COM 1 ERROR,
+
+"THE COLUMN MUST APPEAR IN THE GROUP BY CLAUSE 
+OR BE USED IN AN AGGREGATE FUNCTION"...
+
+
+
+
+
+
+AGORA APRENDEREMOS A GROUP NOSSA DATA,
+
+NA PRÓXIMA AULA...
