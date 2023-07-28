@@ -1,0 +1,654 @@
+
+
+
+
+
+
+
+
+
+
+
+MTAS VEZES, QUANDO QUEREMOS 
+
+
+FILTRAR DATA,
+
+QUEREMOS FILTRAR POR MÚLTIPLAS CONDITIONS..
+
+
+
+
+
+
+
+
+
+DIGAMOS QUE QUEREMOS 1 LISTA DE TODOS 
+
+OS PAYMENTS COM CUSTOMER_iD 
+
+IGUAL A 3O,
+
+E APENAS OS RESULTS EM QUE 
+
+O AMOUNT 
+
+
+TENHA SIDO DE 
+
+2.99...
+
+
+
+
+
+
+
+PARA ISSO, PROVAVELMENTE ESCREVEMOS ASSIM:
+
+
+
+
+
+
+
+
+
+
+SELECT
+*
+FROM PAYMENT
+WHERE CUSTOMER_ID = 30 AND AMOUNT=2.99;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CERTO...
+
+
+
+
+
+
+
+A SINTAXE É TIPO 
+
+
+
+
+
+
+
+SELECT 
+COL1,
+COL2
+FROM TABLE_NAME 
+WHERE CONDITION1 
+AND CONDIITON2;
+
+
+
+
+
+
+
+
+
+
+--> SE QUISERMOS, PODEMOS ADICIONAR MÚLTIPLAS 
+CONDIITONS...
+
+
+
+
+
+TODAS AS CONDITIONS DEVEM SER TRUE 
+
+PARA 
+
+QUE O ROW APARECA NO DATA OUTPUT...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> nesse exemplo, temos assim:
+
+
+
+
+
+
+
+SELECT * FROM 
+PAYMENT 
+WHERE AMOUNT = 10.99
+AND CUSTOMER_ID = 426;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> É CLARO QUE TAMBÉM TEMOS O "OR">..
+
+
+
+
+
+
+
+
+FICA TIPO ASSIM:
+
+
+
+
+
+
+
+
+
+SELECT 
+*
+FROM payment 
+WHERE amount = 10.99
+OR amount = 9.99;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------> VC DEVE TER EM MENTE QUE,
+
+MESMO SE TIVERMOS  
+
+
+1 MESMA COLUMN SENDO USADA NAS CONDITIONS,
+
+
+
+SEMPRE 
+
+DEVEMOS INCLUIR O COLUMN NAME COMPLETO..
+
+
+
+
+
+
+
+
+
+
+
+QUER DIZER QUE ESCRITAS ASSIM NAO FUNCIONAM:
+
+
+
+
+
+
+
+
+
+
+
+SELECT * FROM PAYMENT 
+WHERE AMOUNT = 10.99 OR 9.99;
+
+
+
+
+
+
+
+
+
+ISSO NAO FUNCIONA...
+
+
+
+DEVE SER ASSIM:
+
+
+
+
+
+
+
+SELECT * FROM PAYMENT 
+WHERE AMOUNT = 10.99 OR AMOUNT = 10.99;
+
+
+
+
+--------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+MAS AGORA DEVEMOS COMPLICAR 1 POUCO..
+
+
+
+
+
+
+
+
+
+DIGAMOS QUE TEMOS 1 CONDITION COM "AND" E 
+"OR"...
+
+
+
+
+
+
+
+
+
+TIPO ASSIM:
+
+
+
+
+
+
+
+
+
+SELECT * FROM PAYMENT 
+WHERE AMOUNT = 10.99
+OR AMOUNT = 9.99
+AND CUSTOMER_ID = 426;
+
+
+
+
+
+
+
+
+
+
+
+
+PARA RESOLVER ISSO, BASTA PENSAR NA "ATRACAO" DO AND...
+
+
+
+
+
+PRIMEIRO DEVEMOS FAZER EVALUATE DE 
+
+"AMOUNT = 9.99 AND CUSTOMER_ID 426"
+
+
+
+--> SE ISSO RESULTAR EM FALSE, 
+
+ A EXPRESSAO INTEIRA FICA COMO FALSE,
+ O QUE QUER DIZER QUE FICAMOS COM 
+
+
+ AMOUNT = 10.99 OR FALSE;...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+A ESCRITA MAIS BONITA FICARIA ASSIM:
+
+
+
+
+
+
+
+
+
+SELECT 
+*
+FROM PAYMENT 
+WHERE AMOUNT = 10.99
+OR (
+    AMOUNT = 9.99 AND CUSTOMER_ID = 426
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------> CERTO, FOI EXATAMENTE COMO EU 
+
+
+PENSEI...
+
+
+
+
+
+
+
+
+
+--> é por isso que ficamos apenas com results 
+
+de 
+"10.99" --> que é a primeira parte desse overall OR...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---> A CONJUNCTION DE "AND"
+
+É SEMPRE EXECUTADA ANTES
+
+DA 
+CONJUNCTION DE 
+
+"OR"...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-> ESSES PARENTESES NOS AJUDAM A LER 
+
+
+ESSA EXPRESSAO, NESSE CASO...
+
+
+
+
+
+
+
+
+
+
+-> mas podemos __ ALTERAR __ A ORDEM 
+
+DE Execucao DESSAS EXPRESSOES,
+
+
+JUSTAMENTE POR MEIO DO USO DE PARENTESES...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+MAS COMO?
+
+
+
+
+
+
+
+simples, assim:
+
+
+
+
+
+
+
+
+
+
+
+SELECT 
+*
+FROM payment 
+WHERE ( amount = 10.99 OR amount = 9.99) AND customer_id = 426;
+
+
+
+
+
+
+
+
+
+
+
+--> COM ISSO,
+
+
+NOSSA QUERY SÓ VAI ENCONTRAR RESULTADOS SE TIVERMOS ESSAS 
+2 CONDITIONS SATISFEITAS (por conta do AND overall)..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-> PODEMOS TESTAR ISSO NO PGADMIN4...
+
+
+
+
+
+
+
+
+
+
+
+
+
+-> RODAMOS ISSO AÍ...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+O PROFESSOR RODA:
+
+
+
+
+
+
+
+
+
+
+
+SELECT
+*
+FROM PAYMENT 
+WHERE CUSTOMER_ID = 30 
+OR CUSTOMER_ID = 31 
+AND AMOUNT = 2.99;
+
+
+
+
+
+
+
+
+-----------------------------------
+
+
+
+
+
+
+
+
+aí ele mostra a expressao alternativa,
+em que 
+
+SÓ QUEREMOS MOSTRAR 
+
+
+ROWS QUE TENHAM AMOUNT COMO 2.99 ..
+
+
+
+
+
+
+
+
+ex:
+
+SELECT
+*
+FROM PAYMENT 
+WHERE (CUSTOMER_ID = 30 
+OR CUSTOMER_ID = 31)
+AND AMOUNT = 2.99;
+
+
+
+
