@@ -1,0 +1,102 @@
+
+
+
+
+
+
+
+
+
+
+
+ESSA É A PALAVRA MAIS USADA 
+
+EM SQL QUERIES...
+
+
+
+
+
+
+
+
+
+
+
+
+-> USAMOS ESSA KEYWORD PARA SELECT E RETURN DATA...
+
+
+
+
+
+
+
+
+
+
+
+-> SUA SINTAXE É A CLÁSSICA 
+
+
+
+SELECT * FROM DATABASE.SCHEMA.TABLE;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+MAS TAMBÉM PODEMOS ESCOLHER 
+
+
+AS COLUMNS...
+
+
+
+
+
+
+
+
+
+
+ex:
+
+
+
+
+
+
+
+
+SELECT NAME, LAST_NAME, ADDRESS FROM CUSTOMERS;
+
+
+
+
+
+
+
+
+
+
+
+
+CERTO, TUDO ISSO JÁ SABEMOS...
+
+
+
+
+
+
+
+
