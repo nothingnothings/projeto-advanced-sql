@@ -1,0 +1,429 @@
+
+
+
+
+
+
+
+
+
+
+
+QUEREMOS LIMITAR A QUANTIDADE 
+
+DE RESULTS..
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> QUEREMOS 1 LIST DE TODOS OS PAYMENTS 
+
+COM 1 AMOUNT DE 0...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> POR ISSO RODAMOS 
+
+
+SELECT * from PAYMENT
+WHERE AMOUNT = 0;
+
+
+
+
+
+
+
+
+
+
+
+----------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-> OK, A CLAUSE DE WHERE...
+
+
+
+
+
+
+
+
+
+--> É A CLAUSE QUE USAMOS PARA _ FILTRAR_ NOSSO 
+
+DATA OUTPUT...
+
+
+
+
+
+
+
+
+
+
+--> ELE SEMPRE VEM 
+
+
+LOGO ANTES DO "FROM".....
+
+
+
+
+
+
+
+
+
+--> TIPO ASSIM:
+
+
+
+
+
+
+
+
+SELECT 
+COL1,
+COL2
+FROM TABLE_NAME
+WHERE Condition;
+
+
+
+
+
+
+-----------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------> UM EXEMPLO:
+
+
+
+
+
+
+
+
+
+
+SELECT 
+*
+FROM PAYMENT 
+WHERE AMOUNT = 10.99;
+
+
+
+
+
+
+
+
+
+
+
+
+
+CERTO...
+
+
+
+
+
+
+
+
+
+SE VC QUER FILTRAR POR 1 NAME,
+
+TEXT STRING
+,
+
+
+
+ESCREVEMOS ASSIM;
+
+
+
+
+
+
+
+
+
+
+
+SELECT
+first_name,
+last_name
+FROM customer 
+WHERE first_name='ADAM';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> COMO ISSO É TEXT, PRECISAMOS FAZER 
+ENCLOSE DESSA STRING 
+
+COM '' (Quotes)....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> ESSES SAO OS VERY BASICS DA CLAUSE DE WHERE...
+
+
+
+
+
+
+
+
+--> MAIS TARDE APRENDEREMOS DIVERSAS VARIACOES 
+
+
+E DIFERENTES OPERATORS QEU PODEMOS USAR COM O WHERE....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> OK.. AGORA VOLTAMOS AO PGADMIN,
+
+E RESOLVEMOS ESSE PROBLEMA...
+
+
+
+
+
+
+
+
+SELECT 
+* 
+FROM PAYMENT;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> QUEREMOS FILTRAR ESSA DATA...
+
+
+
+
+
+SELECT 
+* 
+FROM PAYMENT 
+WHERE AMOUNT=0;
+
+
+
+
+
+
+
+
+
+PODEMOS USAR O COUNT PARA CONTAR QUANTOS 
+PAYMENTS 
+
+TIVERAM QUANTIDADE DE 0,
+
+TIPO ASSIM:
+
+
+
+
+
+
+
+
+
+
+
+SELECT COUNT(*) FROM PAYMENT 
+WHERE AMOUNT=0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> TAMBÉM PODEMOS FILTRAR NOSSOS CUSTOMERS,
+
+POR NAME,
+
+TIPO ASSIM:
+
+
+
+
+
+
+
+
+SELECT first_name
+FROM customer 
+WHERE first_name='ADAM';
+
+
+
+
+
+
+
+
+
+
+
+
+PODEMOS VER TODAS NOSSAS COLUMNS,
+
+TAMBÉM:
+
+
+
+
+SELECT * 
+FROM CUSTOMER 
+WHERE first_name='ADAM';
+
+
+
+
+
+ESSES FORAM OS BASICS DA CLAUSE DE WHERE,
+
+
+
+VEREMOS MAIS VARIACOES 
+
+
+
+E OPERATORS USADOS COM WHERE NAS PRÓXIMAS AULAS...
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> ANTES DISSO, DEVEMOS PRATICAR ESSE CONHECIMENTO,
+
+COM 1 
+
+CHALLENGE...
