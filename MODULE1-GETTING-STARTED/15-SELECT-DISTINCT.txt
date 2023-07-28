@@ -20,3 +20,550 @@ VEREMOS 1 VARIATION DO SELECT STATEMENT...
 
 
 EM VEZ DE SÓ SELECT...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> COM ELE, PODEMOS SELECIONAR OS VALUES DISTINTOS 
+
+
+EM 1 TABLE...
+
+
+
+
+
+
+
+
+ESSE STATEMENT É USADO ASSIM:
+
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT DISTINCT 
+<column_name_1>
+FROM table_name;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+COM ISSO, SELECIONAMOS QUAL COLUMN GOSTARÍAMOS DE TER 
+
+OS DISTINCT VALUES...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- PODEMOS USAR O SELECT DISTINCT 
+
+
+COM VÁRIAS 
+
+COLUMNS, TAMBÉM...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--. TEMOS ESTE EXEMPLLO:
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT DISTINCT 
+first_name
+FROM actor
+ORDER BY first_name;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> ok...
+
+
+
+
+
+
+
+
+
+mas como isso se parece se tivermos 
+
+MÚLTIPLAS COLUMNS?
+
+
+
+
+
+
+
+
+
+
+TIPO ASSIM:
+
+
+
+
+
+
+
+
+
+
+
+SELECT DISTINCT 
+first_name,
+last_name
+FROM actor 
+ORDER BY first_name;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> SE FIZERMOS ISSO, TEREMOS DUPLICATAS 
+
+NA COLUMN DE "first_name",
+
+
+PQ O QUE CONTARÁ, AQUI,
+
+SERAO 
+
+
+"UNIQUE COMBINATIONS"
+
+
+DE first_name + last_name....
+
+
+
+
+
+
+
+
+
+
+
+
+--> SE VC ESPECIFICAR 
+
+MÚLTIPLAS COLUMNS,
+
+
+DESDE QUE EXISTA 1 DIFERENCA 
+
+
+EM PELO MENOS 1 DAS COLUMNS,
+
+
+
+O ROW _ VAI APARECER 
+
+
+
+COMO SEU PRÓPRIO ROW...
+
+
+
+
+
+
+
+
+
+
+
+
+DISTINCT --> EM TERMOS DE __ tODAS AS SELECTED COLUMNS (
+    combinacao de columns....
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> devemos ver como isso funciona na prática...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NO PGADMIN,
+
+escrevemos:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+select * FROM film;
+
+
+
+
+-------------------------
+
+
+
+
+
+
+
+
+QUEREMOS SELECIONAR OS VALUES DISTINTOS DE RATING...
+
+
+
+
+
+
+
+
+
+
+
+
+DEPOIS ESCREVEMOS, COM O SELECT DISTINCT..
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT DISTINCT rating 
+FROM film;
+
+
+
+
+
+
+
+
+
+
+
+
+
+PERCEBEMOS QUE EXISTEM 
+5 DIFERENTES 
+
+
+POSSÍVEIS VALUES:
+
+
+
+"G"
+"PG"
+"PG-13"
+"NC-17"
+"R"
+
+
+
+
+
+
+
+
+----> COM ISSO, temos 1 boa ideia 
+
+
+
+de 
+
+
+como essa query funciona...
+
+
+
+
+
+
+
+
+
+
+
+--> MAS TAMBÉM PODEMOS COMBINAR 
+
+
+ESSA QUERY DE SELECT DISTINCT COM OUTRAS
+
+COLUMNS,
+
+COMO "RENTAL_DURATION",
+
+
+tipo assim: 
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT DISTINCT 
+rating,
+rental_duration
+FROM film;
+
+
+
+
+
+
+
+
+
+
+
+
+
+E PODEMOS COMBINAR SELECT DISTINCT 
+
+COM ORDER BY,
+
+
+TIPO ASSIM:
+
+
+
+
+
+
+
+
+
+
+SELECT DISTINCT 
+rating,
+rental_duration
+FROM film
+ORDER BY rating, rental_duration;
+
+
+
+
+
+
+
+
+
+
+
+NOSSA QUERY FICA BEM MAIS ORGANIZADA,
+ASSIM:
+
+
+
+
+"G"	3
+"G"	4
+"G"	5
+"G"	6
+"G"	7
+"PG"	3
+"PG"	4
+"PG"	5
+"PG"	6
+"PG"	7
+"PG-13"	3
+"PG-13"	4
+"PG-13"	5
+"PG-13"	6
+"PG-13"	7
+"R"	3
+"R"	4
+"R"	5
+"R"	6
+"R"	7
+"NC-17"	3
+"NC-17"	4
+"NC-17"	5
+"NC-17"	6
+"NC-17"	7
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> com isso, percebemos que os films
+
+
+
+podem ser alugados por até 3-4-5-6-7 dias, 
+
+
+
+nao interessa a sua rating.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ENXERGAMOS TODAS AS POSSÍVEIS 
+
+
+
+COMBINACOES ENTRE RATINGS E RENTAL_DURATION...
+
+
+
+
+
+
+
+
+
+
+
+
+
+AGORA TEMOS OUTRA CHALLENGE.
