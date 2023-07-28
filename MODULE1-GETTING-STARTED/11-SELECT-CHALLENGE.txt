@@ -1,0 +1,121 @@
+
+
+
+
+
+
+
+
+
+
+
+O PROFESSOR QUER QUE APLIQUEMOS OS CONHECIMENTOS...
+
+
+
+
+
+
+
+
+
+
+AGORA VEREMOS COMO USAR O SELECT....
+
+
+
+
+--> QUEREM 1 LISTA DE TODOS CUSTOMERS...
+
+
+
+
+
+
+
+
+--> LISTA COM FIRST_NAME, LAST_NAME 
+E 
+
+EMAIL DOS CUSTOMERS...
+
+
+
+
+
+
+
+
+
+
+--> A QUERY FICA ASSIM:
+
+
+
+
+
+
+
+
+SELECT FIRST_NAME,
+LAST_NAME, 
+EMAIL
+FROM CUSTOMER;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+AGORA TEMOS ESSA LIST..
+
+
+
+
+
+
+PODEMOS A EXPORTAR...
+
+
+-> BASTA CLICAR NO DOWNLOAD,
+
+NO PGADMIN...
+
+
+
+
+
+
+
+
+
+
+
+CSV --> comma-separated values...
+
+
+
+
+
+
+
+NA PROXIMA LICAO, VEREMOS COMO PODEMOS 
+
+SORTAR A 
+
+
+DATA,
+
+
+
+ORDENAR POR ALGUMA COLUNA...
