@@ -1,0 +1,246 @@
+HAVIA ESCRITO ASSIM:
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> PARA ISSO, ESCREVO ASSIM:
+
+
+
+
+
+
+SELECT COUNT(*) FROM payment 
+WHERE CUSTOMER_ID = 100;
+
+
+
+
+
+
+-----------------------
+
+
+
+
+
+
+
+
+
+A SEGUNDA TASK É ASSIM:
+
+
+
+
+
+
+
+
+2) WHAT IS THE LAST NAME OF OUR CUSTOMER
+WITH FIRST NAME 'ERICA'...
+
+
+
+
+
+
+
+
+
+
+
+
+
+ESCREVO ASSIM:
+
+
+
+
+SELECT * FROM customer 
+WHERE first_name='ERICA';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> O PROFESSOR ESCREVEU ASSIM:
+
+
+
+
+
+
+
+
+(eXATAMENTE COMO EU FIZ):
+
+
+
+
+
+
+
+
+
+SELECT COUNT(*)
+FROM PAYMENT 
+WHERE CUSTOMER_ID=100;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> OK... MAS A SEGUNDA CHALLENGE É 
+
+
+"QUAL O LAST_NAME DA CUSTOMER COM FIRST_NAME DE ERICA"...
+
+
+
+
+
+
+
+
+
+
+
+--> PARA ISSO,
+
+
+ESCREVEMOS ASSIM:
+
+
+
+
+
+
+
+SELECT last_name 
+FROM customer 
+WHERE first_name='ERICA';
+
+
+
+
+
+
+
+
+
+
+
+O REUSLTADO É MATTHEWS....
+
+
+
+
+
+
+
+
+
+
+
+certo, acertei...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+MAS AGORA QUEREMOS SABER "O NÚMERO 
+
+DE PAYMENTS QUE TIVEMOS 
+
+EM QUE 
+
+O PAYMENT FOI MENOS DE 10 DOLLARS"...
+
+
+
+
+
+
+
+
+
+
+
+--> PARA ISSO, PRECISAMOS DE 
+
+UM FILTERING 1 POUCO MAIS AVANCADO,
+
+COM COMPARISON OPERATORS..
+
+
+
+VEREMOS ISSO NA PRÓXIMA AULA..
+
+
+
+
+
+
+FICAMOS COM 1 STATEMENT TIPO ESTE:
+
+
+
+
+
+
+SELECT COUNT(*) FROM
+PAYMENT
+WHERE AMOUNT < 10;
+
+

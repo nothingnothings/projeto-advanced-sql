@@ -46,7 +46,7 @@ WITH CUSTOMER_ID = 100;
 
 
 
-SELECT * FROM payment 
+SELECT COUNT(*) FROM payment 
 WHERE CUSTOMER_ID = 100;
 
 
