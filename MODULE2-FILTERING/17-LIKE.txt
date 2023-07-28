@@ -1,0 +1,905 @@
+
+
+
+
+
+
+
+
+AGORA A COMPANHIA QUER ENTENDER MELHOR QUE 
+
+TIPO DE MOVIES ELES POSSUEM NO INVENTÁRIO...
+
+
+
+
+
+
+
+
+--> PRIMEIRAMENTE,
+
+QUEREMOS SELECIONAR TUDO DA TABLE DE "FILM"...
+
+
+
+
+
+
+
+
+
+SELECT * FROM film;
+
+
+
+
+
+
+
+
+
+
+
+--> PERCEBEMOS QUE 
+
+
+TEMOS 1 COLUMN COM "description",
+
+
+
+COM 1 TEXT DE COMO É CADA FILME...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> TEMOS PALAVRAS COMO "Drama",
+
+
+documentary,
+
+etc...
+
+
+
+
+
+
+--> QUEREMOS PROCURAR POR TODOS OS ROWS QUE CONTENHAM
+
+
+
+A KEYWORD DE 
+
+
+'Drama'...
+
+
+
+
+
+
+
+
+PARA ISSO, PODEMOS ESCREVER ASSIM:
+
+
+
+
+
+
+
+
+
+
+
+SELECT * FROM film 
+WHERE description LIKE '%Drama%';
+
+
+
+
+
+
+
+
+
+
+
+--> SE NAO COLOCAMOS "%string%",
+
+
+
+
+
+NAO VAMOS ENCONTRAR QUASE NADA...
+
+
+
+
+
+
+
+
+
+
+
+
+-- COMO É A SINTAXE DO COMANDO "lIKE"?
+
+
+
+
+
+
+
+
+
+
+do SQL LIKE statements use regular expressions
+
+
+
+
+
+
+No, SQL LIKE statements do not 
+use regular expressions. The LIKE 
+statement in SQL is used to perform pattern matching
+ with wildcard characters, but it does not support 
+ regular expressions.
+
+
+
+
+
+
+
+
+
+
+ok...
+
+
+
+
+
+
+
+NESSE PADRAO,
+
+
+2 WILDCARD CHARACTERS..
+
+
+
+
+
+
+In the pattern, you can use two wildcard characters:
+
+%: Represents zero, one, or multiple characters.
+_: Represents a single character.
+
+
+
+
+
+For example, if you want to find 
+all names in a table that start with 
+"J" and end with "n," you can use the LIKE
+ statement with the pattern 'J%n'.
+
+
+
+
+
+Regular expressions, 
+on the other hand, are a more powerful 
+and flexible pattern-matching language that allows
+ you to define complex patterns for text matching. 
+ SQL databases typically do not natively support
+  regular expressions in their LIKE statements.
+
+
+
+
+
+
+
+
+
+
+
+
+OK....
+
+
+
+
+
+
+quer dizer que se escrevemos:
+
+
+
+'__am',
+
+
+
+
+
+VAMOS PROCURAR POR TODAS STRINGS 
+
+
+
+COM ESTRUTURA **am 
+
+
+
+
+
+
+tipo "Adam"..
+
+
+
+
+However, some databases
+ and programming languages do offer additional
+  functions or operators for regular expression
+   matching, such as REGEXP or RLIKE.
+    These are not part of the SQL standard, and 
+    their usage varies between different
+     database systems. If you need to use 
+     regular expressions in your SQL queries, 
+     you'll need to consult the documentation of your specific database system to see if it provides 
+     such functionality and how to use it.
+
+
+
+
+
+
+
+
+
+
+
+
+certo...
+
+
+
+
+
+
+
+outros patterns:
+
+
+
+
+
+
+Finding names that start with "A":
+
+
+
+
+SELECT * FROM employees
+WHERE employee_name LIKE 'A%';
+
+
+
+
+
+
+
+
+Finding names that end with "son":
+
+
+SELECT * FROM employees
+WHERE employee_name LIKE '%son';
+
+
+
+
+
+
+Finding names that contain "John" anywhere in the name:
+
+
+SELECT * FROM employees
+WHERE employee_name LIKE '%John%';
+
+
+
+
+Finding names that have exactly three characters:
+
+SELECT * FROM employees
+WHERE employee_name LIKE '___'; -
+
+
+
+
+
+
+Finding names that start with "J" and have exactly four characters:
+
+
+
+SELECT * FROM employees
+WHERE employee_name LIKE 'J___'; -- The first character is "J", and the next three are represented by underscores
+
+
+
+
+
+Finding names that start with "A" 
+and end with "y" and have any one character in between:
+
+
+SELECT * FROM employees
+WHERE employee_name LIKE 'A_y';
+
+
+
+
+
+
+Finding names that start with "A" 
+and end with "y" and have any number of characters in between:
+
+
+
+SELECT * FROM employees
+WHERE employee_name LIKE 'A%y';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CERTO... ACHO QUE ENTENDI, MAIS OU MENOS...
+
+
+
+
+
+
+
+
+Remember that the pattern matching is case-sensitive,
+ so "A" and "a" are treated as different characters. 
+ If you want to perform a case-insensitive
+  pattern match, you'll need to use the
+   appropriate case-insensitive collation or
+    convert the column values and pattern to the
+     same case before performing the LIKE comparison.
+      The syntax for case-insensitive pattern
+       matching varies depending on the database 
+       system you are using.
+
+
+
+
+
+---------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+professor fala do LIKE e PATTERN MATCHING...
+
+
+
+
+
+
+O LIKE É TIPO UM WHERE,
+
+MAS COM PATTERN MATCHING...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> NESSE PATTERN MATCHING,
+
+TEMOS 2 WILDCARDS...
+
+
+
+
+
+
+
+
+
+É JUSTAMENTE O "%" (any number of characters)
+
+
+
+e o "_" (any SINGLE character)...
+
+
+
+
+
+
+
+
+
+
+
+
+
+% --> TAMBÉM PODE REPRESENTAR "0 CARACTERES"...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+mas como isso aparece, em 1 exemplo....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> APARECE ASSIM:
+
+
+
+
+
+
+
+
+SELECT
+*
+FROM ACTOR 
+WHERE first_name LIKE 'A%';
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- COM ISSO, PROCURAMOS POR TODOS 
+
+ACTORS 
+
+
+
+COM NOMES QUE COMECEM COM 'A'...
+
+
+
+
+
+
+
+
+--> OUTRO DETALHE É QUE 
+
+O 
+
+
+LIKE É SEMPRE 
+
+
+
+__ CASE SENSITIVE...
+
+
+
+
+
+
+
+--> SE NAO QUISERMOS ESSA FEATURE 
+
+DE CASE-SENSITIVE,
+
+
+
+
+
+PODEMOS USAR 
+
+
+O COMANDO
+
+
+"ILIKE",
+
+
+
+QUE 
+
+
+
+SIGNIFICA "INSENSITIVELIKE"...
+
+
+
+
+
+
+
+
+
+
+TIPO ASSIM:
+
+
+
+
+
+
+
+
+SELECT 
+
+first_name
+FROM actor 
+WHERE first_name ILIKE 'a%';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> mas é bem mais comum usar O LIKE COMUM,
+
+QUE É 
+
+
+CASE-SENSITIVE....
+
+
+
+
+
+
+
+
+
+
+CERTO, MAS 
+
+
+
+COMO PODEMOS 
+
+ENCONTRAR 
+
+
+
+STRINGS/FRASES EM QUE 
+
+
+EXISTA APENAS 'A'
+
+
+EM QUALQUER LUGAR DE 1 TEXT...
+
+
+
+
+
+
+
+
+
+
+--> DEVEMOS ESCREVER ASSIM:
+
+
+
+
+
+
+
+SELECT 
+*
+FROM actor
+WHERE FIRST_NAME LIKE '%A%'
+
+
+
+
+
+
+
+
+--> ONDE existir 'A' maiúsculo,
+
+retornaremos
+ 
+ esse 
+
+
+row...
+
+
+
+
+
+
+
+
+--> JÁ 
+
+OS UNDERSCORES SAO ASSIM:
+
+
+
+
+
+SELECT 
+*
+FROM ACTOR 
+WHERE first_name LIKE '__A%';
+
+
+
+
+
+
+
+
+-->  COM ISSO,
+
+QUEREMOS DIZER
+
+
+
+
+''TODOS OS ACTORS 
+
+QUE 
+
+TENHAM QUAISQUER 2 INICIAIS, 
+
+TERCEIRO CARACTER COMO A MAIÚSCULO,
+
+E QUE ENTAO TENHAM QUALQUER COISA DEPOIS"...
+
+
+
+
+
+
+-> ALGUNS VALUES RETORNADOS:
+
+GRACE 
+
+UMA 
+
+
+FRANCES
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SIGNIFICA QUE O '%' TAMBÉM PODE SIGNIFICAR 
+
+
+NOTHING (significa tanto NOTHING como EVERYTHING)....
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> TAMBÉM PODEMOS USAR NOT (negation)
+
+
+COM O LIKE,
+TIPO ASSIM:
+
+
+
+
+
+
+SELECT 
+*
+FROM ACTOR 
+where first_name NOT LIKE 'A%';
+
+
+
+
+
+
+
+
+
+
+
+
+--> BEM, AGORA VAMOS SOLUCIONAR O PROBLEMA DE 
+
+''QUEREMOS TODOS OS FILMS COM DRAMA'...
+
+
+
+
+
+
+ESCREVEMOS ASSIM:
+
+
+
+
+
+
+
+
+
+
+SELECT * FROM film
+WHERE description LIKE '%Drama%';
+
+
+
+
+
+
+
+
+
+
+
+
+--> SE PROCURAMOS POR ISSO, VEMOS TODOS OS FILMS 
+
+
+COM DRAMA NA DESCRIPTION...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+AGORA TODOS OS FILMES QUE COMECAM COM 'T'...
+
+
+
+
+
+
+
+É ASSIM:
+
+
+
+
+
+
+
+
+
+
+SELECT * FROM film 
+WHERE description LIKE '%Drama%'
+AND title LIKE 'T%';
+
+
+
+
+
+
+
+OK... AGORA É HORA DA CHALLENGE, DESSA VEZ DO LIKE...
+
+
