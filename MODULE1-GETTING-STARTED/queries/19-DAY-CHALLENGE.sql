@@ -1,0 +1,355 @@
+
+
+
+
+
+
+
+
+AGORA TEMOS UMA CHALLENGE MAIOR...
+
+
+
+
+
+
+
+
+VAI NOS AJUDAR A RECAPITULAR O QUE APRENDEMOS 
+
+HOJE...
+
+
+
+
+
+
+
+
+
+
+
+
+--> OK... QUAL É A CHALLENGE...
+
+
+
+
+
+
+
+
+
+
+
+1)  AS INDIVIDUAL TASKS...
+
+
+
+
+
+
+
+
+
+
+
+
+
+2) TENTAMOS RESOLVER AS CHALLENGES...
+
+
+
+
+
+
+
+
+
+
+
+3) PODEMOS VERIFICAR OS DATA OUTPUTS...
+
+
+
+
+
+
+
+4) POR FIM,
+
+O PROFESSOR MOSTRA A SOLUTION....
+
+
+
+
+
+
+
+(PODEM EXISTIR DIFERENTES SOLUTIONS...)...
+
+
+
+----------------------------------
+
+
+CHALLENGE:
+
+
+
+
+
+
+
+
+
+1) CREATE A LIST OF ALL THE DISTINCT DISTRICTS 
+CUSTOMERS ARE FROM.
+
+
+
+
+
+
+2) WHAT IS THE LATEST RENTAL DATE.
+(aqui o professor quer 1 ÚNICO RESULTADO... COM LIMIT)
+
+
+
+
+3) HOW MANY FILMS DOES THE COMPANY HAVE 
+
+
+
+
+
+
+
+4) HOW MANY DISTINCT LAST NAMES OF THE CUSTOMERS 
+ARE THERE...
+
+
+
+
+-----------------------------
+
+
+
+
+
+
+
+
+
+
+FICOU TIPO ASSIM:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+AGORA TEMOS UMA CHALLENGE MAIOR...
+
+
+
+
+
+
+
+
+VAI NOS AJUDAR A RECAPITULAR O QUE APRENDEMOS 
+
+HOJE...
+
+
+
+
+
+
+
+
+
+
+
+
+--> OK... QUAL É A CHALLENGE...
+
+
+
+
+
+
+
+
+
+
+
+1)  AS INDIVIDUAL TASKS...
+
+
+
+
+
+
+
+
+
+
+
+
+
+2) TENTAMOS RESOLVER AS CHALLENGES...
+
+
+
+
+
+
+
+
+
+
+
+3) PODEMOS VERIFICAR OS DATA OUTPUTS...
+
+
+
+
+
+
+
+4) POR FIM,
+
+O PROFESSOR MOSTRA A SOLUTION....
+
+
+
+
+
+
+
+(PODEM EXISTIR DIFERENTES SOLUTIONS...)...
+
+
+
+----------------------------------
+
+
+CHALLENGE:
+
+
+
+
+
+1) CREATE A LIST OF ALL THE DISTINCT DISTRICTS 
+CUSTOMERS ARE FROM.
+
+
+
+
+SELECT DISTINCT
+address_id
+FROM CUSTOMER;
+
+
+
+
+
+
+
+
+
+
+2) WHAT IS THE LATEST RENTAL DATE.
+(aqui o professor quer 1 ÚNICO RESULTADO... COM LIMIT)
+
+
+SELECT RENTAL_DATE 
+FROM 
+CUSTOMER 
+ORDER_BY RENTAL_DATE DESC 
+LIMIT 1;
+
+
+
+
+
+3) HOW MANY FILMS DOES THE COMPANY HAVE 
+
+
+SELECT COUNT(*) FROM film;
+
+
+
+
+4) HOW MANY DISTINCT LAST NAMES OF THE CUSTOMERS 
+ARE THERE...
+
+
+
+
+
+SELECT COUNT(DISTINCT LAST_NAME) FROM CUSTOMER;
+
+
+
+
+
+
+
+
+
+
+RESULTADO:
+
+
+
+
+
+
+
+SELECT DISTINCT
+district
+FROM address;
+
+
+
+
+SELECT RENTAL_DATE 
+FROM 
+rental
+ORDER BY RENTAL_DATE DESC 
+LIMIT 1;
+
+
+
+SELECT COUNT(*) FROM film;
+
+
+
+SELECT COUNT(DISTINCT LAST_NAME) FROM CUSTOMER;
+
+
