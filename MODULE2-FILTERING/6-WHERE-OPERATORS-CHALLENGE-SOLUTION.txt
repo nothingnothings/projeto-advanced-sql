@@ -1,0 +1,85 @@
+
+
+
+
+
+
+
+
+COMO FICARAM AS QUERIES:
+
+
+
+
+
+
+SELECT COUNT(*) 
+FROM RENTAL 
+WHERE RETURN_DATE IS NOT NULL;
+
+
+
+----------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+E A OUTRA FICOU ASSIM:
+
+
+
+
+
+
+
+
+SELECT PAYMENT_ID, AMOUNT
+FROM PAYMENT 
+WHERE AMOUNT <= 2
+ORDER BY AMOUNT DESC;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OK... MAS O QUE ACONTECE, AGORA ,
+
+
+SE TIVERMOS MÚLTIPLAS CONDITIONS QUE QUEREMOS 
+
+CONECTAR...?
+
+
+
+
+
+
+
+
+
+-> dEVEMOS USAR AND E OR...
+
+
