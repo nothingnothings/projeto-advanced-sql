@@ -1,0 +1,402 @@
+
+
+
+
+
+
+
+
+
+agora veremos a clause 
+de ORDER BY...
+
+
+
+
+
+
+
+
+
+
+--> PODEMOS A UTILIZAR PARA ORDENAR NOSSOS RESULTS,
+
+
+COM BASE 
+
+
+EM ALGUMA COLUMN 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> PODEMOS ORDENAR ALFABETICAMENTE,
+NUMERICAMENTE,
+
+CRONOLOGICAMENTE, ETC..
+
+
+
+
+
+
+
+
+AS QUERIES FICAM TIPO ASSIM:
+
+
+
+
+
+
+
+
+
+
+SELECT * FROM 
+public.actor
+ORDER BY actor_id DESC;
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+------>  O ORDER BY SEMPRE VEM NO FINAL...
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> O PROFESSSOR NOS MOSTRA 1 EXEMPLO...
+
+
+
+
+
+
+
+
+
+
+DIGAMOS QUE QUEREMOS ORDENAR POR ORDEM ALFABETICA...
+
+
+
+
+
+
+
+
+
+
+--> TIPO ASSIM:
+
+
+
+
+
+
+
+
+SELECT FIRST_NAME,
+        LAST_NAME 
+        FROM actor 
+        ORDER BY FIRST_NAME;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PODEMOS COLOCAR A KEYWORD DE "DESC",
+
+
+
+PARA ORDENARMOS DE CIMA PARA BAIXO...
+
+
+
+
+
+
+E "ASC" É O VALUE DEFAULT...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---> E PODEMOS TAMBÉM 
+
+ORDENAR 
+
+
+POR 
+
+MÚLTIPLOS VALUES (
+    caso saibamos que existem DUPLICATE VALUES...
+
+    DIGAMOS  QUE TEMOS 2 CARAS COM 
+
+   "FIRST_NAME" igual a adam...
+
+
+
+   o que vai DIFERENCIAR OS 2 ROWS, NESSE CASO,
+
+   SERÁ 
+
+   O 
+   LAST_NAME,
+
+
+   POR ISSO PODEMOS ESCREVER 
+
+   ASSIM:
+
+
+
+
+
+
+
+
+
+   SELECT 
+    FIRST_NAME,
+    LAST_NAME 
+    FROM actor 
+    ORDER BY first_name, last_name;
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------> E, MESMO SE TIVERMOS MÚLTIPLAS COLUMNS, AINDA PODEMOS 
+
+USAR 
+
+
+
+A KEYWORD DE "DESC" E "ASC"
+
+
+
+COM CADA UMA DELAS...
+
+
+
+
+
+
+
+
+
+
+-->  TIPO ASSIM:
+
+
+
+
+
+
+
+SELECT 
+first_name,
+last_name 
+FROM actor 
+ORDER BY first_name DESC, last_name;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> AGORA ENTRAMOS NO PGADMIN,
+
+
+E VEMOS COMO ISSO FUNCIONA, NA PRÁTICA...
+
+
+
+
+
+
+
+
+--> VAMOS NA TABLE DE PAYMENTS...
+
+
+
+
+
+
+
+
+-> QUEREMOS SELECIONAR TUDO 
+
+
+DA TABLE DE PAYMENTS...
+
+
+
+
+
+
+
+TUDO ORDENADO...
+
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT
+*
+FROM Payment 
+ORDER BY customer_id;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> OK.... ISSO REALMENTE ORDENOU....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---> MAS AGORA QUEREMOS VER 
+
+
+""para cada customer_id, quem RECEBEU MAIOR AMOUNT",
+
+
+por isso escrevemos assim:
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT * FROM 
+payment 
+ORDER BY customer_id, amount DESC;
