@@ -1,0 +1,378 @@
+
+
+
+
+
+
+
+
+agora temos um request que é 
+
+
+"mostrar apenas os amounts MAIORES DO QUE 10 
+DOLARES"...
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> PARA ISSO, PODEMOS FILTRAR NOSSA 
+
+DATA, MAS COM OPERATORS...
+
+
+
+
+
+
+
+
+
+EX:
+
+
+
+
+
+
+
+
+
+
+
+SELECT 
+*
+FROM PAYMENT 
+WHERE AMOUNT > 10.99;
+
+
+
+
+
+
+
+
+
+
+--> TAMBÉM PODEMOS USAR >= e <=
+
+
+
+
+
+
+
+
+
+PODEMOS ADICIONAR O ORDER BY,
+
+TIPO ASSIM:
+
+
+
+
+
+
+
+
+
+SELECT * 
+FROM PAYMENT 
+WHERE AMOUNT <= 10.99
+ORDER BY AMOUNT DESC;
+
+
+
+
+
+
+
+
+
+--> TAMBÉM PODEMOS USAR O LIMIT,
+
+
+SE O ESCREVERMOS NO FINAL...
+
+
+
+
+
+
+
+
+
+
+
+--> TAMBÉM PODEMOS USAR O SINAL DE "!=",
+
+
+
+INEQUALITY...
+
+
+
+
+
+TIPO ASSIM:
+
+
+
+
+
+
+
+
+
+
+SELECT * 
+FROM PAYMENT 
+WHERE AMOUNT != 10.99;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> TAMBÉM TEMOS O OPERATOR DE 
+
+"<>",
+
+
+
+QUE É A MESMA COISA QUE 
+
+"!="...
+
+
+
+
+
+
+
+
+
+
+
+-> MAS A MELHOR ESCRITA É !=...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+POR FIM, TAMBÉM QUEREMOS FALAR 
+
+
+DE OUTRA OPTION...
+
+
+
+
+
+
+
+
+
+
+
+COMO PODEMOS PROCURAR 
+
+POR TODOS OS VALUES EM QUE 
+
+TEMOS "NULL" EM ALGUM FIELD...
+
+
+
+
+
+
+
+
+
+
+
+COM ESTA ESCRITA:
+
+
+
+
+
+
+
+
+SELECT 
+first_name,
+last_name 
+FROM customer 
+WHERE first_name IS NULL;
+
+
+
+
+
+---------------------------
+
+
+
+
+
+
+
+TAMBÉM TEMOS IS NOT NULL,
+
+TIPO ASSIM:
+
+
+
+
+
+
+
+
+
+SELECT first_name,
+last_name
+FROM customer 
+WHERE first_name IS NOT NULL;
+
+
+
+
+
+
+
+----------------------------
+
+
+
+
+
+
+
+
+CERTO...
+
+
+
+
+ISSO TUDO FUNCIONA...
+
+
+
+
+
+
+
+
+
+
+--> AGORA VAMOS TESTAR ESSAS COISAS 
+
+
+NO PGADMIN..
+
+
+
+
+
+
+
+
+
+
+
+--> O PROFESSOR OLHA A TABLE DE PAYMENTS...
+
+
+
+
+
+
+
+
+
+
+
+QUEREMOS PEGAR APENAS OS PAYMENTS 
+
+
+
+_QUE __ TENHAM O AMOUNT MAIOR DO QUE 10 
+
+DOLARES...
+
+
+
+
+
+
+
+
+
+
+TIPO 
+
+
+
+SELECT * FROM PAYMENT 
+WHERE AMOUNT > 10;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CERTO.... ISSO FUNCIONOU.
+
+
+
+
+
+
+
+TAMBÉM PODEMOS ORDENAR,
+
+ASSIM:
+
+
+SELECT * FROM PAYMENT 
+WHERE AMOUNT > 10
+ORDER BY amount DESC;
