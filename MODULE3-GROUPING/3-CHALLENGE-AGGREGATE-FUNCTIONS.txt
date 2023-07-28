@@ -1,0 +1,275 @@
+
+
+
+
+
+
+
+O MANAGER QUER SABER MAIS SOBRE OS FILMS NO STORE...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> VC DEVE ESCREVER 1 QUERY PARA SABER MAIS 
+
+SOBRE OS REPLACEMENT 
+COSTS 
+
+DOS FILMES...
+
+
+
+
+
+
+
+
+
+
+
+--> POR ISSO VC DEVE DESCOBRIR:
+
+
+
+
+MINIMUM
+
+
+MAXIMUM
+
+
+
+AVERAGE(rounded to DECIMAL PLACES)
+
+
+
+
+SUM 
+
+
+
+
+
+TUDO ISSO AÍ,
+
+
+EM RELACAO AO 'REPLACEMENT COST"
+
+
+DE TODOS OS FILMES....
+
+
+
+
+
+
+
+
+
+
+
+VC DEVE ENCONTRAR A TABLE QUE TEM TODAS ESSAS 
+
+INFORMATIONS...
+
+
+
+
+
+
+
+
+
+
+NA TABLE "film",
+
+temos "replacement_cost"....
+
+
+
+
+
+
+
+
+--> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> POR ISSO VC DEVE DESCOBRIR:
+
+
+
+
+MINIMUM
+
+
+MAXIMUM
+
+
+
+AVERAGE(rounded to DECIMAL PLACES)
+
+
+
+
+SUM 
+
+
+
+
+
+TUDO ISSO AÍ,
+
+
+EM RELACAO AO 'REPLACEMENT COST"
+
+
+DE TODOS OS FILMES....
+
+
+
+
+
+
+
+
+
+
+
+
+ACHO QUE ESCREVEMOS ASSIM:
+
+
+
+
+
+
+
+
+
+
+SELECT MIN(replacement_cost) AS min_replacement_cost,
+        MAX(replacement_cost) AS max_replacement_cost,
+        AVG(replacement_cost) AS avg_replacement_cost,
+        ROUND(SUM(replacement_cost), 1) AS total_cost
+FROM film;
+
+
+
+
+
+
+
+
+
+
+
+O TOTAL COST FICOU COMO 19984.0
+
+
+
+
+
+
+
+-------------------------------
+
+
+
+
+
+
+E OS RESULTADOS, EM ORDEM, FICARAM:
+
+
+
+
+
+
+9.99, 29.99, 19.98, 19984.00
+
+
+
+
+
+
+
+
+
+
+
+----------------------------
+
+
+
+
+
+
+
+
+
+
+O PROFESSOR ESCREVEU ASSIM:
+
+
+
+
+
+
+
+
+SELECT 
+MIN(replacement_cost),
+MAX(replacement_cost),
+ROUND(AVG(replacement_cost), 2) AS AVG,
+SUM(replacement_cost)
+FROM film;
+
+
+
+
+
+
+
+----------------------------
+
+
+
+
+
+
+
+
+
+
+
+OK... AGORA QUEREMOS VER MAIS DETALHES SOBRE 
+
+O __ GROUPING__ DE DATA...
+
+
+
+
+
