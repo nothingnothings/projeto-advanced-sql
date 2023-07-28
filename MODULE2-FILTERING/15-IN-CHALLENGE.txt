@@ -1,0 +1,132 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> A CHALLENGE:
+
+
+
+
+
+
+
+
+
+THERE HAVE BEEN 6 COMPLAINTS OF CUSTOMERS ABOUT 
+THEIR PAYMENTS...
+
+
+
+
+
+
+
+-- THE CUSTOMER IDS ARE 
+
+12, 25, 67, 93, 124, 234...
+
+
+
+
+
+
+
+
+
+
+FIND OUT ABOUT THEM...
+
+
+
+
+
+
+
+
+
+
+
+--> ACHO QUE A QUERY FICA ASSIM:
+
+
+
+
+
+
+SELECT * FROM payment 
+WHERE CUSTOMER_ID IN (12, 25, 67, 93, 124, 234);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> MAS É CLARO QUE 
+
+
+TEMOS QUE FILTRAR MAIS...
+
+
+
+
+
+
+
+
+"THE CONCERNED PAYMENTS ARE ALL THE PAYMENTS OF THESE 
+CUSTOMERS WITH AMOUNTS 
+
+4.99, 7.99 AND 9.99 IN JANUARY 2020"...
+
+
+
+
+
+
+
+
+
+--> OK...
+ 
+ PODEMOS COMPLEMENTAR ASSIM
+
+
+SELECT * FROM payment 
+WHERE CUSTOMER_ID IN (12, 25, 67, 93, 124, 234)
+AND AMOUNT IN (4.99, 7.99, 9.99) 
+AND PAYMENT_DATE BETWEEN '2020-01-01' AND '2020-02-01';
+
+
+
+
+
+
+PROFESSOR APONTA QUE FORAM 7 DIFERENTES PAYMENTS....
+
+
+
+
+
+
+
+
+OK, CONSEGUI...
