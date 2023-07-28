@@ -1,0 +1,476 @@
+
+
+
+
+
+
+
+
+PODEMOS ATÉ MESMO COMBINAR 
+
+
+O COUNT COM O DISTINCT,
+
+TIPO ASSIM:
+
+
+
+
+
+
+
+
+
+SELECT COUNT(DISTINCT amount) FROM payment;
+
+
+
+
+
+
+
+
+
+AÍ CONTAMOS 
+
+
+QUANTOS 
+
+AMOUNTS DISTINTOS EXISTEM NA TABLE DE PAYMENT...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+COUNT -> USADO PARA CONTAR 
+
+O
+ NÚMERO DE ROWS EM 1 TABLE...
+
+
+
+
+
+
+
+
+
+
+--> FREQUENTEMENTE É USADO COM OUTRAS 
+
+FUNCTIONS E METHODS,
+
+COMO GROUPING E FILTERING...
+
+
+
+
+
+
+
+
+
+
+
+APRENDEREMOS MAIS SOBRE ESSES USE-CASES MAIS TARDE...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+RODAMOS ASSIM:
+
+
+
+
+
+
+
+
+SELECT COUNT(*) FROM TABLE_NAME;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PODEMOS  USAR COLUMN NAMES NO LUGAR 
+
+DE "*"...
+
+
+
+
+
+
+
+
+
+
+
+--> USAR O "column_name" EM VEZ DE 
+
+"*".... --> essa é uma best practice....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> MAS TEMOS 1 DIFERENCA ENTRE USAR "*" 
+
+E 
+
+
+"*"
+
+
+NO count...
+
+
+
+
+
+
+
+
+
+
+ISSO PQ O "COUNT(col_name)"
+
+
+NAO CONSEGUE CONTAR 
+
+
+VALUES NULL... VALUES NULL SAO _iGNORADOS,
+
+
+NAS COLUMNS...
+
+
+
+
+
+
+JÁ "COUNT(*)"
+VAI 
+
+
+SEMPRE CONTAR 
+
+TODAS AS COLUMNS IN A GIVEN TABLE...
+
+
+
+
+
+---------
+
+
+
+
+
+
+
+
+
+
+MAS GERALMENTE 
+
+
+SERÁ O MESMO RESULTADO,
+
+O COUNT(*) E O COUNT(col_name)..
+
+
+
+
+
+
+
+
+
+--> AGORA TEMOS 1 EXEMPLO:
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT COUNT(first_name)
+FROM actor;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-> COMO TODOS TEM NAME,
+
+
+
+COUNT(*) e count(first_name)
+
+
+VAO RETORNAR O EXATO MESMO RESULT...
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------
+
+
+
+
+
+
+
+
+
+MAS HÁ TAMBÉM UMA VARIACAO DIFERENTE 
+
+DE COUNT..
+
+
+
+
+
+
+
+EU USEI ANTES,
+
+
+É USAR COUNT COM _dISTINCT__,
+TIPO ASSIM:
+
+
+
+
+
+
+
+
+
+
+
+SELECT COUNT(DISTINCT first_name);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OK... ISSO REALMENTE FUNCIONA...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OK... AGORA DEVEMOS TER EXEMPLOS CONCRETOS...
+
+
+
+
+
+
+
+
+ESCREVEMOS
+
+
+
+
+
+
+SELECT COUNT(*) FROM CUSTOMER;
+
+
+
+
+
+
+
+
+
+-- ISSO NOS MOSTRA QUE TEMOS 599 CUSTOMERS...
+
+
+
+
+
+
+
+
+
+
+--. E SE ESTAMOS INTERESSADOS EM QUANTOS ACTUAL
+
+
+VALUES TEMOS,
+
+
+
+
+
+NA COLUMN DE NAME,
+
+
+PODEMOS 
+
+
+
+
+RODAR ASSIM:
+
+
+
+
+
+
+
+
+
+SELECT COUNT(first_name)
+FROM customer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> SE ESTAMOS INTERESSADOS EM QUANTOS DISTINCT 
+
+NAMES TEMOS,
+
+EXECUTAMOS ASSIM:
+
+
+
+
+
+SELECT COUNT(DISTINCT first_name)
+FROM customer;
+
+
+
+
+
+
+
+
+
+
+--> DEPOIS VEREMOS MAIS VARIATIONS PARA 
+
+ESSA FUNCTION DE COUNT...
+
+
+
+
+
+
+
+
+
+
+
+AGORA TEMOS ALGUMAS CHALLENGES...
+
+
+
