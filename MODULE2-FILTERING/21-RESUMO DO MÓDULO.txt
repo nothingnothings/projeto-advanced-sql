@@ -1,0 +1,453 @@
+
+
+
+
+
+
+
+
+
+
+DEVEMOS RESUMIR O QUE APRENDEMOS HOJE:
+
+
+
+
+
+
+
+
+
+
+1) APRENDEMOS SOBRE FILTER A DATA...
+
+
+
+
+
+
+FILTRAMOS A DATA USANDO A CLAUSE DE "WHERE"....
+
+
+
+
+
+
+
+
+
+
+TIPO
+
+
+
+
+
+
+
+
+
+
+SELECT * FROM PAYMENT 
+WHERE AMOUNT = 10.99;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> ISSO PODE SER FEITO COM DIFERENTES DATA TYPES:
+
+
+
+
+
+
+
+
+
+SELECT 
+first_name,
+last_name
+FROM customer 
+WHERE first_name = 'ADAM';
+
+
+
+
+
+
+
+
+
+
+
+
+-> PODEMOS USAR OUTROS OPERATORS, COMO 
+< > <=  >= 
+
+
+
+
+
+
+
+
+
+
+
+
+
+CERTO....
+
+
+
+
+
+
+
+
+
+TAMBÉM PODEMOS PROCURAR POR NULL E IS NOT NULL..
+
+
+
+
+
+
+
+TIPO ASSIM:
+
+
+
+
+
+
+
+
+SELECT * FROM PAYMENT 
+WHERE AMOUNT IS NULL;
+
+
+
+
+
+
+
+
+
+
+SELECT * FROM PAYMENT WHERE AMOUT IS NOT NULL;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> TAMBÉM TEMOS AND E OR,
+
+
+
+QUE 
+
+
+
+
+DETERMINAM SE A DATA VAI SER RETORNADA OU NAO,
+
+COM O WHERE...
+
+
+
+
+
+
+
+
+
+--> CERTO, MAS QUANDO INCLUIMOS 
+
+O WHERE E O OR EM 1 MESMO 
+
+STATEMENT,
+
+
+EXISTIRÁ UMA ORDEM DE PREFERENCE,
+
+
+
+EM QUE 
+
+
+O 
+
+AND SEMPRE É EXECUTADO 
+
+ANTES 
+
+DO 
+
+
+OR...
+
+
+
+
+
+-> MAS PODEMOS COLOCAR PARENTESES MANUALMENTE,
+
+PARA MUDAR A ORDEM DE EXECUCAO DOS NOSSOS STATMEENTS..
+
+
+
+
+
+
+
+
+
+
+
+
+
+BETWEEN --> NOS AJUDA A SELECIONAR 
+
+1 
+
+RANGE DE VALUES...
+
+
+
+
+
+
+
+
+--> O BETWEEN PODE SER USADO 
+
+
+PARA PROCURAR POR RANGES DE NUMBERS E DATES (timestamps)...
+
+
+
+
+
+
+
+
+
+
+
+--> também funciona com strings,
+
+mas nao é tao bom...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> MAS DEVEMOS TER EM MENTE QUE 
+
+QUANDO USAMOS 
+
+BETWEEN COM DATES,
+
+AS 
+
+
+DATES (sEM TIME)
+
+
+
+SAO CONVERTIDAS PARA COISAS COMO 
+
+
+
+
+'2020-11-11 0:00:000',
+
+
+
+
+
+
+O QUE QUER DIZER QUE 
+
+
+
+
+
+
+SE QUISERMOS PEGAR 
+
+
+'TUDO DO DIA 1 ATÉ O DIA 2',
+
+
+
+DEVEMOS ESCREVER 
+
+
+
+'BETWEEN DIA 1 AND DIA 3',
+
+
+
+PQ 
+
+
+
+SENAO NAO VAMOS CONSEGUIR 
+
+SELECIONAR/RETRIEVAR VALUES RELATIVOS 
+
+
+A TODA A DATE DE 'DIA 2' (de 0:00, madrugada, até 23:59)...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DEPOIS ESTUDAMOS PATTERNS,
+
+
+
+
+
+
+
+COM LIKE...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> O LIKE FAZ MATCH COM PATTERNS EM COLUMNS..
+
+
+
+
+
+
+
+
+E ELE USA OS WILDCARDS DE 
+
+
+'%' --> ANY SEQUENCE OF CHARACTERS 
+
+
+
+
+'_' --> ANY SINGLE CHARACTER...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---> POR FIM, APRENDEMOS SOBRE COMMENTS E ALIASES...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+comments ====  '--'  e' /* */' e '//' (snowflake)...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ALIAS --> USAMOS 'AS' -> para mudar o column name 
+
+no output do result set, mas nao muda o nome 
+
+
+da column na database...
+
+
