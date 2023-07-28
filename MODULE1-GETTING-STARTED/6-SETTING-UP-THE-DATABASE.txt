@@ -1,0 +1,275 @@
+
+
+
+
+
+
+
+
+
+OK, JÁ SETTEI A DATABASE,
+
+E JÁ A CONECTEI COM O SQLTOOLS...
+
+
+
+
+
+
+
+
+
+
+
+
+
+TEMOS QUE ANALISAR A DATA DE UMA COMPANHIA...
+
+
+
+
+
+
+
+
+
+
+
+
+--> NESSA LICAO, SETTAREMOS NOSSA DATABASE 
+
+
+E TODA A DATA COM QUE TRABALHAREMOS...
+
+
+
+
+
+
+
+
+
+
+
+
+--> devemos criar a database 
+
+
+
+
+
+--> PODEMOS CRIAR ISSO COM O PGADMIN OU COM 
+
+
+
+COMANDOS SQL...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ok... AÍ TEMOS JÁ O DEFAULT SCHEMA, QUE É PUBLIC...
+
+
+
+
+
+
+
+
+
+
+
+--> TEMOS A PARTE DE "TABLES",
+
+que é a mais importante...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+vamos preencher 
+
+
+
+
+essa table com data...
+
+
+
+
+
+
+
+
+
+BAIXAMOS A FILE COM DATA...
+
+
+
+
+
+
+
+-------------------------------
+
+
+
+
+
+
+
+
+
+
+DEVEMOS PEGAR ESSA FILE 
+
+
+E ENTAO A EXECUTAR 
+
+
+
+NO PGADMIN...
+
+
+
+
+TEMOS UMA SQL FILE DENTRO 
+
+
+DESSA PASTA.
+
+
+
+
+
+
+
+
+
+
+--> ABRIMOS O QUERY EDITOR DO PGADMIN E COLAMOS O CONTEÚDO 
+
+DE NOSSA FILE SQL..
+
+
+
+
+
+
+
+
+
+-> PARA ABRIR ISSO, ENTRAMOS EM "greencycles"
+
+
+database,
+
+depois no schema de "public",
+
+
+
+
+e depois colocamos botao direito -> query editor.
+
+
+
+
+
+
+
+
+
+
+
+
+
+OK... RODEI A QUERY, E AÍ AS TABLES FORAM SETTADAS...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OK...
+
+
+AGORA ESTAMOS COM A DATABASE SETTADA...
+
+
+
+
+
+
+
+
+
+
+ENTAO O PROFESSOR NOS MOSTRA UMA PRIMEIRA QUERY:
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT * FROM public.actor;
+
+
+
+
+
+
+
+
+
+
+
+
+RETORNAMOS A DATA DA TABLE DE "actor"
+
+DO SCHEMA DE "Public"..
+
+
+
+
+
+
+
+
+
+
+ok, settamos nossa database, e agora estamos 
+
+prontos para ver o course project.

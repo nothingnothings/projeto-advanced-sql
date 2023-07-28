@@ -1,0 +1,18 @@
+If you experience very slow performance in pgAdmin, you can make one important adjustment.
+
+Make sure pgAdmin is closed.
+
+1. Open the folder C:\Program Files\PostgreSQL\14\data
+
+Replace '14' with your version that you are using if it is not 14.
+
+2. Open the file postgresql.conf by right-clicking it and selecting "Edit" or "Edit with Notepad++".
+
+You can also install Notepad++ if you don't have this option.
+
+3. Press 'CTRL + F' and search for listen_addresses and replace '*' with '127.0.0.1,::1'
+
+
+4. Save the file.
+
+5. Open pgAdmin and your performance should be much better now!
