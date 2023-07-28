@@ -1,0 +1,248 @@
+
+
+
+
+
+
+
+
+AGORA ESTUDAREMOS O LIMIT...
+
+
+
+
+
+
+SUA SINTAXE É BEM SIMPLES,
+PQ 
+
+O LIMIT SEMPRE FICA 
+NO FINAL DE NOSSA QUERY..
+
+
+
+
+
+
+
+
+
+
+
+
+--> GERALMENTE O UTILIZAMOS PARA 
+
+TER 1 IDEIA RÁPIDA SOBRE NOSSA TABLE...
+
+
+
+
+
+
+
+
+
+SUA SINTAXE É ASSIM:
+
+
+
+
+
+
+
+
+
+
+SELECT
+col1,
+col2
+FROM table 
+LIMIT 100;
+
+
+
+
+
+------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----> FREQUENTEMENTE ELE É USADO COM 
+
+A CLAUSE DE "ORDER BY",
+
+
+
+tipo assim:
+
+
+
+
+
+
+
+
+SELECT 
+first_name
+FROM actor 
+ORDER BY first_name DESC;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> TEMOS 1 EXEMPLO PRÁTICO..
+
+
+
+
+
+
+
+
+
+
+
+DIGAMOS QUE ESTAMOS INTERESSADOS NOS 5 
+
+ÚLTIMOS RENTALS 
+
+QUE RECEBEMOS...
+
+
+
+
+
+PARA ISSO,
+
+ESCREVEMOS:
+
+
+
+
+
+
+SELECT
+*
+FROM RENTAL 
+ORDER BY rental_date DESC 
+LIMIT 10;
+
+
+
+
+
+
+
+
+
+-------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+O LIMIT FAZ COM QUE NOSSA QUERY SEJA EXECUTADA 
+
+BEM MAIS RÁPIDO,
+
+
+O QUE É ÓTIMO... limitamos os resultados...
+
+
+
+
+
+
+
+
+
+
+
+
+
+ESCREVI ASSIM:
+
+
+
+
+
+
+
+
+
+SELECT
+*
+FROM RENTAL 
+ORDER BY rental_date DESC 
+LIMIT 10;
+
+
+
+
+
+
+
+
+
+
+---------------------
+
+
+
+
+
+
+
+
+
+
+AGORA QUEREMOS APRENDER 
+
+O COMANDO DE "cOUNT",
+
+QUE É USADO PARA CONTAR 
+
+O NÚMERO DE ROWS EM 1 TABLE...
+
+
+
+
+
+

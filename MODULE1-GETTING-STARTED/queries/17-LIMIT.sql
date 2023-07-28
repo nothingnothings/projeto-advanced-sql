@@ -1,0 +1,60 @@
+
+
+
+
+
+
+
+
+AGORA ESTUDAREMOS O LIMIT...
+
+
+
+
+
+
+SUA SINTAXE É BEM SIMPLES,
+PQ 
+
+O LIMIT SEMPRE FICA 
+NO FINAL DE NOSSA QUERY..
+
+
+
+
+
+
+
+
+
+
+
+
+--> GERALMENTE O UTILIZAMOS PARA 
+
+TER 1 IDEIA RÁPIDA SOBRE NOSSA TABLE...
+
+
+
+
+
+
+
+
+
+SUA SINTAXE É ASSIM:
+
+
+
+
+
+
+
+
+
+
+SELECT
+col1,
+col2
+FROM table 
+LIMIT 100;
