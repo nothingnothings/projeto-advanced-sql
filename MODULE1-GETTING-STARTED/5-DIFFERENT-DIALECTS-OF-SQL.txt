@@ -1,0 +1,42 @@
+
+
+
+
+
+
+
+
+PEQUENAS DIFERENCAS ENTRE DIALETOS DE SQL...
+
+
+
+
+
+
+
+POSTGRESQL -> É O QUE TEM O DIALETO MAIS PRÓXIMO DO SQL 
+
+COMUM....
+
+
+
+
+
+
+
+
+
+--> é mt popular...
+
+
+
+
+
+
+
+--> É O MOST ADVANCED DBMS DO MUNDO....
+
+
+PODEMOS APRENDER TODAS FUNCTIONS NO POSTGRESQL...
+
+
