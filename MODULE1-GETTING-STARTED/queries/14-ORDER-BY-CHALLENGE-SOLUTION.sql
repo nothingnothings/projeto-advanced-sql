@@ -1,0 +1,7 @@
+-- escrevi assim:
+
+
+-- SELECT * FROM CUSTOMERS 
+-- ORDER BY LAST_NAME DESC, FIRST_NAME DESC;
+
+

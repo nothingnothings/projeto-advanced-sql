@@ -1,0 +1,101 @@
+
+
+
+
+
+
+
+
+
+
+
+
+--> O MARKETING MANAGER QUER QUE VC ORDENE 
+A CUSTOMER LIST 
+
+
+
+POR "lAST_NAME"...
+
+
+
+
+
+
+--> ELES QUEREM COMECAR DE "Z" A "A",
+
+COM ESSA LISTA...
+
+
+
+
+
+
+--> QUEREM TAMBÉM QUE, CASO A PESSOA TENHA O MESMO 
+
+LAST_NAME, A ORDER DEVE SER BASEADA NO PRIMEIRO 
+NOME... E TAMBÉM DE "Z" A "A".....
+
+
+
+
+
+
+
+vou tentar fazer...
+
+
+
+
+
+
+
+
+
+
+
+ACHO QUE FICA TIPO ASSIM:
+
+
+
+
+
+
+
+
+SELECT * FROM CUSTOMERS 
+ORDER BY LAST_NAME DESC, FIRST_NAME DESC;
+
+
+
+
+
+
+
+--------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+ok...
+
+
+
+
+
+o professor nos mostrará outra TRICK,
+
+na próxima aula...
+
+
+
+
+
+
+
