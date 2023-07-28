@@ -1,0 +1,74 @@
+
+
+
+
+
+
+
+
+nessa challenge,
+
+temos:
+
+
+
+
+
+
+THERE HAS BEEN SOME FAULTY PAYMENTS 
+AND YOU NEED TO HELP FIND OUT HOW MANY PAYMENTS HAVE 
+BEEN AFFECTED...
+
+
+
+
+
+
+
+
+
+
+
+
+-> A QUESTAO É 
+
+
+
+
+""HOW MANY PAYMENTS HAVE BEEN MADE ON JANUARY 26TH AND 
+27TH 2020, WITH AN AMOUNT BETWEEN 1.99 AND 3.99"..
+
+
+
+
+
+
+
+--> O RESULTADO TEM DE SER 104..
+
+
+
+
+
+
+
+
+--> EU ESCREVERIA TIPO ASSIM:
+
+
+
+
+
+SELECT COUNT(*) FROM PAYMENT
+WHERE (AMOUNT BETWEEN 1.99 AND 3.99)
+AND (PAYMENT_DATE BETWEEN '2020-01-26' AND '2020-01-28');
+
+
+
+
+
+
+
+
+
+ok... isso me deu o resultado...
