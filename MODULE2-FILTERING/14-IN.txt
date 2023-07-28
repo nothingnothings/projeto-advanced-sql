@@ -1,0 +1,305 @@
+
+
+
+
+
+
+
+
+
+AGORA TEMOS UMA NOVA TASK...
+
+
+
+
+
+
+
+
+
+
+--> QUEREMOS UMA LISTA DE 6 CUSTOMERS,
+
+
+COM OS SEGUINTES IDS:
+
+
+
+
+
+
+123, 212, 323, 243, 353, 432....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+QUER 1 LISTA DESSES 6 CUSTOMERS,
+
+COM ESSES 6 CUSTOMER IDS..
+
+
+
+
+
+
+
+--> QUER UMA LISTA COM EMAIL ADDRESSES DESSES 6 CUSTOMERS...
+
+
+
+
+
+
+
+PODERÍAMOS CONSEGUIR ESSA DATA COM 
+
+
+WHERE,  COM  VÁRIOS WHERE,
+
+
+
+MAS NAO SERIA 
+
+
+
+NADA EFICIENTE...
+
+
+
+
+
+
+
+
+
+
+
+
+PARA CONSEGUIR COM O IN, DE FORMA BEM MAIS EFICIENTE,
+
+DEVEMOS ESCREVER ASSIM:
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT * FROM CUSTOMER 
+WHERE CUSTOMER_ID IN (123, 212, 323, 243, 353, 432);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OK... FUNCIONOU..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> PODERÍAMOS FAZER COM OR,
+
+
+MAS FICARIA HORRÍVEL:
+
+
+
+
+
+
+SELECT * FROM customer 
+WHERE CUSTOMER_ID = 123
+OR CUSTOMER_ID = 1245;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> O IN OPERATOR É BEM SIMPLES,
+
+É SÓ ISSO AÍ,
+
+
+
+ESTE COMANDO:
+
+
+
+
+SELECT * FROM CUSTOMER 
+WHERE CUSTOMER_ID IN (123, 212, 323, 243, 353, 432);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+é quase como se fosse 1 or statement...
+
+
+
+
+
+
+
+
+
+
+
+--> PODEMOS COLOCAR OUTROS TIPOS DE VALUE,
+
+COMO NAMES:
+
+
+
+
+
+
+
+
+
+
+SELECT * FROM customers 
+WHERE first_name IN ('LYDIA', 'MATTHEW');
+
+
+
+
+
+
+
+-------> COMO É TEXT, PRECISAMOS DE SINGLE QUOTES...
+
+
+
+
+
+
+
+
+
+
+
+
+--> É CLARO QUE PODEMOS ADICIONAR AINDA MAIS VALUES 
+
+DENTRO DO IN STATMEENT....
+
+
+
+
+
+
+
+
+
+
+--. também podemos escrever "NOT IN",
+
+
+
+PARA ENCONTRAR TODOS OS ROWS QUE NAO TIVEREM ESSES VALUES..
+
+
+
+
+
+
+
+
+EX:
+
+
+
+
+
+
+
+SELECT * FROM CUSTOMERS 
+WHERE FIRST_NAME NOT IN ('Max');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OK... AGORA DEVEMOS VER O ASSIGNMENT...
+
+
+
+
+
+
+
+
+
