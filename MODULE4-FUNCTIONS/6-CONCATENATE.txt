@@ -1,0 +1,158 @@
+
+
+
+
+
+
+
+É BEM COMUM QUERERMOS 
+
+
+
+COMBINAR INFO DE DIFERENTES COLUMNS,
+
+E RETORNAR 
+
+TODA ESSA INFO EM 1 COLUMN..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Para concatenar,
+
+USAMOS "CONCATENATE()"...
+
+
+
+
+
+
+
+
+
+--> ALTERNATIVAMENTE,
+
+PODEMOS USAR "||"
+
+
+
+
+
+
+(DOUBLE PIPE É A MESMA COISA QUE CONCATENATE)...
+
+
+
+
+
+
+
+com double pipes,
+fica assim:
+
+
+
+
+SELECT 
+LEFT (first_name, 1) || LEFT(last_name, 1)
+FROM customer;
+
+
+
+
+
+
+
+
+
+
+
+
+AS 2 STRINGS SERAO COMBINADAS, COM ISSO...
+
+
+
+
+
+
+
+--> mas COMO PODEMOS COLOCAR ESPACOS ENTRE 
+
+
+
+AS STRINGS,
+
+
+
+
+
+USANDO PIPE....?
+
+
+
+
+
+
+
+
+
+--> TIPO ASSIM:
+
+
+
+
+
+SELECT 
+LEFT (first_name, 1) || '.' || LEFT(last_name, 1)
+FROM customer;
+
+
+
+
+
+--------------------------------------
+
+
+
+
+
+
+
+E PODEMOS USAR DOUBLE PIPES 
+
+
+QUANTAS VEZES QUISERMOS...
+
+
+
+
+
+
+
+--> E || É A MESMA COISA QUE "CONCAT()"
+
+
+
+
+
+
+
+
+
+
+
+
+--> AGORA TEREMOS 1 CHALLENGE...
