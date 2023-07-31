@@ -1,0 +1,439 @@
+
+
+
+
+
+
+
+
+
+
+FREQUENTEMENTE, QUANDO TRABALHAMOS COM TEXT STRINGS,
+
+
+
+
+
+QUEREMOS __ EXTRAIR __ CERTAS 
+PARTES DE 1 
+
+TEXT...
+
+
+
+
+
+
+
+
+
+
+FUNCTIONS COMUNS PARA ISSO SAO "LEFT"
+
+
+E 
+
+"RIGHT()
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> A FUNCTION DE "LEFT()" 
+
+É USADA PARA EXTRAIR 1 PARTE DE 1 STRING,
+COMECANDO DA ESQUERDA..
+
+
+
+
+
+
+
+
+
+--> TIPO ASSIM:
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT 
+LEFT(first_name, 3)
+FROM customer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+COM ISSO,
+
+
+FICAREMOS COM 1 VALUE DE "MAR" em vez de "MARY",
+
+por exemplo...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> OK...  E PODEMOS QUALQUER NÚMERO NESSE SEGUNDO PARAMETER,
+
+PARA "TRUNCARMOS" NOSSA STRING, BASICAMENTE...
+
+
+
+
+
+
+
+
+
+
+
+
+--> E O RIGHT FUNCIONA EXATAMENTE DA MESMA FORMA,
+
+
+MAS VINDO DA DIREITA...
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> OK.... MAS E SE QUISÉSSEMOS 
+
+
+EXTRAIR 
+
+
+"APENAS A SEGUNDA LETRA DE 1 STRING"...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PODEMOS RESOLVER ISSO COM OUTRA 
+
+
+FUNCTION, SUBSTRING, SIM,
+
+
+
+
+
+
+MAS _ O PROFESSOR APONTA QUE 
+
+TAMBÉM É POSSÍVEL EXTRAIR 
+
+ESSA LETRA 
+
+
+POR MEIO 
+
+
+
+
+
+DAS FUNCTIONS DE "LEFT()"
+
+
+E
+ 
+
+ "RIGHT()",
+
+
+
+
+
+BASTA NESTEÁ-LAS....
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> TIPO ASSIM:
+
+
+
+
+
+
+
+
+
+SELECT 
+LEFT(first_name, 2),
+first_name
+FROM customer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---> ISSO VAI REALMENTE SELECIONAR ATÉ 
+
+A SEGUNDA LETRA,
+
+O OUTPUT VAI FICAR "Ma"...
+
+
+
+
+
+
+
+
+
+
+--> MAS COMO QUEREMOS A SEGUNDA LETRA, TEMOS QUE DESCARTAR 
+
+ESSE 'Ma' DE ALGUMA FORMA... -> PARA ISSO,
+
+DEVEMOS _ ENVELOPPAR ESSE LEFT 
+
+
+
+
+EM 1 RIGHT,
+
+TIPO ASSIM:
+
+
+
+
+
+
+
+
+
+SELECT 
+RIGHT(LEFT(first_name, 2), 1),
+first_name
+FROM customer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+ISSO VAI REALMENTE
+
+
+NOS DAR APENAS O 'a',
+
+DESCARTADO O 'M' que ficava na esquerda... (Ma)..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OK... E SE QUISÉSSEMOS CONSEGUIR 
+
+A __ TERCEIRA __ LETRA,
+
+
+
+
+ESCREVERIÁMOS ASSIM:
+
+
+
+
+
+
+
+
+SELECT 
+RIGHT(LEFT(first_name, 3), 1),
+first_name
+FROM customer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PODEMOS FAZER ISSO COM QUALQUER 
+
+
+
+LETRA DE 1 STRING...
+
+
+
+
+
+
+
+
+
+
+
+
+
+OK... É ASSIM QUE PODEMOS USAR AS FUNCTIONS DE 
+
+
+"RIGHT" E 
+
+"LEFT"...
+
+
+
+
+
+
+
+
+
+--> E SE QUISERMOS 
+
+
+COMBINAR AS INICIAIS DO NOME E SOBRENOME DAS PESSOAS,
+
+PODERÍAMOS USAR A FUNCTION DE CONCAT 
+
+COM ESSE TRUQUE DE RIGHT E LEFT,
+
+TIPO ASSIM:
+
+
+
+
+
+
+
+SELECT 
+CONCAT(LEFT(first_name, 1), '. ', LEFT(last_name, 1))
+FROM customer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OK... FUNCIONOU...
+
+
+
+
+
+
+MAS AGORA DEVEMOS PRATICAR O QUE APRENDEMOS DURANTE ESSA LICAO...
