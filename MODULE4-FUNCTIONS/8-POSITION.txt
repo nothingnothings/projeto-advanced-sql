@@ -1,0 +1,391 @@
+
+
+
+
+MUITAS VEZES, NA VIDA REAL,
+
+
+
+A ESTRUTURA DE VALUES 
+
+EM COLUMNS 
+
+
+PODE SER __ DIFERENTE __eM CADA ROW...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> POR ISSO, É BEM COMUM 
+
+
+
+TERMOS DE PROCURAR 
+
+POR 
+
+1 
+
+
+
+CARACTER ESPECÍFICO, DENTRO DE 1 
+
+STRING...
+
+
+
+
+
+
+
+
+
+
+
+
+--> PARA ISSO,
+
+
+GERALMENTE USAMOS A FUNCTION DE "POSITION()"...
+
+
+
+
+
+
+
+
+
+
+COM ESSA FUNCTION, PODEMOS ESPECIFICAR:
+
+
+
+
+
+
+1) POR QUAL TIPO DE STRING ESTAMOS PROCURANDO
+
+
+(no nosso caso, estamos procurando pelo sinal de "@")...
+
+
+
+
+
+2) DEPOIS DISSO,
+
+
+ESPECIFICAMOS "EM QUE LUGAR QUEREMOS PROCURAR POR ESSE SÍMBOLO"...
+
+(com a keyword de "IN")...
+
+
+
+
+
+
+
+
+
+
+
+
+NO CASO,
+
+
+ESCREVEMOS 
+
+
+
+
+
+
+SELECT 
+POSITION('@' IN xxxx)
+FROM customer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NO NOSSO CASO, COLOCAMOS 
+
+
+A COLUMN DE "email":
+
+
+
+
+SELECT 
+POSITION('@' IN email)
+FROM customer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> COM ISSO, 
+
+
+SEMPRE __ CONSEGUIREMOS a "POSIITON" 
+
+
+EM QUE ESSE CARACTER ESTARÁ POSICIONADO...
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> E É CLARO QUE ESSE VALUE VAI VARIAR,
+
+NOS DIVERSOS ROWS,
+
+
+TIPO ASSIM:
+
+
+
+
+
+
+11	"MARY.SMITH@sakilacustomer.org"
+17	"PATRICIA.JOHNSON@sakilacustomer.org"
+15	"LINDA.WILLIAMS@sakilacustomer.org"
+14	"BARBARA.JONES@sakilacustomer.org"
+16	"ELIZABETH.BROWN@sakilacustomer.org"
+15	"JENNIFER.DAVIS@sakilacustomer.org"
+
+
+
+
+
+
+
+
+
+
+CERTO...
+
+
+
+
+
+
+
+
+
+agora podemos usar isso com expressoes,
+
+
+
+nestear COM O LEFT/RIGHT,
+
+
+PARA AÍ 
+
+
+EXTRAÍRMOS 
+
+
+
+
+APENAS O NOME DAS PESSOAS 
+
+
+
+
+DE DENTRO DOS EMAILS,
+
+
+TIPO ASSIM:
+
+
+
+
+
+
+
+
+
+
+
+SELECT 
+LEFT(email, POSITION('@' IN email) - 1) AS extracted_name,
+email
+FROM customer;
+
+
+
+----------------------
+
+
+
+
+
+
+
+
+
+
+COLOCAMOS O '-1' PARA REMOVERMOS O '@'...
+
+
+
+
+
+
+
+--------------------------
+
+
+
+
+
+
+
+OUTRO DETALHE... 
+
+
+
+
+
+
+
+
+COM 'POSITION',
+
+PODEMOS ESPECIFICAR NAO SÓ 1 STRING 
+
+
+
+A SER ENCONTRADA,
+
+
+
+
+
+MAS TAMBÉM 1 VALUE DE ALGUMA COLUMN,
+
+
+
+
+como por exemplo o value da col "last_name",
+
+
+tipo assim:
+
+
+
+
+
+
+
+
+
+
+SELECT 
+LEFT(email, POSITION(last_name IN email) - 2) AS extracted_name,
+email
+FROM customer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> COM ISSO, EXTRAÍMOS APENAS O first_name,
+
+DOS EMAIL ADDRESS...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> POR FIM, O PROFESSOR NOS EXPLICA QUE 
+
+
+A FUNCTION DE "POSITION()"
+
+
+
+É __ fREQUENTEMENTE USADA 
+
+
+
+COM A FUNCTION DE "SUBSTRING()"....
+
+
+
+
+
+
+
+
+
+
+
+
+ESSA FUNCTION É SUPER INTERESSANTE, POR ISSO 
+
+A ESTUDAREMOS NA PRÓXIMA AULA...
+
+
+
