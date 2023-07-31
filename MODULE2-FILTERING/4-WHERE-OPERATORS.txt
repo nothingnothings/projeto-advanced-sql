@@ -376,3 +376,27 @@ ASSIM:
 SELECT * FROM PAYMENT 
 WHERE AMOUNT > 10
 ORDER BY amount DESC;
+
+
+
+
+
+
+
+
+-----------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,106 @@
+
+
+
+
+
+AGORA TEREMOS UM NOVO PROJECT...
+
+
+
+
+
+
+
+
+
+--> CRIAREMOS 1 DATABASE EXTRA,
+
+PARA PODERMOS TESTAR COM MAIS DATA...
+
+
+
+
+
+
+
+
+
+--> DEVEMOS ENTRAR NOS RESOURCES DA LICAO 
+E BAIXAR A DATABASE DE FLIGHTS..
+
+
+
+
+
+
+--> database extremamente grande...
+
+
+
+
+
+-->  para importar corretamente 
+
+
+tudo no pgadmin4,
+
+
+
+
+usei 
+
+
+este comando (lá no próprio terminal psql):
+
+
+
+\i /home/arthur/Downloads/flight_database/flight_database.sql
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> CERTO.... TODA DATA COPIADA,
+
+E NOSSA DATABASE 
+
+
+
+ESTARÁ PRONTA...
+
+
+
+
+
+
+--> database de "demo"...
+
+--> e agora temos 1 schema de "bookings",
+
+que é o schema com que trabalharemos, agora...
+
+
+
+
+
+
+--> PODEMOS RODAR 
+
+
+
+
+SELECT * FROM flights;
