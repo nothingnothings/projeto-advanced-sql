@@ -1,0 +1,77 @@
+
+
+
+
+
+
+
+
+
+
+--> o professor escreve assim:
+
+
+
+
+
+
+
+
+
+
+SELECT
+staff_id,
+COUNT(*),
+SUM(amount)
+FROM payment 
+GROUP BY staff_id
+ORDER BY SUM(amount) DESC;
+
+
+
+
+
+
+
+
+
+
+
+
+
+NO CASO DE NAO CONSIDERARMOS OS AMOUNTS QUE SAO 0,
+
+
+ESCREVERÍAMOS ASSIM:
+
+
+
+
+
+SELECT
+staff_id,
+COUNT(*),
+SUM(amount)
+FROM payment
+WHERE amount != 0
+GROUP BY staff_id
+ORDER BY SUM(amount) DESC;
+
+
+
+
+
+
+
+
+
+
+
+
+
+O WHERE SEMPRE DEVE SER USADO LOGO DEPOIS DO "FROM",
+
+ESSA É A REGRA...
+
+
+
