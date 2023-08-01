@@ -1,0 +1,178 @@
+
+
+
+
+
+QUEREM AUMENTAR O VALUE DE FILMES
+
+
+
+QUE SAO MT CAROS PARA SEREM SUBSTITUÍDOS...
+
+
+
+
+
+
+
+--> A TAXA DE RENTAL ESTÁ MT BAIXA EM RELACAO 
+
+AO ACTUAL replacement_cost DOS FILMS...
+
+
+
+
+
+
+
+
+
+1) CREATE A LIST OF THE FILMS INCLUDING THE 
+RELATION OF RENTAL_RATE / REPLACEMENT_COST 
+WHERE THE RENTAL RATE IS LESS THAN 4% OF THE REPLACEMENT COST..
+
+
+
+
+
+
+OK...
+ 
+
+ VOU ESCREVENDO ASSIM:
+
+
+
+
+
+
+
+SELECT
+*,
+ROUND((RENTAL_RATE / REPLACEMENT_COST), 2) AS percentage
+FROM film
+WHERE (RENTAL_RATE / REPLACEMENT_COST) < 0.04
+ORDER BY percentage DESC;
+
+
+
+
+
+
+
+
+OK... 
+
+
+
+MAS A TASK FINAL:
+
+
+"CREATE A LIST OF THAT FILM_IDs together with the percentage rounded 
+to 2 decimal places"
+
+
+
+
+
+
+SELECT
+film_id,
+ROUND((RENTAL_RATE / REPLACEMENT_COST), 2) AS percentage
+FROM film
+WHERE (RENTAL_RATE / REPLACEMENT_COST) < 0.04
+ORDER BY percentage DESC;
+
+
+
+
+
+
+
+
+
+
+FICOU TIPO ASSIM:
+
+
+
+
+
+
+
+
+
+SELECT
+film_id,
+ROUND(ROUND((RENTAL_RATE / REPLACEMENT_COST), 3) * 100, 2) AS percentage
+FROM film
+WHERE (RENTAL_RATE / REPLACEMENT_COST) < 0.04
+ORDER BY percentage DESC;
+
+
+
+
+
+
+
+
+
+---------------
+
+
+
+
+COMO FICOU A SOLUCAO DO PROFESSOR?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ELE ESCREVEU ASSIM:
+
+
+SELECT 
+film_id,
+ROUND(rental_rate / replacement_cost * 100, 2)  AS percentage
+FROM film
+WHERE  ROUND(rental_rate / replacement_cost * 100, 2) < 4
+ORDER BY percentage DESC;
+
+
+
+
+
+
+
+
+
+
+
+UM POUCO MAIS ELEGANTE DO QUE MINHA ESCRITA, 
+
+
+MAS NAO FAZ MT DIFERENCA...
+
+
+
+
+
+
+
+
+
+
+
+
+-> O WHERE É PROCESSADO ANTES DE ALIASES SEREM PROCESSADOS...
+
+
