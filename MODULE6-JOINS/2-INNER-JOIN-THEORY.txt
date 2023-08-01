@@ -1,0 +1,644 @@
+
+
+
+
+
+
+
+
+PRIMEIRO VEREMOS O INNER JOIN...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> É O JOIN TYPE MAIS FÁCIL,
+
+E ELE NOS AJUDA A COMPREENDER OS OUTROS 
+
+JOIN TYPES... 
+
+
+
+
+
+
+
+
+
+
+--> NOS AJUDA A ENTENDER O CONCEITO GERAL DOS JOINS...
+
+
+
+
+
+
+
+
+
+
+
+
+INNER JOIN -> PODEMOS COMPREENDER COM  1 EXEMPLO PRÁTICO...
+
+
+
+
+
+
+
+
+
+
+TABLES:
+
+
+
+
+
+
+1) SALES TABLE 
+
+
+
+employee       city         SALES
+Sandra          Munich      500
+
+
+
+
+
+
+2) BONUS TABLE (alguns desses 
+employees ganham 1 promocao/aumento, outros nao)
+
+
+
+
+
+
+        employee   bonus
+           Sandra    YES
+
+
+
+
+
+
+
+
+
+
+
+
+-_> MAS O QUE QUEREMOS FAZER, EM UMA GIVEN QUERY,
+
+
+É COMBINAR 
+
+
+
+
+AS INFOS, DESSAS 2 TABLES,
+
+
+EM 1 GIVEN QUERY...
+
+
+
+
+
+
+
+
+
+
+--> PARA FAZER ISSO, PRECISAREMOS DOS JOINS,
+
+PARTICULARMENTE O INNER JOIN...
+
+
+
+
+
+
+
+
+
+EX:
+
+
+
+
+
+SELECT
+*
+FROM sales AS s
+INNER JOIN bonus AS b ON s.employee = b.employee;
+
+
+
+
+
+
+
+
+
+
+
+
+--> PARA COMBINARMOS 2 COLUMNS,
+
+EM 1 JOIN,
+
+
+SEMPRE PRECISAMOS DAQUILO QUE CHAMAMOS 
+
+
+DE 
+
+
+"REFERENCE COLUMN",
+
+
+
+1 COLUMN EM COMUM ENTRE 
+
+
+
+AS 2 TABLES.... 
+
+
+
+
+
+
+
+
+
+MAS PERCEBEMOS QUE 
+
+ALGUNS VALUES NA 
+
+TABLE DE SALES,
+
+ALGUNS "EMPLOYEES",
+
+
+
+ELES APARECEM NA TABLE DE "SALES",
+
+
+MAS NAO APARECEM 
+
+
+NA TABLE "BONUS TABLE"....
+
+
+
+
+
+
+
+nesse caso,
+
+
+
+
+TEMOS APENAS 4 EMPLOYEES QUE OCORREM 
+
+NAS 2 TABLES...
+
+
+
+
+
+
+
+
+A CARACTERÍSTICA ESPECIAL DO INNER JOIN 
+
+É QUE 
+
+
+__ APENAS APARECERAO NO RESULT SET 
+
+
+
+
+OS ROWS QUE POSSUÍREM 
+
+
+VALUES COINCIDENTES EM 
+
+
+__aMBAS_ TABLES...
+
+
+
+
+
+
+
+
+
+
+
+
+ou seja,
+
+
+
+Sandra deve existir nas 2 tables,
+
+
+Sabine deve existir nas 2 tables,
+
+
+Peter deve existir nas 2 tables....
+
+
+
+
+
+-> e o FINAL RESULT FICA TIPO ASSIM:
+
+
+
+
+
+
+employee       city         SALES       BONUS 
+Sandra          Munich      500         YES
+
+
+
+
+
+
+
+DIAGRAMA DE VENN...
+
+
+
+
+
+
+
+
+
+
+ONLY THE ROWS WHERE THE VALUE IN THE 
+JOIN COLUMN OCCURS IN __BOTH_ TABLES...
+
+
+
+
+
+
+
+-------------------------
+
+
+
+
+
+
+
+
+
+
+OK... MAS AGORA A PERGUNTA É,
+
+O QUE ACONTECE SE TIVERMOS 1 MESMO VALUE, 
+
+EM 1 TABLE,
+
+MÚLTIPLAS VEZES....
+
+
+
+
+
+
+DIGAMOS QUE TEMOS MÚLTIPLAS SANDRAS:
+
+
+
+
+employee       city         SALES       
+Sandra          Munich      500
+Sandra          Edinburg     800                 
+
+
+
+
+
+
+
+
+
+QUER DIZER QUE A SANDRA VAI 
+
+APARECER 
+
+
+NA RESULT TABLE 2x...
+
+
+
+
+--> CERTO...
+
+
+
+
+
+
+AGORA COMO USAR ESSA SINTAXE PRATICAMENTE....
+
+
+
+
+
+
+
+
+
+
+ASSIM:
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT
+* FROM TABLE_A
+INNER JOIN TABLE_B 
+ON TABLE_A.employee = TABLE_B.employee;
+
+
+
+
+
+
+
+
+CERTO... ERA O QUE EU IMAGINAVA....
+
+
+
+
+
+
+
+
+
+--> TEMOS QUE MENCIONAR O TABLE NAME PQ 
+
+
+ESSA COLUMN (employee)
+
+
+EXISTE NAS 2 TABLES....
+
+
+
+
+
+
+
+
+--. MAS  O INTERESSANTE, E EXCLUSIVO DO 
+
+INNER JOIN,
+
+
+É QUE 
+
+
+NAO INTERESSA 
+
+
+A ORDEM DAS 2 TABLES,
+
+
+
+PQ A OPERATION É BASICAMENTE SIMÉTRICA...
+
+
+
+
+
+
+
+PODEMOS TROCAR A ORDEM 
+
+DAS TABLES,
+
+QUE AINDA VAMOS GANHAR O EXATO MESMO RESULT...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> CERTO... MAS ÀS VEZES OS TABLE NAMES 
+
+
+NAO SAO TAO LEGAIS,
+
+
+
+POR ISSO PODEMOS USAR ALIASES,
+
+
+TIPO ASSIM:
+
+
+
+
+
+
+
+
+
+
+
+SELECT * FROM TABLE_A AS A 
+INNER JOIN TABLE_B AS B 
+ON A.EMPLOYEE = B.EMPLOYEE
+
+
+
+
+
+
+
+
+MAS SE QUEREMOS SELECIONAR 1 COLUMN QUE TEM 
+
+
+O MESMO NOME  EM AMBAS TBLES,
+
+SOMOS FORCADOS 
+
+A USAR O ALIAS,
+
+TIPO ASSIM:
+
+
+
+
+
+SELECT A.employee FROM TABLE_A AS A 
+INNER JOIN TABLE_B AS B 
+ON A.EMPLOYEE = B.EMPLOYEE;
+
+
+
+
+
+
+
+
+
+
+
+
+
+ok... era isso...
+
+
+
+
+
+
+
+MAS SE TEMOS 1 COLUMN QUE OCORRE EM APENAS 
+
+1 TABLE,
+
+
+NAO PRECISAMOS 
+
+COLOCAR 
+
+
+O NOME DA TABLE ANTES DELA,
+
+
+PQ NAO EXISTIRÁ CONFUSAO....
+
+
+
+
+
+
+
+
+
+
+
+
+
+---> OK... AGORA DEVEMOS VER EXEMPLOS PRÁTICOS...
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> SEMPRE PRECISAMOS DE 1 COMMON COLUMN,
+
+ISSO SEMPRE É VERDADE...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+INNER JOIN --> ONLY ROWS WHERE REFERENCE COLUMN VALUE IS IN BOTH TABLES...
+
+
+
+
+
+
+
+
+
+
+--> ORDER OF TABLES (A AND B/B AND A) 
+
+DOES NOT MATTER, WITH INNER JOIN...
+
+
+
+
+
+
+
+
+
+
+
+--> REPEATED VALUES IN EITHER TABLE WILL ALSO 
+
+BE REPEATED...
+
+
+
+
+
+
+DEVEMOS VER EXEMPLOS PRÁTICOS...
+
+
+
