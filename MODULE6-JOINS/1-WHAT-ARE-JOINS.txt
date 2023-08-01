@@ -1,0 +1,241 @@
+
+
+hoje veremos tudo sobre JOINS...
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> É UM CONCEITO SUPER IMPORTANTE...
+
+
+
+
+
+
+
+TEREMOS 1 MONTE DE TEORIA E CHALLENGES..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> ATÉ AGORA, SÓ TRABALHAMOS COM SINGLE TABLES...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> MAS É COMUM TERMOS 
+
+
+DE 
+
+COMBINAR INFO 
+
+DE DIFERENTES TABLES EM 1 MESMA 
+
+
+QUERY..
+
+
+
+
+
+
+
+
+-> DIGAMOS QUE TEMOS A TABLE DE PAYMENT..
+
+
+
+
+
+ex:
+
+payment_id  customer_id   staff_id rental_id  amount payment_id 
+
+
+
+
+
+
+
+
+
+
+
+
+--> MAS TAMBÉM TEMOS A TABLE DE customer,
+
+
+
+
+que é assim:
+
+
+
+
+
+
+customer_id  store_id   first_name  last_name   email 
+
+
+
+
+
+
+
+
+O QUE QUEREMOS FAZER, NA QUERY,
+
+
+
+É COMBINAR 
+
+
+
+AS 2 INFORMATIONS 
+
+
+
+EM 1 SINGLE OUTPUT,
+
+
+
+PARA QUE 
+
+
+
+
+
+
+
+TENHAMOS 
+
+
+A INFO 
+
+
+DO 
+
+"first_name" E "last_name"
+
+
+do customer,
+
+no result set...
+
+
+
+
+
+
+
+
+
+--> VEREMOS COMO JOINS FUNCIONAM,
+
+COMO PODEMOS OS UTILIZAR 
+
+
+PRATICAMENTE,
+
+
+
+E __ SOBRE 
+
+
+OS 4 DIFERENTES TIPOS DE JOIN...
+(
+
+    na verdade, existem mais tipos...
+)
+
+
+
+
+
+
+
+INNER JOIN 
+LEFT JOIN 
+RIGHT JOIN 
+OUTER JOIN 
+____CROSS JOIN____
+SELF JOIN
+
+
+
+
+
+
+
+
+
+JOINS SAO SUPER IMPORTANTES..
+
+
+
+
+
+
+
+
+
+--> TEMOS QUE ENTENDER AS DIFERENTES PERSPECTIVAS,
+
+OPTIONS E COISAS DOS JOINS...
+
+
+
+
+
+
+
+
+
+--> PODEM PARECER COMPLICADOS,
+
+
+MAS DEPOIS QUE 
+
+
+PRATICARMOS E TERMOS TEORIA,
+
+
+
+
+FICAREMOS MAIS CONFIANTES...
+
+
+
+PRIMEIRO VEREMOS O __ INNER JOIN____...
+
