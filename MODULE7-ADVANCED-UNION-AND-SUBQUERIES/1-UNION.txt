@@ -1,0 +1,872 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+PRIMEIRA LICAO SOBRE ____ UNION___...
+
+
+
+
+
+
+
+
+
+
+
+
+UNION É UM POUCO PARECIDO COM JOINS....
+
+
+
+
+
+
+
+
+
+
+
+
+COM JOINS,
+
+COMBINAMOS 2 TABLES EM 1 ÚNICA TABLE...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> COM JOINS,
+
+COMBINAMOS, EFETIVAMENTE,
+
+COLUMNS...
+
+
+
+
+
+
+
+
+
+
+
+
+
+EX:
+
+
+
+
+table 1:
+
+
+employee city sales 
+
+
+
+
+
+
+table 2:
+
+
+employee bonus 
+
+
+
+
+
+
+
+
+
+
+TABLE FINAL (joinada):
+
+
+
+2.employee 1.employee city sales bonus 
+
+
+
+
+(5 columns, basicamente)..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ENTRETANTO,
+
+
+
+
+
+
+
+
+HOJE,
+
+
+
+
+
+
+
+NÓS NAO QUEREMOS COMBINAR COLUMNS,
+
+E SIM QUEREMOS 
+
+
+
+
+
+
+USAR "UNION"
+
+
+
+
+PARA ___ COMBINAR__ ROWS 
+
+
+NO FINAL OUTPUT...
+
+
+
+
+
+
+
+
+
+
+--> OU SEJA,
+
+
+VAMOS COMBINAR 2 TABLES, 2 RESULT 
+
+SETS,
+
+
+EM APENAS 1 SÓ..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+EX:
+
+
+
+
+
+
+
+
+TABLE 1 - NEW YORK 
+
+
+NAME       sales 
+sandra      100
+maya        300
+peter       800
+
+
+
+
+
+
+TABLE 2 - BEIJING 
+
+
+
+NAME    SALES
+xin       300
+peng      500
+lin       1000
+
+
+
+
+
+
+
+
+
+
+COM ISSO, TEMOS 2 SELECT STATEMENTS....
+
+
+
+
+USAMOS O UNION PARA COMBINAR MÚLTIPLOS 
+SELECT STATEMENTS EM 1 OUTPUT FINAL, ASSIM:
+
+
+
+
+
+TABLE FINAL:
+
+
+
+
+
+
+NAME       sales 
+sandra      100
+maya        300
+peter       800
+xin       300
+peng      500
+lin       1000
+
+
+
+
+---------------------------
+
+
+
+
+
+
+
+
+
+
+para usar UNION,
+
+a sintaxe é bem simples...
+
+
+
+
+
+
+
+SELECT 1 
+UNION 
+SELECT 2...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TIPO ASSIM:
+
+
+
+
+
+
+
+
+SELECT first_name, sales FROM vancouver 
+UNION 
+SELECT first_name, sales FROM miami;
+
+
+
+
+
+
+
+
+----------------------------------
+
+
+
+
+
+
+
+
+
+
+OK... ESSE COMANDO DE UNION É BEM SIMPLES,
+
+
+
+
+
+MAS TEMOS QUE SEMPRE NOS LEMBRAR DE 3 COISAS 
+
+
+ESSENCIAIS:
+
+
+
+
+
+
+
+
+
+
+
+1) ""COMO COLUMNS SAO MATCHEADAS???""
+
+
+
+EU ACHO QUE É UTILIZADA A ORDEM....
+
+
+
+
+
+
+--> ISSO, EXATAMENTE... 
+
+
+A INSERCAO DE VALUES, NA TABLE FINAL,
+
+NAO É 
+FEITA 
+
+POR MEIO DOS COLUMN NAMES,
+
+E SIM 
+
+
+
+É FEITA POR MEIO __ DA ORDEM __ 
+
+
+DENTRO DO SELECT...
+
+
+
+
+
+
+
+
+"""COLUMNS ARE MATCHED BY THE ORDER OF THE 
+COLUMNS!!!""
+
+
+
+
+
+
+
+
+
+
+ISSO QUER DIZER QUE 
+
+
+
+ESTE FORMATO É POSSÍVEL:
+
+
+
+SELECT first_name, sales FROM vancouver 
+UNION 
+SELECT last_name, sales FROM miami;
+
+
+
+
+
+
+
+
+
+E ESTE AQUI TAMBÉM:
+
+
+
+
+
+SELECT first_name, sales FROM vancouver 
+UNION 
+SELECT name, sales FROM miami;
+
+
+
+
+
+
+
+
+
+COM ISSO, PODERÍAMOS INSERIR O LAST_NAME
+
+
+NO LUGAR DO FIRST_NAME...
+
+
+
+
+
+
+
+-------------
+
+
+
+
+
+
+
+
+
+OBS::: O NOME DAS COLUMNS FINAIS,
+
+NA TABLE FINAL,
+
+
+
+SERAO SEMPRE OS NOMES DEFINIDOS 
+
+
+NA PRIMEIRA PARTE DO UNION, TIPO ASSIM:
+
+
+
+
+
+
+
+
+SELECT first_name, some_sales FROM vancouver 
+UNION 
+SELECT name, sales FROM miami;
+
+
+
+
+
+
+
+(NOMES FINAIS DAS COLUMNS SERAO 'first_name' e 'some_sales', e 
+
+nao 'name' e 'sales')....
+
+
+
+
+
+
+
+
+
+
+----------------------------
+
+
+
+
+
+
+
+É POR ISSO QUE, COM O UNION COMMAND,
+
+É SUPER IMPORTANTE 
+
+TER TODAS 
+
+
+AS COLUMNS NA ORDEM CORRETA...
+
+
+
+
+
+
+
+
+
+
+TIPO ASSIM:
+
+
+
+
+SELECT first_name, sales FROM vancouver 
+UNION 
+SELECT first_name, sales FROM miami;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+por exemplo, podemos criar 1 erro/problema assim:
+
+
+
+
+
+
+
+
+SELECT first_name, sales FROM vancouver 
+UNION 
+SELECT sales, first_name FROM miami;
+
+
+
+
+
+
+
+
+
+
+
+
+O RESULT FINAL FICARIA ASSIM:
+
+
+
+
+
+
+
+NAME       sales 
+sandra      100
+maya        300
+peter       800
+300         xin 
+500         peng
+1000        ling
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ok... QUER DIZER QUE A ORDEM CORRETA É SUPER IMPORTANTE...
+
+
+
+
+
+
+
+
+
+
+------> também, se esse data type fosse 
+
+de 
+
+NUMBER,
+
+O NEGÓCIO JÁ TERIA NOS DADO UM ERRO... (
+    conflicting data types...
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> E O NÚMERO DE COLUMNS DEVE MATCHEAR,
+
+TAMBÉM....
+
+
+
+
+
+
+
+
+
+
+
+--> TAMBÉM PODEMOS USAR UNION 
+
+MÚLTIPLAS VEZES,
+
+COM MÚLTIPLAS TABLES...
+
+
+
+
+
+
+
+
+
+
+
+
+
+a última coisa que devemos ter em mente 
+
+é que 
+
+
+
+
+
+
+
+
+
+___ SE __ TEMOS DUPLICATAS 
+
+
+NAS NOSSAS TABLES (
+
+
+    1 value ocorrendo em 
+
+    múltiplas tables
+),
+
+
+
+o QUE ACONTECERÁ 
+
+
+
+
+
+
+
+É "ESSE VALUE SERÁ DECOUPLED" 
+
+
+(
+
+    no output existirá APENAS 1 
+    ÚNICO VALUE,
+
+    NAO EXISTIRÁ 
+
+    QUAISQUER DUPLICATAS...
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+POR ISSO O PONTO 2:
+
+
+
+
+
+
+
+2) O COMPORTAMENTO DEFAULT DE UNION 
+
+__SE LIVRA__ DE DUPLICATAS NAS NOSSAS TABLES....
+
+
+
+
+
+
+(DUPLICATES ARE DECOUPLED)...
+
+
+
+
+
+
+
+
+
+
+
+MAS SE NAO QUISERMOS ESSE BEHAVIOR,
+
+
+SE QUISERMOS TER DUPLICATES 
+ 
+
+ MESMO ASSIM,
+
+
+
+
+
+DEVEMOS USAR O COMANDO DE "UNION ALL"...
+
+
+
+
+TIPO ASSIM:
+
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT first_name, sales FROM delhi 
+UNION ALL 
+SELECT first_name, sales FROM vancouver;
+
+
+
+
+
+
+
+
+
+
+
+
+
+OK... E ISSO É TUDO QUE PRECISAMOS SABER SOBRE UNION...
+
+
+
+
+
+
+-------------------------------------
+
+
+
+
+
+COISAS IMPORTANTES:
+
+
+
+
+1) A ORDEM DE COLUMNS DEVE MATCHEAR,
+
+NOS 2 SELECT...
+
+
+
+
+
+
+2) OS DATA TYPES DEVEM MATCHEAR, 
+
+em ambos select statements..
+
+
+
+
+
+3) DUPLICATES ARE DECOUPLED (
+    duplicates sao removidas,
+
+    isso se nao usarmos o COMANDO DE 
+    "UNION ALL"...
+)
+
+
+
+
+AGORA DEVEMOS PRATICAR TUDO ISSO...
+
+
+
