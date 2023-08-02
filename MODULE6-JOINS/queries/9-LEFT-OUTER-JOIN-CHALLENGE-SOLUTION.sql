@@ -342,3 +342,74 @@ USAMOS ALGUMAS AGGREGATE FUNCTIONS
 
 E STRING FUNCTIONS...
 
+
+
+
+
+
+
+
+
+
+
+
+
+--> COMO TODOS OS ROWS APARECEM 
+
+EM AMBOS 
+
+
+TABLES,
+
+
+PODERÍAMOS TER USADO O INNER JOIN PARA 
+
+CONSEGUIR O MESMO RESULTADO...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- --> MAS O COMPORTAMENTO PADRAO,
+
+-- DE DEVS,
+
+-- É 
+
+
+-- RODAR PRIMEIRAMENTE LEFT JOINS,
+
+
+-- AINDA QUE 
+
+-- PROVAVELMENTE 
+
+
+-- CONSEGUIREMOS O MESMO 
+
+-- RESULTADO 
+
+-- DO INNER JOIN (
+--     só para checar se 
+
+--     alguma das tables 
+
+--     está como NULL...
+
+
+-- )
+
+
+
+
+
+
