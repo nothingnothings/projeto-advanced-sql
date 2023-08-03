@@ -1,0 +1,305 @@
+
+
+
+
+
+
+
+
+É HORA DE PROVAR NOSSAS HABILIDADES,
+
+
+NESSE MID-COURSE PROJECT...
+
+
+
+
+
+
+
+
+
+
+--_> Funciona assim:
+
+
+
+
+
+
+
+
+
+
+
+
+--> VOCE PRECISA ANALISAR O BANCO DE DADOS...
+
+
+
+
+
+
+
+
+SE VC CONSEGUIR RESOLVER 10 DE 14 
+
+
+CHALLENGES,
+
+
+
+ELES VAO TE PROMOVER 
+
+
+
+À "SENIOR DATA ANALYST"...
+
+
+
+
+
+
+
+
+-----> 10 out of 14 --> é mt bom se conseguir...
+
+
+
+
+
+
+
+
+
+
+challenge 14 --> é mt difícil, o PROFESSOR
+
+
+nao espera que consigamos resolver...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----> COMO FUNCIONA ESSE COURSE PROJECT:
+
+
+
+
+
+
+
+
+
+
+1) PRIMEIRO UMA LISTA COM CHALLENGES,
+
+E 
+
+
+
+O NÍVEL DE DIFICULDADES....
+
+
+
+
+
+--> OK...
+
+
+TEMOS VÁRIAS PERGUNTAS...
+
+
+
+
+
+
+
+
+
+
+ASSIM QUE TERMINAMOS TUDO, PODEMOS VERIFICAR 
+
+
+
+A SOLUTION...
+
+
+
+
+
+
+
+--> SE NAO COMPREENDERMOS UMA SOLUTION ESPECÍFICA,
+
+
+TEMOS 
+
+
+
+VIDEOS 
+
+
+
+QUE TAMBÉM NOS MOSTRAM 
+
+COMO RESOLVER...
+
+
+
+
+
+
+
+
+--> se vc conseguir as solutions,
+
+
+nem precisa 
+
+
+
+checar os vídeos do professor...
+
+
+
+
+
+
+
+
+
+
+--------> 14 challenges ---> gasta bastante tempo....
+
+
+
+
+
+
+
+
+--> FAÇA AS QUESTIONS EM 1 OU 2 DAYS...
+
+
+
+
+
+
+
+--> MAS O IMPORTANTE É FAZER TODAS 
+
+ESSAS CHALLENGES,
+
+
+E
+ 
+
+
+ EVALUATE SUA KNOWLEDGE...
+
+
+
+
+
+
+
+
+
+ --> MÚLTIPLAS SOLUTIONS SAO POSSÍVEIS 
+
+ (
+    às vezes o professor usa 
+
+    um LEFT JOIN, INNER JOIN,
+    podemos trocar 
+
+
+
+    os 2...
+
+ )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ --> O GOAL É ACERTAR 10 DE 14 
+
+ CHALLENGES...
+
+
+
+
+
+
+
+
+
+
+
+
+O RANKING DE QUESTIONS ACERTADAS:
+
+
+
+
+
+
+
+
+
+
+
+QUESTIONS RIGHT 
+
+
+LESS THAN 6 -------> BASIC SKILLS --> RECOMMENDATION: WORK THROUGH THE LECTURES AGAIN.
+
+
+
+
+
+
+BETWEEN 6 AND 8 
+QUESTIONS ----------> DECENT SKILLS --> RECOMMENDATION: WORK THROUGH THE VIDEO SOLUTIONS OF THE QUESTIONS YOU HAVENT GOT RIGHT 
+
+
+
+
+
+
+
+BETWEEN 9 AND 11 
+QUESTIONS -----------> GOOD SKILLS --> CONGRATULATIONS 
+
+
+
+
+
+
+
+AT LEAST 12 QUESTIONS --> VERY GOOD SKILLS -- OUTSTANDING...
+
+
+
