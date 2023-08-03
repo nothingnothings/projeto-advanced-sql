@@ -237,3 +237,46 @@ ORDER BY n_of_movies DESC;
 
 -- Answer: Susan Davis with 54 movies
 
+
+
+
+
+
+
+
+
+
+MINHA VERSAO:
+
+
+
+
+
+
+SELECT 
+CONCAT(act.first_name, ' ', act.last_name) AS actor_name,
+COUNT(f.film_id) AS n_of_movies
+FROM actor AS act
+LEFT JOIN film_actor AS fa
+ON fa.actor_id = act.actor_id
+INNER JOIN film AS f
+ON fa.film_id = f.film_id
+GROUP BY actor_name
+ORDER BY n_of_movies DESC;
+
+
+
+
+
+
+
+
+SELECT
+*
+FROM film AS f
+INNER JOIN film_actor AS fa
+ON f.film_id=fa.film_id
+INNER JOIN actor a 
+ON a.actor_id=fa.actor_id
+GROUP BY actor_name
+ORDER BY n_of_movies DESC;

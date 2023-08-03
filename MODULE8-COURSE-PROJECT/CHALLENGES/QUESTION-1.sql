@@ -49,7 +49,64 @@ ORDER BY replacement_cost DESC;
 
 
 
-Question: What's the lowest replacement cost?
+-- Question: What's the lowest replacement cost?
 
-Answer: 9.99
+-- Answer: 9.99
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- CORRECAO DO PROFESSOR:
+
+
+
+
+
+
+
+minha versao:
+
+
+
+SELECT 
+DISTINCT replacement_cost
+FROM film
+ORDER BY replacement_cost DESC;
+
+
+
+
+
+
+
+
+
+SELECT DISTINCT replacement_cost
+FROM film
+ORDER BY replacement_cost DESC;
+
+
+
+
+
+
+
+
+
+
+CERTO... ACERTEI...
+
+
+
+
+
 

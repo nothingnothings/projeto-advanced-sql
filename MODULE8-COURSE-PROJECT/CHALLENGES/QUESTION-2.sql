@@ -103,3 +103,70 @@ OUTPUT:
 
 
 Answer: 514
+
+
+
+
+
+-----------------------
+
+
+
+
+MINHA VERSAO:
+
+
+
+
+SELECT
+CASE 
+	WHEN replacement_cost BETWEEN 9.99 AND 19.99 THEN 'low'
+	WHEN replacement_cost BETWEEN 20.00 AND 24.99 THEN 'medium'
+	WHEN replacement_cost BETWEEN 25.00 AND 29.99 THEN 'high'
+END AS replacement_type,
+COUNT(film) AS movie_amount_per_replacement_cost
+FROM film
+GROUP BY replacement_type;
+
+
+
+
+
+
+
+correcao do professor:
+
+
+
+
+
+SELECT
+
+    CASE 
+        WHEN replacement_cost BETWEEN 9.99 AND 19.99 THEN 'low'
+        WHEN replacement_cost BETWEEN 20 AND 24.99 THEN 'medium'
+        WHEN replacement_cost > 24.99 THEN 'high'
+    END AS cost_category,
+    COUNT(*)
+FROM film
+GROUP BY cost_category;
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+

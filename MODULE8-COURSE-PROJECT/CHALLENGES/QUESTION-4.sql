@@ -61,3 +61,59 @@ OUTPUT:
 
 
 Answer: Sports with 74 titles
+
+
+
+
+
+
+
+
+
+
+--------------------
+
+
+
+
+
+
+MINHA VERSAO:
+
+
+
+
+
+
+
+SELECT 
+c.name,
+COUNT(f.title) AS n_of_movies
+FROM film AS f
+LEFT JOIN film_category AS fc
+ON fc.film_id = f.film_id
+INNER JOIN category AS c
+ON c.category_id = fc.category_id
+GROUP BY c.name
+ORDER BY n_of_movies DESC;
+
+
+
+
+
+VERSAO DO PROFESSOR:
+
+
+
+
+
+select 
+c.name,
+COUNT(f.title) AS n_of_movies
+FROM film AS f 
+LEFT JOIN film_category AS fc 
+ON fc.film_id = f.film_id 
+INNER JOIN category AS c
+ON c.category_id=fc.category_id 
+GROUP BY name 
+ORDER BY n_of_movies DESC;

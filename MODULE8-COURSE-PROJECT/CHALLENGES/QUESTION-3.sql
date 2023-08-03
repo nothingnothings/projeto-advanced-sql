@@ -177,3 +177,68 @@ OUTPUT:
 Question: In which category is the longest film and how long is it?
 
 Answer: Sports and 184
+
+
+
+
+
+
+
+
+
+
+----------------------
+
+
+MINHA VERSAO:
+
+
+
+
+
+
+
+
+
+SELECT 
+	title,
+	length,
+	c.name
+FROM film AS f
+LEFT JOIN film_category AS fc
+ON fc.film_id = f.film_id
+INNER JOIN category AS c
+ON fc.category_id = c.category_id
+WHERE c.name IN ('Drama', 'Sports')
+ORDER BY length DESC;
+
+
+
+
+
+
+
+
+
+
+
+
+
+CORRECAO DO PROFESSOR:
+
+
+
+
+
+SELECT 
+title,
+c.name,
+length
+FROM film AS f
+LEFT JOIN film_category AS fc 
+ON f.film_id = fc.film_id
+LEFT JOIN category AS c
+ON c.category_id=fc.category_id 
+WHERE c.name IN ('Drama', 'Sports')
+ORDER BY length DESC;
+

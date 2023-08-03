@@ -63,3 +63,45 @@ WHERE a.address_id NOT IN (
 -- Question: How many addresses are that?
 
 -- Answer: 4
+
+
+
+
+
+
+
+
+
+
+MINHA VERSAO:
+
+
+
+
+
+SELECT
+a.address_id,
+a.address
+FROM address AS a
+LEFT JOIN customer AS c
+ON a.address_id = c.address_id
+WHERE a.address_id NOT IN (
+	SELECT
+	address_id
+	FROM customer
+);
+
+
+
+
+
+VERSAO DO PROFESSOR
+
+
+SELECT
+a.address_id,
+a.address
+FROM address AS a
+LEFT JOIN customer AS c
+ON a.address_id = c.address_id
+WHERE c.customer_id IS NULL;
