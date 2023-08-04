@@ -1,0 +1,395 @@
+
+
+
+
+
+AGORA SÓ FALTA 1 COMANDO DE DATA MANIPULATION,
+
+
+O DELETE....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> USAMOS ESSE COMANDO PARA DELETAR ROWS DE 1 TABLE...
+
+
+
+
+
+
+
+
+
+
+
+
+
+DELETE FROM <table>
+WHERE <condition>;
+
+
+
+
+
+
+
+
+
+-------> USAMOS O WHERE PARA 
+
+DIZER QUAIS ROWS DEVEM SER 
+
+DELETADOS...
+
+
+
+
+
+
+
+
+
+
+
+ex:
+
+
+
+
+
+
+
+DELETE FROM <songs>
+WHERE song_id=4;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PARA DELETAR MÚLTIPLOS ROWS,
+
+ESCREVEMOS ASSIM:
+
+
+
+
+
+DELETE FROM <songs>
+WHERE song_id IN (3, 4);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SE USAMOS APENAS 
+
+
+
+"DELETE FROM songs;",
+
+
+
+TUDO 
+
+DESSA TABLE 
+SERÁ 
+
+
+DELETADO...
+
+
+
+(mesma coisa que truncate, acho)..
+
+
+
+
+
+
+
+
+
+
+
+
+
+NAO É A MESMA COISA:
+
+
+
+
+
+
+
+
+
+TRUNCATE is not transaction-safe and cannot be rolled back, while DELETE can be rolled back if executed within a transaction.
+TRUNCATE resets the identity seed (if applicable) to its original starting value, while DELETE does not.
+TRUNCATE cannot be used on tables referenced by foreign key constraints, whereas DELETE can be used in such cases.
+TRUNCATE does not activate triggers, whereas DELETE activates triggers (if any) for each row deleted.
+
+
+
+
+
+-----------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OK... 
+
+HÁ UM PARAMETRO OPCIONAL PARA O DELETE,
+
+
+QUE É 
+
+"RETURNING"...
+
+
+
+
+
+
+
+ESSE PARAMETRO 
+
+
+NOS MOSTRA OS ROWS QUE FORAM DELETADOS,
+
+
+SE QUISERMOS:
+
+
+
+
+
+
+
+
+
+
+
+DELETE FROM songs 
+WHERE song_id IN (3,4)
+RETURNING song_id;
+
+
+
+
+
+
+
+
+
+
+-- COM ISSO, OS SONG_IDS DOS ROWS DELETADOS 
+
+SAO RETORNADOS..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> É CLARO, SE QUEREMOS 
+
+
+
+
+RETORNAR ROWS INTEIROS,
+
+
+ESCREVEMOS ASSIM:
+
+
+
+
+
+
+
+
+
+
+DELETE FROM songs 
+WHERE song_id IN (3,4)
+RETURNING *;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+O PROFESSOR INSERE ALGUNS ROWS 
+
+NA TABLE 
+
+
+DE 
+
+
+
+"songs",
+
+
+com esta sintaxe:
+
+
+
+
+
+
+
+
+
+
+
+INSERT INTO songs (song_name, genre, price, release_date)
+VALUES (
+    'xx', 'yy',xxx , ,s 
+
+)
+
+
+
+
+
+
+
+
+
+
+
+
+PARA DELETAR,
+
+ELE ESCREVE ASSIM:
+
+
+
+
+
+
+
+
+DELETE FROM songs 
+WHERE genre = 'Country Music';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+É CLARO QUE PODEMOS USAR O OPERATOR DE "RETURNING",
+ASSIM:
+
+
+
+
+DELETE FROM songs 
+WHERE song_id IN (4,5)
+RETURNING song_name, song_id;
+
+
+
+
+
+
+VAMOS PRATICAR NA PRÓXIMA AULA...
+
+
+
+
