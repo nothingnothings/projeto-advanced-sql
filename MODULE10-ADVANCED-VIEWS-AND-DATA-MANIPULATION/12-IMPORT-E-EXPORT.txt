@@ -756,3 +756,26 @@ A DATA...
 
 
 OK... FUNCIONOU....
+
+
+
+
+
+
+
+
+
+
+
+SINTAXE DE IMPORT/EXPORT:
+
+-- IMPORT from file
+COPY XXXX FROM yyy
+
+
+-- EXPORT to file
+COPY xxxx TO yyyyyy
+
+
+
+https://chat.openai.com/share/f83b2c65-9c78-4b47-aee7-9cb1cdb9d835
