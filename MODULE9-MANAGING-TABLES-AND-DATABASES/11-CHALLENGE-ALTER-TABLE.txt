@@ -290,3 +290,25 @@ RENAME COLUMN director_account_name TO account_name;
 
 ALTER TABLE director
 RENAME TO directors;
+
+
+
+
+
+
+
+
+
+
+MAS AGORA QUEREMOS VER UMA CONSTRAINT 
+
+INTERESSANTE QUE AINDA NAO 
+
+ESTUDAMOS,
+
+
+A CONSTRAINT DE "CHECK" (checks gerais)...
+
+
+
+VEREMOS ISSO NA PRÓXIMA AULA...
