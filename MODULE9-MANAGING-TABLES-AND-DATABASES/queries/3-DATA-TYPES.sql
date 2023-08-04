@@ -1,0 +1,517 @@
+
+
+
+
+
+
+
+
+ANTES DE CRIARMOS NOSSAS TABLES,
+
+
+
+PRECISAMOS FALAR SOBRE 
+
+DATA TYPES...
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> PRECISAMOS ENTENDER OS DIFERENTES DATA TYPES...
+
+
+
+
+
+
+
+
+
+
+
+--> OS DATA TYPES PODEM DIFERIR EM:
+
+
+
+1) STORAGE SIZE 
+
+
+
+
+2) ALLOWED VALUES 
+
+
+
+
+3) POSSIBLE OPERATIONS (diferentes functions que podem ser executadas, com cada data type)...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+COM ESSA  KNOWLEDGE,
+
+
+
+PODEMOS DECIDIR QUAL É O DATA TYPE APROPRIADO PARA NOSSAS COLUMNS 
+
+
+ESPECÍFICAS...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+EX: QUEREMOS ARMAZENAR ZIPCODES/PHONE NUMBERS --> VAMOS USAR STRINGS....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TEMOS:
+
+
+
+
+
+
+
+1) NUMERIC 
+
+
+
+2) STRINGS 
+
+
+
+
+3) DATE/TIME 
+
+
+
+
+
+
+4) OTHER ....
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> EXISTEM OUTROS, MAS SAO MENOS USADOS...
+
+
+
+
+
+
+
+
+
+
+NUMERIC:
+
+
+
+
+
+
+
+TYPE    STORAGE SIZE           RANGE                    Notes
+
+
+
+INT         4 bytes  -2147483658 to +2147483647         TYPICAL CHOICE 
+
+SMALL INT   2 bytes   -32768    to   +32767             SMALL integers 
+
+BIGINT       8 bytes   -9923372036854775808 to +xxxx   LARGE integers 
+
+NUMERIC      variable   up to 131072 digits before      user-defined precision.
+                        the decimal point 
+
+SERIAL      variable    1 TO 2147483467                 AUTOINCREMENTING INTEGER...
+
+
+
+
+
+
+
+
+
+obs:
+
+
+NUMERIC(precision, scale) 
+
+
+
+
+
+
+NUMERIC(<casas_totais>, <casas_depois_da_virgula)
+
+
+
+
+
+
+
+casas totais --> PRECISION 
+
+
+casas depois da virgula --> SCALE....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+O SERIAL AUTOMATICAMENTE ACRESCENTA 1 
+AO VALUE ANTERIOR, SEMPRE QUE 
+
+
+1 ROW É INSERIDO --> É TIPICAMENTE USADO COM ID/PRIMARY KEY COLUMNS...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> DEPOIS TEMOS STRINGS...
+
+
+
+
+
+
+TYPE            STORAGE SIZE                    NOTES
+
+
+VARCHAR()       VARIABLE_LENGTH WITH LIMIT 
+
+
+
+
+CHAR()          FIXED-LENGTH, BLANK PADDED      SPACE-PADDED
+
+
+
+
+
+
+TEXT            VARIABLE UNLIMITED LENGTH
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CHAR(n) NAO É RECOMENDADO... É SPACE PADDED ,
+
+
+
+O QUE QUER DIZER QUE A FIXED LENGTH 
+
+
+VAI OCUPAR MAIS ESPACO... 
+
+
+
+
+
+
+
+
+
+
+
+
+--> CHAR(N) -> NAO É MELHOR EM PERFORMANCE DO QUE OS OUTROS 
+
+DATA TYPES....
+
+
+
+
+
+
+
+
+
+
+
+
+VARCHAR(n) ---> less flexible to change....
+
+
+
+
+
+
+
+TEXT ---> É A MELHOR CHOICE, PQ É MAIS FLEXÍVEL DO QUE O VARCHAR()...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> ZIP CODES OR PHONE NUMBERS --> O DATA TYPE APROPRIADO 
+                                    É STRING...
+
+
+
+
+
+
+
+
+
+
+
+
+DATE/TIME data types...
+
+
+
+
+
+
+
+
+
+
+
+TYPE                DESCRIPTION                 EXAMPLE
+
+
+DATE                date, without time          '2022-11-28'
+
+
+TIME(TZ/NTZ)        time, without date          '01:02:03.678'
+
+
+TIMESTAMP           date and time               '2022-11-28 01:02:03.678+02'
+
+
+INTERVAL             Time interval              '3 days 01:02:03.678'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+POR FIM, TEMOS OUTROS DATA TYPES:
+
+
+
+
+
+
+
+
+
+OTHERS:
+
+
+
+
+
+
+
+type        DESCRIPTION                 EXAMPLE         RANGE
+
+
+
+
+BOOLEAN     state of true or false      is_in_stock     TRUE,FALSE, NULL
+
+
+
+
+enum        A value of a list of        movie_rating    ONLY USER-DEFINED VALUES ARE ALLOWED (like movie_rating, 'PG', 'G', 'A', etc)....
+
+                ordered values 
+
+
+array        STores a list of values     text[] or int[]        DEPENDING ON TYPE.
+
+
+
+
+
+
+
+
+                                        ARRAY --> {'+449292091', '+4412213123'}
+
+
+
+
+
+                    PODEMOS ACESSAR OS VALUES DENTRO DE ARRAYS EM SELECTS,
+                    BASTA ESCREVER ASSIM:
+
+                    SELECT name, phone[1] FROM customers;
+
+
+                    SE QUEREMOS ESCOLHER 1 VALUE DENTRO DE 1 ARRAY,
+                    escrevemos assim:
+
+
+                    SELECT name, phone[1] FROM customers
+                    WHERE '+42-667623423' = ANY(phones);
+
+
+
+
+
+
+
+
+OBS: enum, values que sao criados,
+
+eles sao ordenados na ordem específica do enum,
+
+
+
+e nao alfabeticamente...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ok.... mt teoria, agora devemos 
+
+
+
+resolver 1 quiz...
+
+
+
+
+
+
+
+
+
+
+
+--> depois devemos praticar....
