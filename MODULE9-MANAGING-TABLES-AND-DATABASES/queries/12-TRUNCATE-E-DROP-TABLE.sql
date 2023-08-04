@@ -1,0 +1,274 @@
+
+
+
+
+
+
+
+
+
+
+
+COM O COMANDO DE DROP, PODEMOS DELETAR 1 TABLE INTEIRA,
+
+
+
+COM 
+
+
+
+"DROP TABLE <table_name>"
+
+
+
+
+
+
+
+
+
+
+--> EM GERAL, PODEMOS USAR 
+
+ESSE COMANDO PARA DROPPAR QUALQUER 
+
+DATABASE OBJECT...
+
+
+
+
+
+
+
+
+ex:
+
+
+
+
+
+
+
+
+
+
+DROP <object> <object_name>
+
+
+
+
+
+
+
+
+EX:
+
+
+
+
+
+
+DROP SCHEMA some_schema;
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> TEMOS QUE TER MUITO CUIDADO COM O DROP..
+
+
+
+
+
+
+
+
+
+--> PQ GERALMENTE NAO É POSSÍVEL CONSEGUIR 
+
+
+ESSE OBJECT DE VOLTA,
+ QUANDO O DROPPAMOS DA DATABASE...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ --> DEPOIS TEMOS "TRUNCATE"...
+
+
+
+
+
+
+
+TRUNCATE TABLE <table_name>
+
+
+
+
+
+
+
+
+
+
+
+
+
+COM ISSO, PODEMOS TIRAR TODA A DATA DE 1 TABLE,
+
+
+MAS NAO DELETAMOS 
+
+A TABLE EM SI....
+
+
+
+
+
+
+
+
+
+
+
+
+
+-> O TRUNCATE FUNCIONA APENAS COM TABLES 
+
+
+INTEIRAS...
+
+
+
+
+
+
+
+--> OK, AGORA DEVEMOS TER 1 PEQUENO DEMO DISSO:
+
+
+
+
+
+
+
+
+
+
+
+
+-- Create table 
+CREATE TABLE empty_table (
+    emp_id SERIAL PRIMARY KEY,
+    emp_name TEXT
+);
+
+
+
+
+--Drop table 
+DROP empty_table;
+
+
+
+
+
+
+
+-- INSERT ROWS:
+INSERT INTO empty_table
+VALUES (
+    1, 'Frank',
+    2, 'Maria'
+);
+
+
+
+
+
+
+
+
+
+
+
+--Truncate table:
+TRUNCATE TABLE empty_table;
+
+
+
+
+
+
+
+
+
+
+
+
+
+TODA A DATA DA TABLE TERÁ SIDO REMOVIDA...
+
+
+
+
+
+
+
+
+
+
+
+
+
+-_> inserimos esses values de novo...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CERTO...
+
+
+
+
+
+
+
+É ASSIM QUE PODEMOS DROPPAR OBJECTS INTEIROS,
+
+E COMO PODEMOS DELETAR TODA A DATA DE 1 TABLE...
+
+
+
+
+
