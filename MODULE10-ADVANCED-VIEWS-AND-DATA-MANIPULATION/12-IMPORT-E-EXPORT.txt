@@ -1,0 +1,758 @@
+
+
+
+
+
+
+
+
+
+
+
+NAS ÚLTIMAS AULAS,
+
+VIMOS COMO PODEMOS 
+
+
+
+
+
+INSERIR DATA, USANDO COMANDOS,
+
+
+PARA DENTRO DE NOSSAS TABLES...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> MAS TAMBÉM PODEMOS USAR A FUNCIONALIDADE 
+
+
+DE
+
+
+
+"""IMPORT"" para importar data de 
+
+
+1 file externa,
+
+como 1 arquivo CSV....
+
+
+
+
+
+
+
+
+
+
+--> E ISSO NOS AJUDA 
+
+
+A IMEDIATAMENTE COLOCAR DATA NA TABLE,
+
+SE TIVERMOS ESSA DATA EM 
+
+
+1 ARQUIVO CSV...
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> MAS TAMBÉM EXISTEM CASOS 
+
+EM QUE 
+
+QUEREMOS __ EXPORTAR__ DATA DE 1 TABLE,
+
+PARA DENTRO 
+
+DE 
+1 
+
+ARQUIVO CSV,
+
+PARA 
+
+
+QUE OUTRAS PESSOAS, QUE NAO POSSUEM ACESSO À DATABASE,
+
+CONSIGAM TRABALHAR COM ESSA DATA...
+
+
+
+
+
+
+
+
+
+
+
+--> SE QUEREMOS 
+
+TRABALHAR 
+
+
+
+
+
+
+
+COM DATA IMPORTADA DE 1 ARQUIVO CSV,
+
+
+
+
+
+
+
+
+
+
+TEMOS QUE TER EM MENTE QUE 
+
+
+
+__ A TABLE __ PRECISA __ SER, PRIMEIRAMENTE,
+
+CRIADA 
+
+
+
+NO PGADMIN ... -> PQ ISSO NAO ACONTECE 
+
+
+
+DURANTE O PROCESSO DE IMPORT... -->  A TABLE 
+
+
+PRECISA 
+
+SER CRIADA 
+
+
+
+
+ANTERIORMENTE..
+
+
+
+
+
+
+
+
+
+
+--> PRECISAMOS CRIAR A TABLE MANUALMENTE,
+
+ANTES...
+
+
+
+
+
+
+
+
+
+
+
+
+--> ISSO PRECISA SER FEITO MANUALMENTE,
+
+POR NÓS...
+
+
+
+
+
+
+
+
+
+--> O QUE DEVEMOS TER CUIDADO 
+
+
+É QUE 
+
+
+
+
+__ TODA A DATA __ DEVE ESTAR NO FORMATO CORRETO,
+
+
+
+
+O DATA TYPE DAS COLUMNS DO ARQUIVO CSV 
+
+
+TEM QUE 
+
+
+SER 
+
+EXATAMENTE O MESMO 
+
+
+
+
+DA TABLE QUE 
+
+TEMOS DE CRIAR...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> 
+
+
+
+
+
+
+
+PRIMEIRAMENTE,
+VAMOS CRIAR A TABLE...
+
+
+
+
+SERÁ ESTA:
+
+
+
+
+
+
+
+CREATE TABLE sales (
+    transaction_id SERIAL PRIMARY KEY,
+    customer_id INT,
+    payment_type VARCHAR(20),
+    creditcard_no VARCHAR(20),
+    cost DECIMAL(5,2),
+    quantity INT,
+    price DECIMAL(5,2)
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OK... ISSO CRIOU A TABLE DE SALES...
+
+
+
+
+
+
+
+
+
+
+
+--> SE QUERIARMOS ESSA TABLE,
+
+ELA ESTARÁ VAZIA...
+
+
+
+
+
+
+
+
+
+--> MAS O PROFESSOR TEM 1 ARQUIVO CSV 
+COM A DATA QUE 
+
+
+VAMOS INSERIR NESSA TABLE....
+
+
+
+
+
+
+
+
+
+--> É UM CSV FILE 
+
+
+
+COM 
+
+
+
+
+O EXATO NÚMERO DE COLUMNS QUE 
+
+
+TEMOS 
+LÁ NA 
+
+TABLE 
+
+
+
+NA DATABASE...
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> MAS UMA COISA:
+
+
+
+
+
+
+
+OS COLUMN NAMES 
+
+DO ARQUIVO CSV 
+
+
+
+
+NAO SAO OS MESMOS NOMES DAS COLUMNS NA TABLE...
+
+
+
+
+
+
+
+
+
+
+
+
+
+MAS ISSO NAO É UM PROBLEMA...
+
+
+
+
+
+PQ A DATA/COLUMNS NAO SERÁ MATCHEADA PELO 
+
+NOME 
+
+DAS COLUMNS,
+
+
+
+E SIM SERÁ MATCHEADA  
+
+
+POR MEIO DA _ ORDEM _ DAS COLUMNS...
+
+
+
+
+
+
+
+
+
+-----------------------------
+
+
+
+
+
+
+
+OK, MAS COMO PODEMOS IMPORTAR ESSA FILE?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PRECISAMOS TER O FILE PATH...
+
+
+
+
+
+OU SEJA,
+O LOCAL EM QUE 
+
+
+ESSE ARQUIVO ESTÁ ARMAZENADO, NA NOSSA MÁQUINA...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> OK... ISSO É RELATIVAMENTE SIMPLES...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+MAS COMO PODEMOS IMPORTAR TODA ESSA DATA?
+
+
+
+
+
+
+
+
+
+
+
+PODEOMS USAR A GUI... --> 
+
+
+
+
+
+
+
+
+NA GUI,
+
+
+
+PODEMOS IMPORTAR OU EXPORTAR,
+
+BASTA CLICAR 
+COM O BOTAO DIREITO 
+NA TABLE EM QUE 
+
+
+QUEREMOS RODAR ESSAS OPERACOES...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> OK.... PEGAMOS NOSSO ARQUIVO....
+
+
+
+
+
+
+
+-> O formato será csv, normal...
+
+
+
+
+--> também temos BINARY  e TEXT...
+
+
+
+
+-_> o encoding geralmente é UTF-8
+
+
+
+
+
+
+
+
+
+
+
+
+TENTEI IMPORTAR, MAS O PROCESSO DE IMPORT FALHOU...
+
+
+
+
+
+
+
+
+ACHO QUE FALHOU POR CONTA DO __HEADER___...
+
+
+
+
+
+
+
+
+
+
+--> ISSO É A MESMA COISA QUE "SKIP_HEADER"...
+
+
+
+
+
+--> DEVEMOS COLOCAR "sim",
+
+
+
+pq 
+
+
+
+nosso arquivo contém 1 HEADER...
+
+
+
+
+
+
+
+
+OK... AGORA CONSEGUI IMPORTAR COM SUCESSO...
+
+
+
+
+
+
+
+
+
+
+
+
+--> PQ O HEADER DEVE SER IGNORADO,
+
+
+DEVE SER SKIPPED...
+
+
+
+
+
+
+
+
+
+
+-_> DEPOIS DISSO, TEMOS QUE ESCOLHER 1 DELIMITER..
+
+
+
+
+
+
+
+
+
+
+NO NOSSO CASO,
+
+
+
+OS VALUES SAO SEPARADOS POR ","...
+
+
+
+
+
+
+
+--> POR ISSO COLOCAMOS UM ","...
+
+
+
+
+
+
+
+EM COLUMNS,
+
+nao precisamos ajustar mais nada....
+
+
+
+
+
+
+
+
+
+AGORA A DATA TERÁ SIDO IMPORTADA..
+
+
+
+
+
+
+
+
+
+
+
+
+AGORA QUEREMOS VER COMO PODEMOS EXPORTAR A DATA...
+
+
+
+
+
+
+
+
+
+
+--> DIGAMOS  QUE QUEREMOS EXPORTAR 
+
+A DATA...
+
+
+
+
+
+
+
+
+
+
+--> CLICAMOS NA OPCOA DE "EXPORT"...
+
+
+
+
+
+
+
+--> COLOCAMOS O NOME DO ARQUIVO A QUE QUEREMOS EXPORTAR,
+
+
+ E AÍ COLOCAMOS "HEADER",
+
+ marcamos a checkbox,
+
+
+ E AÍ 
+
+
+
+ SELECIONAMOS AS COLUMNS QUE QUEREMOS EXPORTAR...
+
+
+
+
+
+
+
+ isso vai exportar a data,
+
+ nada de mais....
+
+
+
+
+
+
+
+
+
+
+
+
+OK... FUNCIONOU....
