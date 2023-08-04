@@ -1,0 +1,227 @@
+
+
+
+
+
+
+
+AGORA 
+
+FALAREMOS SOBRE PRIMARY E FOREIGN KEYS....
+
+
+
+
+
+
+
+--> SAO 2 CONSTRAINTS MT ESPECÍFICSA,
+
+
+
+E CONCEITOS 
+
+IMPORTANTES DE DATABASES...
+
+
+
+
+
+
+
+
+
+
+
+PRIMARY KEY --> GERALMENTE É 1 COLUMN,
+
+MAS PODE SER MÚLTIPLAS (combinacao de columns),
+
+
+
+
+QUE 
+
+
+
+IDENTIFICA CADA ROW DE 1 TABLE (unique)...
+
+
+
+
+
+
+
+
+
+
+-> NO CASO DAS NOSSAS TABLES,
+
+
+
+TEMOS A TABLE DE FILM,
+
+QUE TEM O "film_id"
+
+
+
+como PRIMARY KEY (PK) -------> PODEMOS PROCURAR CADA ROW 
+
+POR MEIO 
+
+DA PRIMARY KEY...
+
+
+
+
+
+
+
+
+---------> PARA QUE 
+
+
+1 COLUMN SEJA UMA PRIMARY KEY,
+
+
+PRECISAMOS DE 2 CONDICOES:
+
+
+
+
+
+
+
+
+1) A COLUMN DEVE SER UNIQUE 
+
+
+
+
+
+
+
+2) A COLUMN NAO DEVE ACEITAR VALUES NULL (NOT NULL CONSTRAINT)
+
+
+
+
+
+
+
+
+
+
+
+
+JÁ A FOREIGN KEY:
+
+
+
+
+
+
+
+
+
+
+--> É UMA COLUMN (ou uma combinacao de columns)
+
+
+
+QUE SE REFERE A 1 PRIMARY KEY _DE OUTRA TABLE...
+
+
+
+
+
+
+
+
+
+
+
+
+------------> em 'payment', temos 'customer_id' --> ESSA É A FOREIGN_KEY ....
+
+
+
+
+A "pARENT TABLE" É CHAMADA DE "REFERENCED TABLE".... (customer, no caso)...
+
+
+
+
+
+
+REFERENCING TABLE É A CHILD TABLE (payments, no caso)...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> MAS O PROFESSOR TEM MAIS NOTES:
+
+
+
+
+
+
+
+
+
+1) FOREIGN KEYS NAO PRECISAM, NECESSARIAMENTE,
+
+SEREM UNIQUE...
+
+
+
+
+2) podemos ter múltiplas foreign keys, em 1 mesma table (relacionando 
+aquela table/rows/entidade com MÚLTIPLAS TABLES/entidades)
+
+
+
+
+3) PRIMARY AND FOREIGN KEYS (PK e FK) ARE USUALLY 
+THE COLUMNS  USED TO JOIN TABLES...
+
+
+
+
+
+4) THE PRIMARY KEY AND FOREIGN KEYS 
+
+CAN _ BE CREATED _ALSO __ IN TABLE CREATION PROCESS..
+
+
+
+
+
+
+
+
+
+
+
+---> OK.. COM ESSE CONHECIMENTO, PODEMOS 
+
+CRIAR NOSSAS TABLES...
+
+VEREMOS ISSO NA PRÓXIMA AULA...
+
