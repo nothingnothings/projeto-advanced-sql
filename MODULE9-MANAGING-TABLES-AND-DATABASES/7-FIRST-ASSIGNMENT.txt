@@ -1,0 +1,52 @@
+Create a table called online_sales 
+with the following columns:
+
+transaction_id
+
+customer_id
+
+film_id
+
+amount
+
+promotion_code
+
+Transaction_id shoul be the primary key.
+The columns customer_id and film_id should be foreign keys to the relevant tables.
+The amount column can contain values from 0.00 to 999.99 - nulls should not be allowed.
+The column promotion_code contains a promotion code of at maximum 10 characters. If there is no value you should set the default value 'None'.
+
+Create that table and choose appropriate data types and constraints!
+
+Questions for this assignment
+What data type you think is appropriate for the transaction_id column?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE online_sales (
+    transaction_id SERIAL PRIMARY KEY,
+    customer_id INT REFERENCES customer(customer_id),
+    film_id INT REFERENCES film(film_id),
+    amount (5, 2) NOT NULL,
+    promotion_code VARCHAR(10) DEFAULT 'None'
+);
+
+
+
+
+The appropriate data type is SERIAL
