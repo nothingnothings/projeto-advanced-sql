@@ -1,0 +1,69 @@
+
+
+
+
+
+
+
+O PROFESSOR QUER QUE DELETEMOS 
+
+
+OS 
+
+
+ROWS 
+
+
+
+
+DE IDS 17064 E 17067..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> PODEMOS FAZER ISSO COM 
+ESTE CÓDIGO:
+
+
+
+
+
+
+SELECT * FROM payment 
+WHERE payment_id IN (17064, 17067);
+
+
+
+
+
+DELETE FROM payment 
+WHERE payment_id IN (17064, 17067);
+
+
+
+
+
+
+
+
+
+
+OK, SUCESSO...
+
+
+
+
+
+
