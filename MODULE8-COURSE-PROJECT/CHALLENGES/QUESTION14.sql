@@ -201,4 +201,4 @@ WHERE c.name=sub.name
 
 
 
-ok... muito difícil...
+ok... muito difícil... mas fazível

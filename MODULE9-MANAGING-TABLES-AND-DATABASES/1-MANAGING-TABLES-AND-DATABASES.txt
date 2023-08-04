@@ -1,0 +1,211 @@
+
+
+até agora só trabalhamos com data/tables que já existiam....
+
+
+
+
+
+
+
+
+
+
+
+mas agora veremos como melhorar nossas habilidades,
+
+
+como podemos fazer CREATE 
+
+
+DE DATABASES, TABLES SCHEMAS E OUTROS OBJECTS...
+
+
+
+
+
+
+
+
+
+
+
+
+--> TAMBÉM VEREMOS COMO PODEMOS "ALTER" DATABASES,
+TABLES E SCHEMAS..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> POR FIM, VEREMOS COMO PODEMOS DROPPAR DATABASES --> É UM COMANDO
+ 
+ BEM SIMPLES,
+
+
+ MAS É BEM RARO 
+
+ DROPPARMOS OBJECTS..
+
+
+
+
+
+
+
+
+
+
+ ""DATA DEFINITION"" --> COMO DEFINIR O NOME DAS TABLES,
+
+
+
+ AS PROPRIEDADES DAS TABLES,
+
+
+ AS DATABASE PROPERTIES... TUDO ISSO NAO LIDA COM A DATA EM SI,
+
+
+
+ E SIM COM SUA ESTRUTURA...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ DATA DEFINITION --> CREATE, ALTER  E DROP... (data structures)
+
+
+
+
+
+
+
+DATA MANIPULATION --> SAO INSERT, UPDATE, DELETE...
+
+
+
+
+
+
+
+DEALS WITH THE DATA ITSELF...
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> AGORA APRENDEREMOS TUDO SOBRE DATA DEFINITION...
+
+
+
+
+
+
+
+
+
+
+-----> PROFESSOR TAMBÉM FALARÁ SOBRE DATA TYPES....
+
+
+
+
+
+
+
+
+
+--> TAMBÉM CONSTRAINTS...
+
+
+
+
+
+
+
+
+--> UMA CONSTRAINT COMUM É _PRIMARY KEYS, FOREIGN KEYS....
+
+
+
+
+
+
+
+
+
+
+
+
+--> TAMBÉM VEREMOS VIEWS...
+
+
+
+
+
+
+
+
+
+
+--> DEPOIS DISSO TEREMOS BASTANTE CONHECIMENTO SOBRE O MANAGE DE TABLES...
+
+
+
+
+
+DATA DEFINITION E DATA MANIPULATION...
+
+
+
+
+
+
+
+
+
+
+
+--> aGORA VAMOS COMECAR COM O COMANDO DE CREATE,
+
+
+
+QUE USAREMOS PARA CRIAR UMA NOVA DATABASE 
+
+PARA 
+
+MANIPULAR DATA...
+
+
+
+
