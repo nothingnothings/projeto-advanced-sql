@@ -589,28 +589,16 @@ TEMOS NA HIERARQUIA...
 
 
 
-
-
-
-
- SELECT
- 'Q' || TO_CHAR(payment_date, 'Q') AS quarter,
- EXTRACT(month from payment_date) AS month,
- DATE(payment_date) AS day,
- SUM(amount)
- FROM payment
- GROUP BY 
-    ROLLUP(
- 'Q' || TO_CHAR(payment_date, 'Q') AS quarter,
- EXTRACT(month from payment_date) AS month,
- DATE(payment_date) AS day
-    )
-ORDER BY 1,2,3;
-
-
-
-
-
+SELECT 
+CONCAT('Q', TO_CHAR(book_date, 'Q')) AS quarter,
+EXTRACT('Month' from book_date) AS month,
+TO_CHAR(book_date, 'W') AS week_in_month,
+DATE(book_date) AS day,
+SUM(total_amount)
+FROM bookings 
+GROUP BY 
+    ROLLUP(quarter, month, week_in_month, day)
+ORDER BY 1, 2, 3, 4;
 
 
 
