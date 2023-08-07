@@ -174,3 +174,74 @@ FROM customer_list
 WHERE rank IN (1,2,3);
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+O PROFESSOR RESOLVEU ASSIM:
+
+
+
+
+
+
+
+
+
+
+
+SELECT
+name,
+country,
+COUNT(*),
+RANK() OVER(PARTITION BY country ORDER BY count(*) DESC)
+FROM customer_list
+LEFT JOIN payment
+ON id=customer_id
+GROUP BY name, country;
+
+
+
+
+
+
+
+
+
+
+
+MAS SE QUEREMOS FILTRAR, COMO O PROFESSOR 
+
+NOS EXPLICOU, PRECISAMOS TRANSFORMAR ISSO EM 
+1 SUBQUERY:
+
+
+
+
+
+
+SELECT * FROM 
+(
+SELECT
+name,
+country,
+COUNT(*),
+RANK() OVER(PARTITION BY country ORDER BY count(*) DESC)
+FROM customer_list
+LEFT JOIN payment
+ON id=customer_id
+GROUP BY name, country
+) AS result_set
+WHERE rank IN (1,2,3)
+
