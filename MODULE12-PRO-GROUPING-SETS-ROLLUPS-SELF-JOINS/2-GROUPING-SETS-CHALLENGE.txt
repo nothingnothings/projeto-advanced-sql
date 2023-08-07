@@ -24,3 +24,73 @@ PER CUSTOMER...
 
 
 
+
+
+
+
+
+ACHO QUE COMECAMOS ASSIM:
+
+
+
+
+
+
+
+
+
+
+SELECT
+CONCAT(first_name, ' ', last_name) AS name,
+staff_id,
+SUM(amount) 
+FROM payment AS p
+LEFT JOIN customer AS c
+ON p.customer_id=c.customer_id
+GROUP BY 
+    GROUPING SETS (
+        (name, staff_id),
+        (name)
+    );
+
+
+
+
+
+
+
+bem simples, e funciona....
+
+
+
+
+
+
+
+
+
+
+SOLUCAO DO PROFESSOR:
+
+
+
+
+
+
+
+
+
+
+SELECT
+first_name,
+last_name,
+staff_id,
+SUM(amount)
+FROM customer AS c 
+LEFT JOIN payment AS p
+ON c.customer_id=p.customer_id
+GROUP BY 
+    GROUPING SETS (
+        (first_name, last_name),
+        (first_name, last_name, staff_id)
+    );
