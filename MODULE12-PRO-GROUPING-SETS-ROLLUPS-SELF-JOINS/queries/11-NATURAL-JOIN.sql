@@ -1,0 +1,302 @@
+
+
+
+
+
+
+
+
+NESSA AULA,
+
+ESTUDAREMOS O NATURAL JOIN...
+
+
+
+ELE NAO É NADA DE NOVO,
+
+
+MAS PODE DEIXAR NOSSO TRABALHO BEM MAIS FÁCIL....
+
+
+
+
+
+
+
+
+NATURAL JOIN:
+
+
+
+
+
+
+
+
+1) FUNCIONA COMO 1 JOIN NORMAL....
+
+
+
+
+
+
+
+
+
+
+
+2) MAS PODE SALVAR MT TRABALHO,
+
+
+
+PQ 
+
+
+ELE 
+
+FAZ 
+
+"""JOIN AUTOMÁTICO DE COLUMNS 
+QUE TENHAM O MESMO COLUMN NAME""...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> se tivermos 2 tables com os mesmos column 
+
+names  para as joined columns,
+
+PODEMOS USAR O NATURAL JOIN,
+
+PARA 
+
+
+ECONOMIZARMOS TEMPO...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SUA SINTAXE É ASSIM:
+
+
+
+
+
+
+
+
+SELECT 
+*
+FROM payment 
+NATURAL LEFT JOIN customer;
+
+
+
+
+
+
+
+
+
+
+
+
+--> ISSO FUNCIONA _ SIMPLESMENTE _ PQ TEMOS 
+
+"customer_id"
+
+NESSAS 2 TABLES.... COM ISSO, AS 2 
+
+
+TABLES SAO JOINADAS A PARTIR DO CUSTOMER_id,
+
+
+PQ O NATURAL JOIN DETECTA 
+
+
+QUE AS 2 COLUMNS POSSUEM O MESMO NOME...
+
+
+
+
+
+
+
+
+
+
+
+
+--> E O NATURAL JOIN FUNCIONA TNATO COM INNER 
+
+COMO LEFT/RIGHT JOINS....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> O PROFESSOR EXEMPLIFICA ASSIM:
+
+
+
+
+
+
+
+
+
+
+
+SELECT 
+*
+FROM payment 
+NATURAL INNER JOIN customer;
+
+
+
+
+
+
+
+
+
+
+
+
+PODERÍAMOS ESCREVER ASSIM:
+
+
+
+
+
+SELECT 
+first_name,
+last_name,
+SUM(amount)
+FROM payment 
+NATURAL INNER JOIN customer 
+GROUP BY first_name, last_name;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> OU SEJA,
+ISSO NOS AJUDA A EVITAR 1 MONTE DE DIGITACAO,
+ISSO SE 
+TIVERMOS CERTEZA QUE 
+
+
+OS COLUMN NAMES ENTRE AS TABLES SAO EXATAMENTE OS MESMOS...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--. MAS ISSO PODE TRAZER PROBLEMAS...
+
+
+
+
+
+
+
+
+
+--> SE TIVERMOS 
+
+
+
+COLUMN NAMES DIFERENTES NAS 2 TABLES,
+
+O NATURAL JOIN VAI FALHAR....
+
+
+
+
+
+
+--> OUTRO PROBLEMA:
+
+
+
+
+
+SE VC 
+TIVER 2 PARES DE COLUMN,
+
+OS 2 COM MESMO NOME (
+    como "create_date" e "update_date"
+),
+
+
+O NATURAL JOIN É BURRO E PODE SE CONFUNDIR,
+
+TENTAR JOINAR POR 
+
+
+"CREATE_DATE" E "UPDATE_dATE",
+
+
+em vez de algo como "customer_id"
+
+ou 
+
+"address_id"...
+
+
+
