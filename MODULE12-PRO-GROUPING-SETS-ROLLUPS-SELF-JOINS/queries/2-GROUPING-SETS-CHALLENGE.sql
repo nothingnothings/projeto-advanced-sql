@@ -1,0 +1,26 @@
+
+
+EIS A CHALLENGE:
+
+
+
+
+
+
+
+
+
+
+WRITE A QUERY THAT RETURNS THE SUM OF THE AMOUNT 
+FOR EACH CUSTOMER (first_name and last_name) AND 
+EACH STAFF_ID.... ALSO ADD THE OVERALL REVENUE 
+
+PER CUSTOMER...
+
+
+
+
+
+
+
+
