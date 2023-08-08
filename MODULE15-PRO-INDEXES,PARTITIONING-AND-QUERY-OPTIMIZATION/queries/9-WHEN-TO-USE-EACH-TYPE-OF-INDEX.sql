@@ -1,0 +1,488 @@
+
+
+
+
+
+
+
+
+
+
+
+
+NAS AULAS ANTERIORES,
+
+VIMOS QUE INDEXES NOS AJUDAM A FAZER GET DA DATA 
+
+MAIS RAPIDAMENTE 
+
+
+LÁ DAS DATABASES...
+
+
+
+
+
+
+
+QUER DIZER QUE 
+
+ELAS MELHORAM A PERFORMANCE DE READ DE NOSSAS DATABASES...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> ESTUDAMOS, PRIMEIRAMENTE,
+
+O 
+
+B-TREE INDEX..
+
+
+
+
+
+
+
+
+
+
+
+--> ESSE É O TIPO DE INDEX DEFAULT....
+
+
+
+
+
+É O MAIS USADO..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+USE O B-TREE INDEX QUANDO:
+
+
+
+
+1) VOCE TIVER ALTA CARDINALIDADE (variancia de values,
+mtos values diferentes)... SURROGATE KEYS, TIPO ISSO... 
+
+(GERALMENTE AS PRIMARY KEYS DE NOSSAS TABLES POSSUEM ESSE INDEX)
+
+
+2)  TAMBÉM PODEMOS COLOCAR ESSE TIPO DE INDEX EM PHONE NUMBERS,
+EM ADDRESSES, EM FULL NAMES (pq raramente existirão duplicatas)...
+
+
+
+
+
+
+--> B-TREE INDEX --> POR DEFAULT,
+
+É SETTADO NA NOSSA PRIMARY KEY,
+
+NAO PRECISAMOS 
+DEFINÍ-LO EXPLICITAMENTE...
+
+
+
+
+
+
+--> SE TEMOS 1 PRIMARY KEY NA NOSSA DATABASE,
+
+
+GERALMENTE JÁ EXISTIRÁ 1 INDEX B-TREE ASSIGNADO A ELE....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+USE O BITMAP INDEX QUANDO:
+
+
+
+
+
+
+1) VOCE NAO TIVER _ MTOS UPDATES/INSERTS/DELETES 
+
+NA SUA DATABASE...  (pq reduz a performance de write)...
+
+
+
+
+
+
+
+
+
+2) A VANTAGEM É QUE 
+
+ELE __ É SUPER PERFORMANCE EFFICIENT,
+
+PQ ELE ARMAZENA A ROW LOCATION COM BITS (0 1 010 10 01)...
+
+
+
+
+
+
+3) ELE TAMBÉM AUMENTA 
+
+
+MUITO A READ PERFORMANCE...
+
+
+
+
+
+
+4) DEVE SER USADO QUANDO TEMOS 2-3 values
+
+QUE SEMPRE SE REPETEM EM 1 MESMA COLUMN....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> PRIMEIRA PERGUNTA:
+
+
+
+
+
+""DEVEMOS COLOCAR INDEXES EM TODAS AS COLUMNS?""
+
+
+
+
+
+NAO!!!!
+
+
+PQ NAO?
+
+
+
+
+
+
+1) PQ ELES TRAZEM COSTS DE STORAGE EXTRA ..(significativo)...
+
+
+
+
+
+
+2) NA CREATION + UPDATE 
+
+
+DE DATA, ELES DEIXAM 
+
+
+ESSAS ACOES 
+
+MAIS LENTAS (fazem slow down 
+dos updates e inserts)...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+apenas devemos usar indexes se eles forem necessários (
+
+    SE ESTIVERMOS COM PERFORMANCE BAIXA DEVIDO 
+
+a FULL TABLE SCANS...
+)
+
+
+
+
+
+
+
+
+
+
+
+
+--> PQ COM INDEXES,
+
+CONSEGUIMOS EVITAR FULL-TABLE SCANS....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+A PRIMEIRA GUIDELINE --> TABLES PEQUENAS 
+
+
+NAO 
+
+__ DEMANDAM INDEXES... ISSO É UM EXAGERO...
+
+
+
+
+
+
+
+
+
+
+TABLES PEQUENAS NAO SAO LENTAS O SUFICIENTE PARA EXIGIREM INDEXES....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-> USE INDEXES APENAS EM 
+TABLES MT LARGAS... 
+
+
+
+
+
+
+
+
+-> E USE INDEXES ESPECIALMENTE 
+
+
+SE 
+
+
+VC EXPERENCIAR 1 LOW QUERY PERFORMANCE,
+
+E SE VC 
+PRECISAR FILTER SUA DATA 1 MONTE...
+.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+RESUMO,
+
+USE INDEXES SE:
+
+
+
+
+
+
+
+1) VC TEM LARGE TABLES ....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+EM QUE 
+
+COLUMNS _ DEVEMOS __ COLOCAR  INDEXES?
+
+
+
+
+
+
+
+
+
+
+
+
+
+2) VC DEVE COLOCAR INDEXES 
+
+
+NAS COLUMNS DE TABLES QUE 
+
+
+FREQUENTEMENTE SAO 
+
+"FILTERED BY" (com where)...
+
+
+
+
+
+
+
+
+
+
+
+
+--> POR EXEMPLO,
+
+"customer_id"
+
+
+É __ FREQUENTEMENTE 
+
+
+
+QUERIADO COM "WHERE" -->  
+
+
+
+
+
+
+EX: 
+
+"pegue apenas 10% da data,
+
+
+
+todos os users de customer_id maior do que 100 mas menores do que 200"....
+
+--> NESSE CASO, TER UM B-TREE INDEX É REALMENTE VANTAJOSO...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----> AGORA VEREMOS COMO PODEMOS AUMENTAR a
+PERFORMANCE DE NOSSAS DATA WAREHOUSES, USANDO INDEXES...
+
+
+
+(na próxima aula...)
+
+
+
+
+
+
+--> VEREMOS COMO AUMENTAR A PERFORMANCE DE 1 COLUMN ESPECÍFICA,
+
+EM 1 TABLE...
