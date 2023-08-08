@@ -1,0 +1,580 @@
+
+
+
+
+
+
+
+
+
+nessa lecture,
+
+
+queremos dar 1 breve olhada 
+
+
+UNDER THE HOOD DE NOSSO 
+
+DATABASE MANAGEMENT SYSTEM...
+
+
+
+
+
+
+VEREMOS:
+
+
+
+
+
+1) EXECUTION PLAN 
+
+
+
+
+
+
+
+2) QUERY OPTIMIZER 
+
+
+
+
+
+
+3) EXPLAIN feature (do pgadmin)...
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> SE QUEREMOS ENTENDER COMO NOSSA QUERY É EXECUTADA UNDER THE HOOD,
+
+
+DEVEMOS OLHAR O 'EXECUTION PLAN'..
+
+
+
+
+--> O EXEC PLAN 
+
+
+
+
+
+NOS DIZ 
+
+
+AS STEPS E ORDER OF STEPS 
+EXECUTADAS 
+
+
+PARA REALIZAR 1 GIVEN QUERY....
+
+
+
+
+
+
+
+
+
+------> MTAS VEZES DIFERENTES METHODS/MANEIRAS 
+
+SAO USADAS PARA CONSEGUIR A DATA 
+
+NO OUTPUT...
+
+
+
+
+
+
+
+
+---> O TRABALHO DO QUERY OPTIMIZER É 
+
+
+JUSTAMENTE 
+
+__ ENCONTRAR _ A MELHOR MANEIRA 
+
+
+DE RETRIEVAR A DATA, COM A MELHOR PERFORMANCE....
+
+
+
+
+
+
+
+
+
+
+--> PODEMOS USAR A TOOL DE "EXPLAIN"
+PARA 
+
+VER ESSE EXECUTION PLAN...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+IMAGINE ESTE CÓDIGO:
+
+
+
+
+
+
+
+
+SELECT * FROM payment;
+
+
+
+
+
+
+
+
+
+
+ESSA QUERY É SUPER 
+
+SIMPLES... ------> O EXECUTION PLAN NAO É DEFINITIVO...
+
+
+
+
+
+
+
+
+
+--> PARA CONSEGUIRMOS O ACTUAL PLAN, USADO 
+
+EM REAL TIME,
+
+
+PRECISAMOS USAR 
+
+O "EXPLAIN ANALYZE" DO POSTGRESQL -. COM ISSO,
+
+A QUERY  SERÁ 
+
+
+EXECUTADA E ANALISADA EM REAL TIME --> E ISSO NOS DÁ 
+
+
+
+MELHORES ESTIMATIVAS DE COMO 
+
+
+A QUERY FUNCIONA...
+
+
+
+
+
+-> basta clicar na caixa de "timing"... --> A QUERY 
+
+
+
+
+COM A CORRELATED SUBQUERY DEMORA BEM MAIS:
+
+
+
+
+
+
+
+
+
+
+ SELECT,
+ (SELECT AVG(amount)
+ FROM payment AS p2
+ WHERE p2.rental_id=p1.rental_id)
+ FROM payment AS p1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> AÍ TEMOS TODAS AS STEPS,
+
+
+VEMOS QUE 
+
+
+
+
+
+O SCAN USADO FOI "SEQUENTIAL SCAN",
+
+
+depois houve 1 append,
+
+depois 1 aggregation,
+
+
+
+E AÍ 
+
+
+
+
+
+
+PERCEBEMOS QUE 
+
+
+O SEQUENTIAL SCAN 
+
+
+TOMOU 
+
+
+
+GRANDE PARTE DO TEMPO (o append demorou bem menos)...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> O SEQUENTIAL SCAN NEM SEMPRE É A MANEIRA MAIS 
+EFETIVA 
+
+
+DE 
+
+
+RETRIEVAR DATA DE 1 TABLE..
+
+
+
+
+
+
+--> PERDEMOS TEMPO COM ESSE SEQUENTIAL SCAN...
+
+
+
+
+
+----> A COLUMN DE "FILTER"
+
+
+MTAS VEZES NOS INDICA COLUMNS 
+
+QUE 
+
+PODERIAM 
+
+
+SE BENEFICIAR 
+
+
+DE INDEXES, PARA MELHORAR A PERFORMANCE....
+
+
+
+
+
+
+
+
+
+
+--> NO CASO,
+
+ELA NOS MOSTRA A COLUMN DE "rental_id"...
+
+
+
+
+
+
+
+
+
+
+
+--> PODEMOS COLOCAR 1 INDEX NESSE RENTAL ID,
+
+COM ESTE CÓDIGO:
+
+
+
+CREATE INDEX index_rental_id_payment
+ON payment
+(rental_id);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DEPOIS DISSO,
+
+PODEMOS ANALISAR O 
+
+
+QUERY PLAN --> terá sido bem mais rápido,
+
+
+
+E AGORA 
+
+
+
+TEREMOS USADO 1 INDEX SCAN,
+
+E NAO 
+
+1 
+
+
+SEQUENTIAL SCAN...
+
+
+
+
+
+
+
+
+
+
+
+--> O INDEX SCAN SALVA GRANDE PARTE DO TEMPO DE NOSSA QUERY...
+
+
+
+
+
+
+
+-> ok.... agora temos um exemplo com outra query...
+
+
+
+
+
+
+
+
+
+
+
+DIGAMOS ESTE SELECT:
+
+
+
+
+
+
+
+SELECT rental_id FROM payment 
+WHERE rental_id BETWEEN 1 AND 22;
+
+
+
+
+
+
+
+
+
+
+
+
+--> VEREMOS QUE 
+
+TEREMOS TIDO 1 "INDEX ONLY SCAN" --> ISSO QUER DIZER QUE 
+
+TODA A INFO NECESSÁRIA JÁ FOI EXTRAÍDA 
+
+DO INDEX EM SI,
+
+
+
+
+A TABLE EM SI NAO FOI USADA PARA RETRIEVAR 
+
+O RESULTADO,
+
+APENAS O INDEX FOI UTILIZADO....
+
+
+
+
+
+
+
+
+
+----------------
+
+
+
+
+
+
+
+
+
+
+
+
+FINALMENTE,
+O PROFESSOR USA 1 JOIN:
+
+
+
+
+
+
+
+
+
+SELECT * FROM payment 
+LEFT JOIN customer 
+ON customer.customer_id=payment_customer_id;
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> O LEFT JOIN USA O "HASH JOIN" -> geralmente é o melhor,
+
+em termos de performance...
+
+
+
+
+
+
+
+
+--> ENTRETANTO, SE TEMOS  ALGUMAS SITUACOES DIFERENTES,
+COMO DIFERENTES 
+
+
+FILTERINGS,
+
+
+DIFERENTES TIPOS DE JOINS,
+
+
+
+
+
+UM OUTRO ALGORITMO,
+
+MAIS OPTIMIZADO,
+
+
+SERÁ UTILZIADO PELO QUERY OPTIMIZER...
+
+
+
+
+
+
+
+ex:
+
+
+
+SELECT * FROM payment 
+LEFT JOIN customer 
+ON customer.customer_id=payment.customer_id
+WHERE payment.customer_id BETWEEN 4 AND 50
+ORDER BY 1 
+LIMIT 100;
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> MAS SE QUEREMOS MELHORAR A QUERY PERFORMANCE,
+
+
+
+PODEMOS REALMENTE ESTUDAR OS OPTIMIZERS/ANALYZERS,
+
+
+PARA AÍ PENSARMOS EM INDEXES, ETC...
