@@ -1,0 +1,627 @@
+
+
+A SINTAXE PARA CRIAR NOVOS USERS 
+
+É BEM SIMPLES...
+
+
+
+
+
+
+
+
+É ASSIM:
+
+
+
+
+
+
+
+CREATE OR REPLACE USER <user_name>
+WITH PASSWORD 'pwd123';
+
+
+
+
+
+
+
+
+
+
+
+
+
+MAS O PROFESSOR QUER MENCIONAR 2 COISAS QUE SAO IMPORTANTES 
+
+
+DE ENTENDER...
+
+
+
+
+
+
+
+
+
+
+
+
+
+1a coisa) --------_> POR DEFAULT,
+
+QUANDO CRIAMOS 1 DATABASE,
+
+SEMPRE HÁ 
+
+O SCHEMA DE 
+
+"PUBLIC" CRIADO...
+
+
+
+
+--> SEMPRE QUE CRIARMOS NOVOS USERS,
+
+ESSES USERS SEMPRE SERAO CAPAZES DE USAR O SCHEMA DE 
+
+"PUBLIC" --> QUER DIZER QUE 
+
+ELES SERAO 
+
+CAPAZES 
+
+
+DE __ CRIAR __ OBJECTS DENTRO DESSE SCHEMA,
+
+
+E 
+
+
+SERAO CAPAZES DE VER ESSES OBJECTS, NESSE SCHEMA...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> É POR ISSO QUE MAIS TARDE VEREMOS COMO PODEMOS 
+
+"REVOKE"
+
+PRIVILEGES DE USERS...
+
+
+
+
+
+
+
+
+
+
+--> MAS O "PUBLIC"
+
+
+realmente SHOULD ser exposto ao public --> MAS MAIS TARDE 
+
+
+VEREMOS COMO, SE NECESSÁRIO,
+
+
+REMOVER PRIVILEGES DE USERS...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2a coisa) ---> QUANDO CRIAMOS 1 USER,
+GANHAMOS 
+
+1 MESSAGE DE 
+
+
+"CREATE ROLE"... 
+
+
+
+
+
+
+
+
+
+
+
+--> UÉ, MAS PQ RECEBEMOS ESSA MESSAGE?
+
+
+
+
+
+
+
+
+
+--> BEM, É PQ 
+
+
+
+UM 
+
+"ROLE", NO FINAL DAS CONTAS,
+
+
+
+É __ NADA MAIS DO QUE 
+
+
+UM "USER + LOGIN" -->  ISSO QUER DIZER, EM OUTRAS PALAVRAS,
+
+
+
+
+
+
+
+
+
+
+
+
+QUE 
+
+
+
+
+
+ESTE COMANDO:
+
+
+
+
+
+
+
+
+CREATE OR REPLACE USER <user_name>
+WITH PASSWORD 'pwd123';
+
+
+
+
+
+
+
+É A MESMA COISA QUE ESTE COMANDO:
+
+
+
+
+
+CREATE OR REPLACE ROLE <user_name>
+WITH LOGIN PASSWORD 'pwd123';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> É CLARO QUE, TECNICAMENTE,
+
+
+OS 2 SAO IGUAIS,
+
+
+
+MAS 
+
+
+
+__ ROLES __ SAO GERALMENTE ASSIGNADOS 
+
+A GROUPS,
+
+
+
+E GERALMENTE NAO POSSUEM LOGIN (bem melhor assim)...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CERTO...
+
+
+
+
+
+
+
+
+
+
+
+--> MAS ANTES DE PROSSEGUIRMOS COM A CRIACAO DO USER,
+
+
+
+
+
+
+O PROFESSOR MENCIONA ESTES COMANDOS:
+
+
+
+
+
+
+
+
+
+
+1) DROP USER <user_name>
+
+
+
+2) DROP ROLE <role_name>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---> NO PGADMIN,
+
+
+O PROFESSOR ESCREVE ASSIM:
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE USER sarah 
+WITH password 'sarah1234';
+
+
+
+CREATE ROLE alex  -- se colocamos login/password no nosso role, ele é EXATAMENTE A MESMA COISA QUE 1 USER....
+WITH LOGIN PASSWORD 'alex1234'; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> BEM, ESTAMOS ATUALMENTE 
+
+
+
+COM 1 USER SUPERUSER...
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> MAS SE VAMOS ATÉ AS OPTIONS DO PGADMIN,
+
+
+
+BASTA IR ATÉ AS OPTIONS E TROCAR O USERNAME 
+
+
+
+
+por "sarah"...
+
+
+
+
+
+
+
+-> ISSO VAI NOS DESCONECTAR DA DATABASE,
+
+
+
+
+
+
+PARA ENTAO NOS RECONECTARMOS COM AS CREDENTIALS DE SARAH...
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> ESSE É UM NOVO USER, DE NOME "alex"..
+
+
+SENHA "alex1234"...
+
+
+
+
+
+
+
+
+
+
+
+
+CRIADO ESSE USER,
+
+
+PODEREMOS VER TODAS AS TABLES EM 
+
+"PUBLIC",
+
+
+
+MAS NAO PODEREMOS QUERIAR 
+
+
+
+
+ESSAS TABLES,
+
+
+NAO PODEREMOS RODAR SELECT NELAS...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OK.... COM 1 NOVA JANELA no pgadmin,
+
+
+
+
+TEMOS 1 NOVA SESSION...
+
+
+
+
+
+
+
+
+
+
+
+
+
+PODEMOS VISUALIZAR AS TABLES NO SCHEMA DE "PUBLIC",
+
+
+mas nao podemos rodar select em  cima 
+
+delas....
+
+
+
+
+
+-->  ISSO PQ NAO TEMOS PRIVILEGES PARA ISSO...
+
+
+
+
+
+
+--> ENTRETANTO,
+O QUE PODEMOS FAZER É CRIAR NOSSOS PRÓPRIOS OBJECTS (
+    do alex
+)
+
+
+DENTRO DO SCHEMA 
+
+
+DE 
+
+
+'public'...
+
+
+
+
+
+
+
+
+
+TIPO ASSIM:
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE test_table (id SERIAL);
+
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT * FROM test_table;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-> CERTO... TAMBÉM PODEMOS DROPPAR ESSA TABLE,
+
+PQ FOI ALEX, NOSSO USER, QUE A CRIOU...
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> AGORA DEVEMOS VER COMO PODEMOS ASSIGNAR PRIVILEGES 
+AOS ROLES, QUE ENTAO 
+
+SAO ANEXADOS 
+
+AOS 
+
+NOSSOS USERS (alex)...
+
+
+

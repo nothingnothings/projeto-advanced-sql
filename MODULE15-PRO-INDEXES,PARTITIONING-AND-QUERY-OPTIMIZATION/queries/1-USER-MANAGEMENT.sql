@@ -1,0 +1,423 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+SE TRABALHAMOS EM 1 DATABASE,
+
+
+
+É COMUM 
+
+
+
+
+TERMOS DE LIDAR COM VÁRIOS USERS...
+
+
+
+
+
+
+
+
+
+
+
+
+--> NOVOS USERS...
+
+
+
+
+
+
+
+E PRECISAMOS ASSIGNAR PRIVILEGES A ESSES USERS...
+
+
+
+
+
+
+
+
+
+
+
+
+
+ASSIGNAR ALGUNS ROLES A ESSES USERS...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> POR ISSO DEVEMOS VER COMO PODEMOS MANAGEAR USERS,
+
+SEUS PRIVILEGES E SEUS 
+
+ROLES...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> ATÉ AGORA SÓ ACESSAMOS A DATABASE COMO SUPERUSER...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> MAS QUEREMOS CRIAR NOVOS USERS,
+
+USERS 
+
+QUE TENHAM PRIVILEGES PARA ACESSAR APENAS ALGUMAS 
+
+DE NOSSAS TABLES...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> NAO DEVEM TER TODOS OS PRIVILEGES TODO O TEMPO...
+
+
+
+
+
+
+
+
+
+
+
+-> ALGUNS USERS DEVEM TER APENAS READ ACCESS A ALGUMAS TABLES,
+
+POR EXEMPLO...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> EM GERAL,
+
+SE 1 USER CRIA 1 OBJECT,
+
+ESSE USER, POR DEFAULT,
+
+
+
+
+VIRA 1 DOS "OWNER" DAQUELE OBJECT --> SIGNIFICA QUE 
+
+ELES SAO CAPAZES 
+
+
+DE 
+
+MODIFICAR E DELETAR AQUELE OBJECT...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> MAS PARA OBJECTS QUE JÁ EXISTME,
+
+
+
+PRECISAMOS GARANTIR/CONFERIR 
+
+ESSES PRIVILEGES 
+
+
+AOS ROLES, QUE SAO ENTAO ASSIGNADOS AOS USERS...
+
+
+
+
+
+
+
+
+
+
+
+ALGUNS DESSES PRIVILEGES SAO:
+
+
+
+
+
+
+1) SELECT 
+
+2) INSERT 
+
+
+3) UPDATE 
+
+4) DELETE 
+
+
+5) TRUNCATE 
+
+
+6) USAGE...( o mais básico)...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+USAGE DEVE SER CONFERIDO A DATABASES,
+
+E A SCHEMAS, E A TABLES (
+
+    para que pessoas consigam 
+
+    lidar com as tables...
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---_> PODEMOS CRIAR NOVOS USERS,
+
+COM ESTE COMANDO:
+
+
+
+
+
+
+
+
+
+CREATE OR REPLACE USER LOGIN='xxx' PASSWORD='xx';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-> ok.... CRIADOS OS USERS,
+
+PODEMOS ASSIGNAR PRIVILEGES A ROLES,
+
+QUE ENTAO 
+
+
+SAO 
+
+
+ASSIGNADOS AOS USERS....
+
+
+
+
+
+
+
+
+
+
+
+
+-----> É MAIS FÁCIL DE DEFINIR CERTOS GROUPS 
+
+E ASSIGNAR 
+
+
+USERS A ESSES ROLES...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> DIGAMOS QUE TEMOS 1 NOVO USER,
+
+DE NOME "Sarah"...
+
+
+
+
+
+
+QUEREMOS CRIAR 1 ROLE de "Analyst"
+PARA ELA,
+
+
+E ENTAO 
+
+
+
+ASSIGNAR
+
+
+PRIVILEGES DE USAGE E DE SELECT 
+
+NESSE ROLE,
+
+
+PARA 1 TABLE ESPECÍFIca..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE OR REPLACE USER Sarah LOGIN='Sarah' PASSWORD='Sarah123';
+
+CREATE OR REPLACE ROLE Analyst;
+
+GRANT USAGE ON DATABASE exemplo TO ROLE Analyst;
+
+USE DATABASE exemplo;
+
+GRANT USAGE ON SCHEMA exemplo2 TO ROLE Analyst;
+
+GRANT USAGE ON TABLE exemplo3 TO ROLE Analyst;
+
+GRANT SELECT ON TABLE exemplo3 TO ROLE Analyst;
+
+GRANT ROLE Analyst TO USER Sarah;
+
+
+
+
+
+
+
+
+
+
+
+
+
+VEREMOS COMO CRIAR 1 NOVO USER,
+
+NA PRÓXIMA AULA....
