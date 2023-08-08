@@ -1,0 +1,751 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+SE FALAMOS SOBRE INDEXES,
+
+
+GERALMENTE O OBJETIVO É AUMENTAR A PERFORMANCE
+
+DE NOSSAS QUERIES...
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->  E, SE FALAMOS SOBRE QUERY PERFORMANCE (
+    quanto tempo para 1 query ser executada
+),
+
+
+
+PODEMOS DISTINGUIR ENTRE 2 TIPOS DE QUERY OPERATIONS:
+
+
+
+
+
+
+
+
+1) READ OPERATIONS (caso do audiencelab)
+
+
+--> USADO SEMPRE QUE SELECIONAMOS DATA....
+
+
+
+
+
+
+
+
+
+
+2) WRITE OPERATIONS  --> QUEREMOS INSERIR DATA,
+UPDATAR DATA,
+
+DELETAR DATA...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> SE QUEREMOS USAR INDEXES PARA AUMENTAR PERFORMANCE,
+
+
+
+BASICAMENTE ESTAMOS FALANDO 
+DE ___rEAD OPERATIONS___....
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> PQ A PEFORMANCE DAS READ OPERATIONS PODE 
+
+
+SER AUMENTADA COM INDEXES....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> NA PRÓXIMA AULA VEREMOS COMO INDEXES ACTUALLY FUNCIONAM...
+
+
+
+
+
+
+
+
+--> VEREMOS O TECHNICAL BACKGROUND DE INDEXES,
+
+
+PARA QUE ENTENDAMOS:
+
+
+
+
+
+
+
+1) OS DIFERENTES TIPOS DE INDEXES...
+
+
+
+
+
+
+2) VER QUAIS SAO AS GUIDELINES,
+
+QUANDO USAR INDEXES,
+
+
+DEIXAR AS COISAS MAIS PRÁTICAS...
+
+
+
+
+
+3) TAMBÉM TEREMOS 1 HANDS-ON DEMONSTRATION 
+
+DE COMO USAR INDEXES,
+
+
+na nossa database...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> VAMOS COMECAR COM O BACKGROUND...
+
+
+
+
+
+
+O QUE SAO INDEXES, E PQ ELES NOS AJUDAM A AUMENTAR 
+
+
+A PERFORMANCE DE NOSSAS QUERIES?
+
+
+
+
+
+
+
+
+
+
+
+BEM, ANTES DE MAIS NADA,
+
+É BOM ENTENDER 
+
+
+""COMO A DATA É ARMAZENADA NA NOSSA DATABASE"...
+
+
+
+
+
+
+
+
+
+
+
+
+
+-> IMAGINE ESTA TABLE, COM ESTES ROWS:
+
+
+
+
+
+
+
+
+
+transaction_id      product_id      customer_id    payment         price 
+1                   PG1231             4            visa            18.29
+2                   PG4112              5           visa            1.49
+3                   PG5121              5           visa            5.89
+4                   PG5151              8           mastercard      11.59
+5                   PG2313              5           mastercard      12.39
+
+
+
+
+
+
+
+
+
+
+
+--> ok... NO LADO DE FORA VEMOS UMA TABLE 
+
+
+COM COLUMNS, ROWS E ETC...
+
+
+
+
+
+
+
+
+
+
+
+--> TUDO PARECE ESTAR BEM ORGANIZADO....
+
+
+
+
+
+
+
+
+
+
+
+MAS TUDO ISSO É MENTIRA...
+
+
+
+
+
+
+
+
+PQ, NO BACKGROUND,
+
+
+A DATA 
+
+É ARMAZENADA 
+
+
+
+EM ROWS, SIM,
+
+
+
+MAS EM ____BLOCOS____... -----> E A DATA 
+
+
+
+É POSICIONADA 
+
+SIMPLESMENTE 
+
+
+NOS LOCAIS EM QUE 
+
+""HÁ LUGARES LIVRES DISPONÍVEIS""...
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------> quer dizer que 
+
+NOSSA 
+
+
+DATA É ARMAZENADA SEM NENHUMA ORDEM ESPECÍFICA...
+
+
+
+
+
+
+
+
+
+
+
+
+
+-> e isso nao é nada eficiente se queremos 
+
+
+READ a data...
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> É CLARO QUE SE DESEJAMOS FAZER WRITE
+
+DE DATA,
+ISSO É MT EFICIENTE,
+
+PQ AÍ A MÁQUINA SIMPLESMENTE FAZ "WRITE"
+
+
+NO PRIMEIRO LOCAL QUE ELA ENCONTRA EM BRANCO,
+
+
+n faz diferenca para ela...
+
+
+
+
+
+
+
+
+
+
+
+
+MAS AGORA IMAGINE ESTA QUERY:
+
+
+
+
+
+
+
+
+
+SELECT 
+product_id
+FROM sales 
+WHERE customer_id=5;
+
+
+
+
+
+
+
+
+
+OK... QUEREMOS ENCONTRAR ESSE CUSTOMER_ID específico...
+
+
+
+
+
+
+
+
+
+--> MAS O QUE O DATABASE SYSTEM PRECISA FAZER 
+
+É RODAR 1 FULL TABLE SCAN,
+
+
+
+tudo para encontrar 
+
+
+
+O LOCAL EM QUE 
+
+
+
+
+EXISTE ESSE CUSTOMER_ID 5...
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> E ESSE FULL TABLE SCAN 
+
+
+
+TOMA MT TEMPO DE NOSSA QUERY --> COME MT TEMPO 
+
+
+DE 
+
+NOSSAS READ QUERIES....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> E É EXATAMENTE 
+
+
+NESSA PARTE/ASPECTO QUE PODEMOS NOS 
+
+__BENEFICIAR__ DE INDEXES...
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> OK, MAS O QUE SAO INDEXES...?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+BEM, SE COLOCAMOS 1 INDEX NO CUSTOMER_ID,
+
+
+a data será 
+
+"SORTADA",
+
+
+E AÍ 
+
+
+será 
+
+
+CRIADA 
+
+
+1 TABLE ADICIONAL,
+
+
+
+
+
+COM A LOCATION DE 
+
+TODOS OS DIFERENTES VALUES...
+
+
+
+
+
+
+
+ex:
+
+
+
+
+
+
+LOCATION    VALUE (customer_id)
+1           4
+2           5
+5           8
+
+
+
+
+
+
+
+
+
+
+-- ESSA TABLE COM AS LOCATIONS É CHAMADA 
+
+DE 
+
+"LOOKUP TABLE"... ------_> E ELA CONTÉM "POINTERS" aos rows...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> COM ESSA "LOCATION TABLE",
+
+conseguimos EVITAR 1 FULL TABLE SCAN,
+
+
+E RAPIDAMENTE 
+
+
+VER ONDE ESTAO OS VALUES,
+
+PARA 
+
+PEGAR 
+
+
+OS 
+
+
+
+
+VALUES BEM MAIS RÁPIDO..
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> INDEXES HELP TO MAKE DATA READS FASTER..
+
+
+
+
+
+
+
+
+
+
+--> EVITAM OS FULL TABLE SCANS...
+
+
+
+
+
+
+
+
+
+
+--> MAS OS INDEXES POSSUEM DESVANTAGENS.. --> 
+
+
+
+PQ DEIXAM OS 
+
+DATA WRITES MAIS __ LENTOS__ ---> PQ TEMOS 
+
+
+DE MANTER 
+
+ESSA TABLE EXTRA,
+
+
+E ESSA TABLE EXTRA 
+
+PODE 
+
+
+
+ACABAR GERANDO STORAGE EXTRA.. -->  MAS 
+
+ISSO 
+
+
+MTAS VEZES NAO É PROBLEMA,
+PQ 
+
+STORAGE 
+
+NAO É A BIG ISSUE, HOJE EM DIA (
+
+    é bem cheap
+)..
+
+
+
+
+
+
+
+
+
+OK... É POR ISSO QUE QUEREMOS USAR INDEXES...
+
+
+
+
+
+
+
+
+
+
+
+
+--> NA PRÓXIMA AULA VEREMOS OS DIFERENTES 
+TIPOS DE INDEXES...
+
+
+
+
+
+
+
+
+
+
+
+
+--> PRIMEIRAMEMNTE VEREMOS 
+
+O 
+
+
+
+INDEX "B-TREE" (
+
+    é o 
+    INDEX PADRAO, MAIS FAMOSO...
+)
+
+
+
+
+
+
+
+
+--> DEPOIS VEREMOS OS 
+
+"BITMAP INDEXES",
+
+que sao o outro tipo de index....
+
+
+
+
+
+
+
+
+
+
+VEREMOS ISSO NA PRÓXIMA AULA...
+
+
+
+
+
+
