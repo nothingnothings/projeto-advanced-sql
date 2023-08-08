@@ -208,4 +208,12 @@ SELECT
  FROM address AS a
  LEFT JOIN customer AS c
 ON c.address_id = a.address_id
-WHERE district = 'Texas';
+WHERE c.customer_id IS NULL;
+
+
+
+
+
+
+
+
